@@ -4,13 +4,13 @@
 }
 
 
-<div class="page-content">
+<div class="page-content" ng-controller="AddVideoControler">
     <h1 class="title">Add Video</h1>
     <div class="addUrl">
-        @*<a href="/sandbox/new/" class="addnew-btn">Add</a>*@
-        <input ng-model="youtubelink" type="text" placeholder="#############" class="ng-pristine ng-valid upload-form">
+        <input type="text" placeholder="#############" class="upload-form" ng-model="url"/>
         <button class="btn btn-warning addnew-btn">Add</button>
     </div>
+    {{greeting}}
     <iframe width="100%" height="100%" src="https://www.youtube.com/embed/e08jMWr_fwA" frameborder="0" allowfullscreen=""></iframe>
 </div>
 
