@@ -212,14 +212,45 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201611271751221_DatabaseCreate.cs" />
+    <Compile Include="Migrations\201611271751221_DatabaseCreate.Designer.cs">
+      <DependentUpon>201611271751221_DatabaseCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201611271812113_AddVideoTables.cs" />
+    <Compile Include="Migrations\201611271812113_AddVideoTables.Designer.cs">
+      <DependentUpon>201611271812113_AddVideoTables.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201611271821531_AddDataAnnotations.cs" />
+    <Compile Include="Migrations\201611271821531_AddDataAnnotations.Designer.cs">
+      <DependentUpon>201611271821531_AddDataAnnotations.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201611271833505_PopulateLevel.cs" />
+    <Compile Include="Migrations\201611271833505_PopulateLevel.Designer.cs">
+      <DependentUpon>201611271833505_PopulateLevel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201611271848573_populateLanguage.cs" />
+    <Compile Include="Migrations\201611271848573_populateLanguage.Designer.cs">
+      <DependentUpon>201611271848573_populateLanguage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\Language.cs" />
+    <Compile Include="Models\Level.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\PhraseTranslate.cs" />
+    <Compile Include="Models\VideoMaterial.cs" />
+    <Compile Include="Models\VideoPhrase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Angular\Controllers\AddVideoController.js" />
+    <Content Include="App_Data\aspnet-LearnEnglish-20161107100207.mdf" />
+    <Content Include="App_Data\aspnet-LearnEnglish-20161107100207_log.ldf">
+      <DependentUpon>aspnet-LearnEnglish-20161107100207.mdf</DependentUpon>
+    </Content>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="favicon.ico" />
@@ -1061,9 +1092,7 @@
     <Content Include="Views\VideoLessons\Add.cshtml" />
     <Content Include="Scripts\version.json" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
@@ -1071,6 +1100,23 @@
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201611271751221_DatabaseCreate.resx">
+      <DependentUpon>201611271751221_DatabaseCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611271812113_AddVideoTables.resx">
+      <DependentUpon>201611271812113_AddVideoTables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611271821531_AddDataAnnotations.resx">
+      <DependentUpon>201611271821531_AddDataAnnotations.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611271833505_PopulateLevel.resx">
+      <DependentUpon>201611271833505_PopulateLevel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611271848573_populateLanguage.resx">
+      <DependentUpon>201611271848573_populateLanguage.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
