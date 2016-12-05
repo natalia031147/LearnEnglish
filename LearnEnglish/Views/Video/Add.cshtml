@@ -1,0 +1,30 @@
+﻿
+@{
+    ViewBag.Title = "Add";
+}
+
+
+<div class="page-content" ng-controller="AddVideoControler">
+    <div class="addUrl">
+        <div class="video-bl translate-bl" id="writing_console">
+            <div class="upload-video">
+                <h5>Load Video</h5>
+                <hr>
+                <div class="youtube-address">
+                    <h3>Open an youtube page and copy the URL. </h3>
+                        <h6 ng-show="errorLoading" class="ng-hide">Invalid URL.</h6>
+                        <form class="upload-form">
+                            <input type="text" placeholder="#############" class="upload-form" ng-model="youtubelink" />
+                            <button class="btn btn-warning load-btn" ng-click="getVideo()">Load</button>
+                            <div class="clear"></div>
+                        </form>
+                </div>
+            </div>           
+        </div>
+        
+        @*<input type="text" placeholder="#############" class="upload-form" ng-model="youtubelink"/>
+        <button class="btn btn-warning load-btn" ng-click="getVideo()">Load</button>*@
+    </div>    
+    
+</div>
+

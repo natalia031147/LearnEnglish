@@ -2,12 +2,16 @@
 
 namespace LearnEnglish.Controllers
 {
-    public class VideoLessonsController : Controller
+    public class VideoController : Controller
     {
         // GET: Video
         public ActionResult Add()
         {
             return View();
+        }
+        public void GetYoutubeInfo(string youtubeurl)
+        {
+
         }
     }
 }

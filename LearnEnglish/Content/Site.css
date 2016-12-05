@@ -32,6 +32,7 @@ textarea {
     margin: 0 auto;
     position: relative;
     overflow: visible;
+    margin-top: 60px;
 }
 
 .title {
@@ -44,18 +45,19 @@ textarea {
 }
 
 /*Add video css style*/
-.addnew-btn {   
+.load-btn{   
     float: right;
     margin-left: 24px;
     margin-top: 11px;    
     position: relative;
     display: block;
     width: 83px;
+    margin-right: 12px;
+
 }
 
-.addUrl {
-    background: #84ced9;
-    height: 55px;
+.addUrl {    
+    height: 346px;
     clear: both;
     padding: 0 24px;
     z-index: 10;
@@ -63,11 +65,59 @@ textarea {
     margin-top: -10px;
 }
 
+
+
+.video-bl {
+    background: #268abe;
+    width: 984px;
+    margin-left: -24px;
+    border: 12px solid #072635;
+    border-radius: 0px 0px 8px 8px;
+    -moz-border-radius: 0px 0px 8px 8px;
+    -webkit-border-radius: 0px 0px 8px 8px;
+    min-height: 346px;
+    height: 346px;
+    float: left;
+}
+
+.upload-video h5{
+    background: rgba(0,0,0,0);
+    color: #fff;
+    line-height: 38px;
+    margin: 0 0 19px;
+    padding: 0 0 10px;
+    padding-top: 15px;   
+    font-size: 24px;    
+    padding-left: 25px;
+    font-weight: 400;
+}
+
+.upload-video h3 {
+    color: #d5eff4;
+    font-size: 17px;
+    line-height: 22px;
+    margin: 0 0 10px;
+    padding: 8px 0 10px;
+    padding-left: 25px;
+}
+
+hr {
+    background : #6aa5ae;     
+}
+
 .upload-form {
+    padding: 11px 10px ;
+    color: #2181af;    
+    margin-top: 10px;
+    padding-top: 5px;
+    padding-left: 25px;
+}
+
+.upload-form input { 
     font-size: 20px;
     line-height: 20px;
     background: #d4eff4;
-    width: 550px;
+    width: 792px;
     padding: 11px 10px ;
     border-radius: 4px;
     -moz-border-radius: 4px;
