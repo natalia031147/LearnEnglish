@@ -59,7 +59,6 @@ textarea {
 .addUrl {    
     height: 346px;
     clear: both;
-    padding: 0 24px;
     z-index: 10;
     position: relative;
     margin-top: -10px;
@@ -69,8 +68,7 @@ textarea {
 
 .video-bl, .translate-bl {
     background: black;
-    width: 906px;
-    margin-left: -24px;
+    width: 906px;    
     border: 12px solid #072635;
     border-radius: 8px 8px 8px 8px;
     -moz-border-radius: 8px 8px 8px 8px;
@@ -81,11 +79,13 @@ textarea {
 .video-bl {
     min-height: 346px;
     height: 346px;
+    background : #097cb5;
 }
 
 .translate-bl {
     min-height: 384px;
     height: 384px;
+    margin-top: -10px;
 }
 
 .upload-video h5{
@@ -148,9 +148,8 @@ hr {
     padding: 0;
     position: relative;
     width: 906px;
-    margin-left: -24px;
     text-align: right;
-    top: 20px;
+    top: 10px;
     height: 184px;
 }
 
@@ -229,7 +228,7 @@ hr {
     font-size: 15px;
     line-height: 22px;
     color: #082635;
-    overflow: hidden;
+    overflow: hidden;    
 }
 
 .part-translate-btn {

@@ -5,14 +5,14 @@
 
 
 <div class="page-content" ng-controller="AddVideoControler">
-    <div class="addUrl">
+    <div class="addUrl"  ng-show="step_one">
         <div class="video-bl" id="writing_console">
             <div class="upload-video">
                 <h5>Load Video</h5>
                 <hr>
                 <div class="youtube-address">
                     <h3>Open an youtube page and copy the URL. </h3>
-                    <h6 ng-show="errorLoading" class="ng-hide">Invalid URL.</h6>
+                    <h6 ng-show="errorLoading" style="margin-left: 24px; color: darkred;">Invalid URL.</h6>
                     <form class="upload-form">
                         <input type="text" placeholder="#############" class="upload-form" ng-model="youtubelink" />
                         <button class="btn btn-warning load-btn" ng-click="getVideo()">Load</button>
@@ -22,7 +22,7 @@
             </div>
         </div>
     </div>
-    <div>
+    <div ng-show="step_two">
         <div class="translate-bl" id="writing_console">
             <div class="upload-video">
                 <iframe id="ytplayer" type="text/html" width="640" height="360" src="https://www.youtube.com/embed/M7lc1UVf-VE?autoplay=0&origin=http://example.com" frameborder="0"></iframe>

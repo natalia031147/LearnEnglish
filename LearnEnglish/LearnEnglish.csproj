@@ -240,6 +240,7 @@
     <Compile Include="Models\Level.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\PhraseTranslate.cs" />
+    <Compile Include="Models\YoutubeVideo.cs" />
     <Compile Include="Models\VideoMaterial.cs" />
     <Compile Include="Models\VideoPhrase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

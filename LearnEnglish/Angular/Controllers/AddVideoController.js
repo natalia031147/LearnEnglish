@@ -1,25 +1,23 @@
 ﻿var myApp = angular.module('learnEnglishApp', []);
 
 myApp.controller('AddVideoControler', ['$scope', '$http', function ($scope, $http) {
-    $scope.greeting = 'Hola!';
-
-    $scope.getVideo = function () {
-        $scope.step_one = 1;
+  
+    $scope.step_one = 1;
+    $scope.step_two = 0;
+    $scope.getVideo = function () {        
         $scope.step_loading = 1;
-
         var str = $scope.youtubelink;
-
-        var interLoading = setInterval(pseudoLoading, 60); // 60 - production
-
         var responseYoutube = $http({
             url: '/Video/GetYoutubeInfo/',
             method: "GET",
-            params: { youtubeurl: $scope.youtubelink }
+            params: { url: $scope.youtubelink }
         });
 
         responseYoutube.success(function (data, status, headers, config) {
 
             if (data.code) {
+                $scope.step_one = 0;
+                $scope.step_two = 1;
                 $scope.errorLoading = 0;
                 $scope.thumbnailurl = data.thumbnail_url;
                 $scope.title = data.title;
