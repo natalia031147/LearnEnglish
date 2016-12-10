@@ -125,7 +125,7 @@ hr {
     font-size: 20px;
     line-height: 20px;
     background: #d4eff4;
-    width: 792px;
+    width: 720px;
     padding: 11px 10px ;
     border-radius: 4px;
     -moz-border-radius: 4px;
@@ -150,7 +150,7 @@ hr {
     width: 906px;
     text-align: right;
     top: 10px;
-    height: 184px;
+    height: 230px;
 }
 
 .part-controller {
@@ -215,7 +215,7 @@ hr {
     float: right;
 }
 
-.part-translate-bl textarea {
+.part-translate textarea {
     float: left;
     width: 375px;
     margin: 0 10px 0 0;
@@ -231,6 +231,10 @@ hr {
     overflow: hidden;    
 }
 
+
+.part-translate {    
+     height: 65px;
+}
 .part-translate-btn {
     border-radius: 2px;
     -moz-border-radius: 2px;

@@ -25,7 +25,7 @@
     <div ng-show="step_two">
         <div class="translate-bl" id="writing_console">
             <div class="upload-video">
-                <youtube-video video-url="video" player="bestPlayer"></youtube-video>                
+                <youtube-video video-url="video"  player-vars="playerVars" ng-click="playVideo();" player="youtubePlayer"></youtube-video>                
             </div>
         </div>
         <div class="create-part">
@@ -34,18 +34,22 @@
                 <input class="start-part" type="text" placeholder="0.0"  value="0" ng-model="startTime">
                 <span class="separator">-</span>
                 <input id="manualPlayerTime" ng-hide="playButtonStatus" class="finish-part" type="text" placeholder="0.0" value="" ng-model="endTime">
+                <span style="margin-left: 24px; color: red;">{{editErrors}}</span>
                 <div class="clear"></div>
 
                 <div class="control-box" style="float: left;">
-                    <button ng-click="bestPlayer.seekTo(10, true);" class="org-stretch-btn">Re-Play</button>
-                    <button ng-click="bestPlayer.pauseVideo();" class="org-stretch-btn">Pause</button>
-                    <button ng-click="bestPlayer.playVideo();" class="org-stretch-btn">Play</button>
+                    <button ng-click="rePlayVideo();" class="org-stretch-btn">Re-Play</button>
+                    <button ng-click="pauseVideo();" class="org-stretch-btn">Pause</button>
+                    <button ng-click="playVideo();" class="org-stretch-btn">Play</button>
                 </div>
 
-                <div class="part-translate-bl" ng-hide="editFlag" style="margin-top: 54px;">
+                <div class="part-translate" ng-hide="editFlag" style="margin-top: 54px;">
                     <textarea cols="30" rows="10" placeholder="English phrase" ng-model="newPartArr.source" class="ng-pristine ng-valid"></textarea>
                     <textarea cols="30" rows="10" placeholder="Traducere in romana" ng-model="newPartArr.native" class="ng-pristine ng-valid"></textarea>
                     <button type="submit" class="org-stretch-btn part-translate-btn" ng-click="addPart();">+</button>
+                </div>
+                <div>
+                    <button  class="org-stretch-btn" style="margin-top: 12px;" ng-click="save();">Save</button>
                 </div>
             </div>
         </div>
