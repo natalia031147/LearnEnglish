@@ -4,12 +4,11 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - My ASP.NET Application</title>
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
-    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/bundles/modernizr")
     @Scripts.Render("~/bundles/angular")
-    @Scripts.Render("~/bundles/jquery")
+    @Styles.Render("~/Content/css")
     @RenderSection("scripts", required: false)
     <script src="~/Scripts/angular.js"></script>
     <script src="~/Angular/Controllers/AddVideoController.js"></script>
@@ -17,36 +16,67 @@
     <script src="https://www.youtube.com/iframe_api"></script>
 </head>
 <body ng-app="learnEnglishApp">
-    <div class="navbar navbar-inverse navbar-fixed-top" ng-app="LearnEnglishApp"> 
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Add", "Add", "Video")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                </ul>
-                @Html.Partial("_LoginPartial")
+    <div>
+        <div class="navbar navbar-inverse navbar-fixed-top" ng-app="LearnEnglishApp">
+            <div class="container">
+                <img alt="logo" src="https://d181h2ffads1u.cloudfront.net/images/personal/languages/English-UK/logo-02.png"
+                     class="pull-left" style="height: 50px;" />
+
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav" style="margin-left: 20px;">
+                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                        <li>@Html.ActionLink("Add", "Add", "Video")</li>
+                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    </ul>
+                    @Html.Partial("_LoginPartial")
+                </div>
             </div>
         </div>
-    </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        <div class="container body-content">
+            @RenderBody()
+        </div>
+        <footer class="footer-basic-centered">
+            <div class="container">
+                <img alt="logo" src="https://d181h2ffads1u.cloudfront.net/images/personal/languages/English-UK/logo-02.png" class="pull-left" style="height: 50px;">
+
+                <p class="footer-links">
+                    @Html.ActionLink("Home", "Index", "Home")
+                    ·
+                    @Html.ActionLink("Add", "Add", "Video")
+                    ·
+                    @Html.ActionLink("Contact", "Contact", "Home")
+                </p>
+                <p class="footer-company-name">Learn English © 2016</p>
+            </div>
         </footer>
     </div>
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
+    <style>
+        .footer-basic-centered {
+            background-color: #292c2f;
+            box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
+            box-sizing: border-box;
+            width: 100%;
+            text-align: center;
+            font: normal 18px sans-serif;
+            padding: 45px;
+            margin-top: 80px;
+            position: relative;
+            bottom: 0;
+        }
+
+            .footer-basic-centered .footer-company-name {
+                color: #8f9296;
+                font-size: 14px;
+                margin: 0;
+            }
+    </style>
 </body>
 </html>

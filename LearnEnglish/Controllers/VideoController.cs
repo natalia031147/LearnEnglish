@@ -1,4 +1,5 @@
-﻿using LearnEnglish.Models;
+﻿using System;
+using LearnEnglish.Models;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
@@ -31,6 +32,29 @@ namespace LearnEnglish.Controllers
             //video.VideoID = HttpUtility.ParseQueryString(iqs < args.Length - 1
             //        ? args.Substring(iqs + 1) : string.Empty)["v"];
             //return video;
+        }
+
+        [HttpPost]
+        public ActionResult AddNewVideo()/*VideoMaterial video*/
+        {
+            try
+            {
+                using (ApplicationDbContext context = new ApplicationDbContext())
+                {
+                    VideoMaterial video = new VideoMaterial()
+                    {
+                        Image =
+                            "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQBK3FmyjIENz16NWEl1iJcIWj8I5n8hs-rl5JPixzw-XppNfKx",
+                        Name = "Text Video"
+                    };
+                    context.VideoMaterials.Add(video);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return Json("Success", JsonRequestBehavior.AllowGet);
         }
     }
 }
