@@ -25,21 +25,22 @@
     <div ng-show="step_two">
         <div class="translate-bl" id="writing_console">
             <div class="upload-video">
-                <iframe id="ytplayer" type="text/html" width="640" height="360" src="https://www.youtube.com/embed/M7lc1UVf-VE?autoplay=0&origin=http://example.com" frameborder="0"></iframe>
+                <youtube-video video-url="video" player="bestPlayer"></youtube-video>
+                @*<iframe id="ytplayer" type="text/html" width="640" height="360" src="https://www.youtube.com/embed/M7lc1UVf-VE?autoplay=0&origin=http://example.com" frameborder="0"></iframe>*@
             </div>
         </div>
         <div class="create-part">
             <div class="part-controller" ng-hide="editFlag">
 
-                <input class="start-part disabled ng-pristine ng-valid" type="text" placeholder="0.0" disabled="disabled" value="" ng-model="startTime">
+                <input class="start-part ng-valid" type="text" placeholder="0.0"  value="" ng-model="startTime">
                 <span class="separator">-</span>
-                <input id="manualPlayerTime" ng-hide="playButtonStatus" class="finish-part ng-pristine ng-valid" type="text" placeholder="0.0" value="" ng-model="manualPlayerTime">
+                <input id="manualPlayerTime" ng-hide="playButtonStatus" class="finish-part ng-pristine ng-valid" type="text" placeholder="0.0" value="" ng-model="bestPlayer.getCurrentTime()">
                 <div class="clear"></div>
 
                 <div class="control-box" style="float: left;">
-                    <button ng-click="rePlay();" class="org-stretch-btn">Re-Play</button>
-                    <button ng-click="pausePlay();" class="org-stretch-btn">Pause</button>
-                    <button ng-click="videoPlay();" class="org-stretch-btn">Play</button>
+                    <button ng-click="bestPlayer.seekTo(10, true);" class="org-stretch-btn">Re-Play</button>
+                    <button ng-click="bestPlayer.pauseVideo();" class="org-stretch-btn">Pause</button>
+                    <button ng-click="bestPlayer.playVideo();" class="org-stretch-btn">Play</button>
                 </div>
 
                 <div class="part-translate-bl" ng-hide="editFlag" style="margin-top: 54px;">

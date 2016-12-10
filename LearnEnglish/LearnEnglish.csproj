@@ -248,6 +248,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Angular\Controllers\AddVideoController.js" />
+    <Content Include="Angular\Service\YoutubeEmbedUtils.js" />
     <Content Include="App_Data\aspnet-LearnEnglish-20161107100207.mdf" />
     <Content Include="App_Data\aspnet-LearnEnglish-20161107100207_log.ldf">
       <DependentUpon>aspnet-LearnEnglish-20161107100207.mdf</DependentUpon>
