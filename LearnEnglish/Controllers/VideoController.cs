@@ -1,9 +1,12 @@
 ﻿using System;
+using System.Data.Entity.Migrations;
+using System.Globalization;
 using LearnEnglish.Models;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Script.Serialization;
+using Microsoft.AspNet.Identity;
 
 namespace LearnEnglish.Controllers
 {
@@ -14,6 +17,13 @@ namespace LearnEnglish.Controllers
         {
             return View();
         }
+
+        public ActionResult Videos()
+        {
+            return View();
+        }
+
+
         public void GetYoutubeInfo(string url)
         {
             //var api = $"http://youtube.com/get_video_info?video_id={GetArgs(url, "v", '?')}";
@@ -34,25 +44,64 @@ namespace LearnEnglish.Controllers
             //return video;
         }
 
+
         [HttpPost]
-        public ActionResult AddNewVideo()/*VideoMaterial video*/
+        public ActionResult UpdateVideo(VideoMv videomv) 
+        {
+            try
+            {
+              
+
+            }
+            catch (Exception ex)
+            {
+                return Json("Error", JsonRequestBehavior.AllowGet);
+            }
+            return Json("Success", JsonRequestBehavior.AllowGet);
+        }
+
+
+        [HttpPost]
+        public ActionResult AddNewVideo(VideoMv videomv)
         {
             try
             {
                 using (ApplicationDbContext context = new ApplicationDbContext())
                 {
-                    VideoMaterial video = new VideoMaterial()
+                    Video video = new Video()
                     {
-                        Image =
-                            "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQBK3FmyjIENz16NWEl1iJcIWj8I5n8hs-rl5JPixzw-XppNfKx",
-                        Name = "Text Video"
+                        Title = videomv.Title,
+                        Url = videomv.Url,
+                        Thumbnail = videomv.Thumbnail,
+                        Level = (int)Common.Enums.Level.PreIntermediate,
+                        Language = videomv.Language
                     };
-                    context.VideoMaterials.Add(video);
+                    context.Videos.Add(video);
+                    context.SaveChanges();
+                    // save  Video Phrases
+                    var index = 1;
+                    foreach (var part in videomv.parts)
+                    {
+                        VideoPhrase videoPhrase = new VideoPhrase()
+                        {
+                            OrderNumber = index,
+                            StartTime = float.Parse(part.startTime, CultureInfo.InvariantCulture.NumberFormat),
+                            EndTime = float.Parse(part.endTime, CultureInfo.InvariantCulture.NumberFormat),
+                            Video = video,
+                            Phrase = part.source,
+                            TranslateLanguage = videomv.Language,
+                            PhraseTranslated = part.native,
+                        };
+                        index++;
+                        context.VideoPhrases.Add(videoPhrase);
+                    }
+                    context.SaveChanges();
                 }
             }
             catch (Exception ex)
             {
-                throw ex;
+                //throw ex;
+                return Json("Error", JsonRequestBehavior.AllowGet);
             }
             return Json("Success", JsonRequestBehavior.AllowGet);
         }

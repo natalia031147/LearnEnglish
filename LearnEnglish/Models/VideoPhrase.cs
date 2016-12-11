@@ -8,7 +8,7 @@ namespace LearnEnglish.Models
         public int Id { get; set; }
 
         [Required]
-        public VideoMaterial VideoMaterial { get; set; }
+        public Video Video { get; set; }
 
         [Required]
         public int OrderNumber { get; set; }
@@ -21,5 +21,11 @@ namespace LearnEnglish.Models
 
         [MaxLength(255)]
         public string Phrase { get; set; }
+
+        [MaxLength(255), Required]
+        public string TranslateLanguage { get; set; }
+
+        [MaxLength(255), Required]
+        public string PhraseTranslated { get; set; }
     }
 }

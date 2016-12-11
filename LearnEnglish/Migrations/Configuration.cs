@@ -28,6 +28,7 @@ namespace LearnEnglish.Migrations
                     PhoneNumber = "0011223366",
                     SecurityStamp = Guid.NewGuid().ToString()
                 });
+            base.Seed(context);
 
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
             //  to avoid creating duplicate seed data. E.g.

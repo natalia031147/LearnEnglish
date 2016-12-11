@@ -1,11 +1,10 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "Add";
 }
 
 
 <div class="page-content" ng-controller="AddVideoControler">
-    <div class="addUrl"  ng-show="step_one">
+    <div class="addUrl" ng-show="step_one">
         <div class="video-bl" id="writing_console">
             <div class="upload-video">
                 <h5>Load Video</h5>
@@ -25,13 +24,13 @@
     <div ng-show="step_two">
         <div class="translate-bl" id="writing_console">
             <div class="upload-video">
-                <youtube-video video-url="video"  player-vars="playerVars" ng-click="playVideo();" player="youtubePlayer"></youtube-video>                
+                <youtube-video video-url="video" player-vars="playerVars" ng-click="playVideo();" player="youtubePlayer"></youtube-video>
             </div>
         </div>
         <div class="create-part">
             <div class="part-controller" ng-hide="editFlag">
 
-                <input class="start-part" type="text" placeholder="0.0"  value="0" ng-model="startTime">
+                <input class="start-part" type="text" placeholder="0.0" value="0" ng-model="startTime">
                 <span class="separator">-</span>
                 <input id="manualPlayerTime" ng-hide="playButtonStatus" class="finish-part" type="text" placeholder="0.0" value="" ng-model="endTime">
                 <span style="margin-left: 24px; color: red;">{{editErrors}}</span>
@@ -44,19 +43,25 @@
                 </div>
 
                 <div class="part-translate" ng-hide="editFlag" style="margin-top: 54px;">
-                    <textarea cols="30" rows="10" placeholder="English phrase" ng-model="newPartArr.source" class="ng-pristine ng-valid"></textarea>
-                    <textarea cols="30" rows="10" placeholder="Traducere in romana" ng-model="newPartArr.native" class="ng-pristine ng-valid"></textarea>
+                    <textarea cols="30" rows="10" placeholder="English phrase" ng-model="source" class="ng-pristine ng-valid"></textarea>
+                    <textarea cols="30" rows="10" placeholder="Traducere in romana" ng-model="native" class="ng-pristine ng-valid"></textarea>
                     <button type="submit" class="org-stretch-btn part-translate-btn" ng-click="addPart();">+</button>
                 </div>
-                <div>
-                    <button  class="org-stretch-btn" style="margin-top: 12px;" ng-click="save();">Save</button>
+                <div style="margin-top: 12px;">
+                    <select class="selectpicker" ng-model="level">
+                        <option>Elementary</option>
+                        <option>Pre-Intermediate</option>
+                        <option>Intermediate</option>
+                        <option>Upper-Intermediate</option>
+                        <option>Advanced</option>
+                    </select>
+                    <button class="org-stretch-btn" style="margin-top: 0px; height: 33px;" ng-click="save();">Save</button>
                 </div>
             </div>
         </div>
-    </div>    
-        @*<input type="text" placeholder="#############" class="upload-form" ng-model="youtubelink"/>
+    </div>
+    @*<input type="text" placeholder="#############" class="upload-form" ng-model="youtubelink"/>
         <button class="btn btn-warning load-btn" ng-click="getVideo()">Load</button>*@
-    
-    
-</div>
 
+
+</div>
