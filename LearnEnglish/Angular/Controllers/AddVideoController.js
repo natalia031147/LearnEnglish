@@ -29,7 +29,7 @@ myApp.controller('AddVideoControler', ['$scope', '$http', function ($scope, $htt
         $http.get(urlApi)
         .success(function (data, status, headers, config) {
             $scope.data.Title = data.items[0].snippet.title;
-            $scope.data.Thumbnail = data.items[0].snippet.thumbnails.high.url;
+            $scope.data.Thumbnail = data.items[0].snippet.thumbnails.medium.url;
             $scope.data.Url = $scope.youtubelink;
             $scope.data.Language = 'en';
         })
