@@ -2,7 +2,9 @@
 
 myApp.controller('BrowseVideosController', ['$scope', '$http', function ($scope, $http) {
 
-    
+    $scope.GetVideos = function () {
+
+    };
 
 
 

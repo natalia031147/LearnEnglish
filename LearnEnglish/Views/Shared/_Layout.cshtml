@@ -12,6 +12,7 @@
     @RenderSection("scripts", required: false)
     <script src="~/Scripts/angular.js"></script>
     <script src="~/Angular/Controllers/AddVideoController.js"></script>
+    <script src="~/Angular/Controllers/VideoController.js"></script>
     <script src="~/Angular/Service/YoutubeEmbedUtils.js"></script>
     <script src="https://www.youtube.com/iframe_api"></script>
     <link href="~/Content/bootstrap-select.min.css" rel="stylesheet">
@@ -33,7 +34,7 @@
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav" style="margin-left: 20px;">
-                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                        <li>@Html.ActionLink("Video", "Video", "Video")</li>
                         <li>@Html.ActionLink("Add", "Add", "Video")</li>
                         <li>@Html.ActionLink("Videos", "Videos", "Video")</li>
                     </ul>

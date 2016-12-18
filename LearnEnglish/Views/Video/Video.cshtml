@@ -1,0 +1,29 @@
+﻿
+@{
+    ViewBag.Title = "Video";
+}
+
+
+
+
+<div div="page-content" ng-controller="VideoControler" ng-init="getVideo();">
+    <div class="video_title" >
+        <h1 style="color : #fff;">
+            {{video.Title}}
+        </h1>
+    </div>
+    <div class="video_general">
+        <div class="row">
+            <div class="video_general_left .col-md-6">
+                <youtube-video player-width="'460'" player-height="'300px'" video-url="video.Url"  player="youtubePlayer"></youtube-video>
+            </div>
+            <div class=".col-md-6"></div>
+        </div>
+        
+    </div>
+    
+   
+</div>
+   
+    
+

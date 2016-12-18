@@ -251,11 +251,28 @@ namespace LearnEnglish.Controllers
             return View();
         }
 
+        public ActionResult Video()
+        {
+
+            return View();
+        }
+
+        public JsonResult GetVideo(int id)
+        {
+            return Json(_videos.Find(v => v.Id == id), JsonRequestBehavior.AllowGet);
+        }
+        
         public ActionResult Videos()
         {
 
             return View();
-        }        
+        }
+
+
+        public ActionResult GetVideos()
+        {
+            return Json(_videos);
+        }
 
         [HttpPost]
         public ActionResult UpdateVideo(VideoMv videomv) 

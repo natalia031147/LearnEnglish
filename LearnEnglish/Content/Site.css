@@ -249,3 +249,21 @@ hr {
 .upload-video iframe {
     margin-left : 123px;
 }
+
+
+.video_title {
+    background : #106e9e;
+    text-align : center;
+    padding : 5px 0 5px 0;
+    border-radius : 5px 5px 0 0;
+    margin-top : 10px;
+}
+
+.video_general {
+    background : #e97f3d;
+    padding: 34px 17px 0;
+}
+
+.video_general_left {
+    padding: 0 17px;
+}
