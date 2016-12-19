@@ -267,3 +267,42 @@ hr {
 .video_general_left {
     padding: 0 17px;
 }
+
+.video_general_links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.video_general_links_item {
+    padding: 0;
+    margin: 0;
+    display: block;
+}
+
+.video_general_links_item_a {
+    background: #fdfefe;
+    display: block;
+    text-decoration: none!important;
+    border-bottom: 1px solid #bed9e0;
+    padding: 0 23px;
+    height: 69px;
+    position: relative;
+}
+
+.video_general_links_name  {
+    text-decoration: none;
+    vertical-align: middle;
+    display: inline-block;
+    font-size: 24px;
+    color: #052636;
+    margin-left: 20px;
+    padding-top: 18px;
+}
+
+
+
+.video_general_links_item_a:hover {
+    cursor: pointer;
+    background: #e5f5f8;
+}

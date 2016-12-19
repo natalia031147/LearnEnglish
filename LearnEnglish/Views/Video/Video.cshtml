@@ -3,23 +3,37 @@
     ViewBag.Title = "Video";
 }
 
-
-
-
-<div div="page-content" ng-controller="VideoControler" ng-init="getVideo();">
+<div div="page-content" style="width: 880px;" ng-controller="VideoControler" ng-init="getVideo();">
     <div class="video_title" >
-        <h1 style="color : #fff;">
+        <h3 style="color : #fff;">
             {{video.Title}}
-        </h1>
+        </h3>
     </div>
-    <div class="video_general">
-        <div class="row">
-            <div class="video_general_left .col-md-6">
-                <youtube-video player-width="'460'" player-height="'300px'" video-url="video.Url"  player="youtubePlayer"></youtube-video>
+    <div class="video_general" ng-show="all">
+        <div class="row" style="padding-bottom: 28px;">
+            <div class="col-lg-5">
+                <ul class="video_general_links">
+                    <li class="video_general_links_item">
+                        <a class="video_general_links_item_a" href="" ng-click="listening()">                            
+                            <span class="video_general_links_name">Listening</span>
+                        </a>
+                    </li>
+                    <li class="video_general_links_item">
+                        <a class="video_general_links_item_a" href="">
+                            <span class="video_general_links_name">Writing</span>
+                        </a>
+                    </li>
+                    <li class="video_general_links_item">
+                        <a class="video_general_links_item_a" href="">
+                            <span class="video_general_links_name">Speaking</span>
+                        </a>
+                    </li>
+                </ul>
             </div>
-            <div class=".col-md-6"></div>
+            <div class="video_general_left col-lg-6">                
+                <youtube-video player-width="'460'" player-height="'300px'" video-url="video.Url" player="youtubePlayer"></youtube-video>
+            </div>
         </div>
-        
     </div>
     
    
