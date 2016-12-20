@@ -3,7 +3,7 @@
     ViewBag.Title = "Video";
 }
 
-<div div="page-content" style="width: 880px;" ng-controller="VideoControler" ng-init="getVideo();">
+<div div="page-content" style="width: 880px;" ng-controller="VideoController" ng-init="getVideo();">
     <div class="video_title" >
         <h3 style="color : #fff;">
             {{video.Title}}
@@ -31,14 +31,15 @@
                 </ul>
             </div>
             <div class="youtubePlayer col-lg-6">                
-                <youtube-video player-width="'460'" player-height="'300px'" video-url="video.Url" player="youtubePlayer"></youtube-video>
+                <youtube-video player-width="'460'" player-height="'300px'"  video-url="video.Url" player="youtubePlayer1"></youtube-video>
             </div>
         </div>
     </div>
-    <div class="video_general" ng-show="show_listening">
+    <div class="video_general" ng-show="show_listening" style="height: 425px;">
         <div class="row" style="padding-bottom: 28px;">
             <div class="youtubePlayer col-lg-7">
-                <youtube-video player-width="'460'" player-height="'300px'" video-url="video.Url" player="youtubePlayer"></youtube-video>
+                <youtube-video player-width="'460'" player-height="'300px'" video-url="video.Url" player-vars="playerVars"  player="youtubePlayer2" ng-click="playVideo()"></youtube-video>
+                
             </div>
             <div class="book col-lg-5">
                 <div class="progress">
@@ -52,6 +53,8 @@
         </div>
 
         <div class="type">
+            <input />
+            <button type="submit" class="btn btn-primary hint-button" ng-click="playVideo()">Hint</button>
         </div>
     </div>
     

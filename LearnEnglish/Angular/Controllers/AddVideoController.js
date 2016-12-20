@@ -1,6 +1,7 @@
 ﻿var myApp = angular.module('learnEnglishApp', ['youtube-embed']);
 
-myApp.controller('AddVideoControler', ['$scope', '$http', function ($scope, $http) {
+
+myApp.controller('AddVideoController', ['$scope', '$http', function ($scope, $http) {
 
     $scope.step_one = 1;
     $scope.step_two = 0;

@@ -261,6 +261,11 @@ namespace LearnEnglish.Controllers
         {
             return Json(_videos.Find(v => v.Id == id), JsonRequestBehavior.AllowGet);
         }
+
+        public JsonResult GetVideoPhases(int id)
+        {
+            return Json(_videosPhrases.FindAll(p => p.Video == _videos.Find(v => v.Id == id)), JsonRequestBehavior.AllowGet);
+        }
         
         public ActionResult Videos()
         {
