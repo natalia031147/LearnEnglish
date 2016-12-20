@@ -9,7 +9,7 @@
             {{video.Title}}
         </h3>
     </div>
-    <div class="video_general" ng-show="all">
+    <div class="video_general" ng-show="show_general">
         <div class="row" style="padding-bottom: 28px;">
             <div class="col-lg-5">
                 <ul class="video_general_links">
@@ -30,9 +30,28 @@
                     </li>
                 </ul>
             </div>
-            <div class="video_general_left col-lg-6">                
+            <div class="youtubePlayer col-lg-6">                
                 <youtube-video player-width="'460'" player-height="'300px'" video-url="video.Url" player="youtubePlayer"></youtube-video>
             </div>
+        </div>
+    </div>
+    <div class="video_general" ng-show="show_listening">
+        <div class="row" style="padding-bottom: 28px;">
+            <div class="youtubePlayer col-lg-7">
+                <youtube-video player-width="'460'" player-height="'300px'" video-url="video.Url" player="youtubePlayer"></youtube-video>
+            </div>
+            <div class="book col-lg-5">
+                <div class="progress">
+                    <div class="progress-bar" role="progressbar" aria-valuenow="70"
+                         aria-valuemin="0" aria-valuemax="100" style="width:70%">
+                        <span class="sr-only">70% Complete</span>
+                    </div>
+                </div>
+                <span>1/13</span>
+            </div>
+        </div>
+
+        <div class="type">
         </div>
     </div>
     

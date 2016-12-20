@@ -2,12 +2,12 @@
 
 myApp.controller('VideoControler', ['$scope', '$http', function ($scope, $http) {
     $scope.video = {};
-    $scope.all = 1;
-    $scope.listening = 0;
+    $scope.show_general = 1;
+    $scope.show_listening = 0;
 
     $scope.listening = function () {
-        $scope.all = 0;
-        $scope.listening = 1;
+        $scope.show_general = 0;
+        $scope.show_listening = 1;
     };
     
     
