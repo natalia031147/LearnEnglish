@@ -6,21 +6,34 @@ myApp.controller('VideoController', ['$scope', '$http', function ($scope, $http)
     $scope.show_listening = 0;
     $scope.playerVars = {
         'controls' : 0,
-        'autoplay' : 0
+        'autoplay': 0
     };
 
     $scope.playVideo = function () {
         //$scope.youtubePlayer.loadVideoById('4Y8WR5VrN9E', 0, 7);
-        var done = false;
+        alert('');
        
-        if ($scope.youtubePlayer2.currentState == "playing") {
-                setTimeout(stopVideo, 6000);
-                done = true;
-            }
-          function stopVideo() {
-              $scope.youtubePlayer2.pauseVideo();
-        }
+        
     };
+    $scope.$on('youtube.player.playing', function ($event, player) {
+        // play it again
+        var time;
+        var startTime = $scope.video.currentPhrase.StartTime;
+        var index = $scope.video.currentIndex;
+        for (i = index; i < $scope.video.phrases.length ; i++) {
+            if  ($scope.video.phrases[i].Phrase != ""){
+                $scope.video.currentIndex = i;
+                $scope.video.currentPhrase = $scope.video.phrases[i];
+                break;
+            }
+        }
+        time = ($scope.video.currentPhrase.EndTime - startTime) * 1000 + 100;
+        setTimeout(stopVideo, time);
+        function stopVideo() {
+            $scope.youtubePlayer2.pauseVideo();
+        }
+    });
+
 
     $scope.listening = function () {
         $scope.show_general = 0;
@@ -32,7 +45,8 @@ myApp.controller('VideoController', ['$scope', '$http', function ($scope, $http)
         })
             .success(function (data, status, headers, config) {
                 $scope.video.phrases = data;
-                $scope.video.currentPhrase = $scope.video.phrases[0];
+                $scope.video.currentIndex = 0;
+                $scope.video.currentPhrase =  $scope.video.phrases[0];
             })
             .error(function (error, status, headers, config) {
                 console.log(status);

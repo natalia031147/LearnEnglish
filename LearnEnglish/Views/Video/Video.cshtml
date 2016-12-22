@@ -37,9 +37,8 @@
     </div>
     <div class="video_general" ng-show="show_listening" style="height: 425px;">
         <div class="row" style="padding-bottom: 28px;">
-            <div class="youtubePlayer col-lg-7">
-                <youtube-video player-width="'460'" player-height="'300px'" video-url="video.Url" player-vars="playerVars"  player="youtubePlayer2" ng-click="playVideo()"></youtube-video>
-                
+            <div class="youtubePlayer col-lg-7" ng-click="playVideo()">
+                <youtube-video player-width="'460'" player-height="'300px'" video-url="video.Url" ng-click="playVideo();" player-vars="playerVars"  player="youtubePlayer2" ></youtube-video>
             </div>
             <div class="book col-lg-5">
                 <div class="progress">
