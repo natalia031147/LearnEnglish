@@ -262,6 +262,7 @@ hr {
 .video_general {
     background : #e97f3d;
     padding: 34px 17px 0;
+    overflow: hidden;
 }
 
 .youtubePlayer {
@@ -272,6 +273,7 @@ hr {
     list-style: none;
     margin: 0;
     padding: 0;
+    
 }
 
 .video_general_links_item {
@@ -310,9 +312,7 @@ hr {
     background-position: 0px 0px;
     bottom: 0px;
     clear: both;
-    height: 48px;
     left: 0px;
-    min-height: 41px;
     position: relative;
     right: 0px;
     text-size-adjust: 100%;
@@ -324,9 +324,113 @@ hr {
     border-radius: 8px 8px 8px 8px;
     font: normal normal normal normal 10px / 10px Arial, "Helvetica Neue", Helvetica, sans-serif;
     padding: 3px 4px 0px 6px;
+    overflow: hidden
 }
 
 .hint-button {
     float: right;
     margin-top: -1px;
+}
+
+.words div{
+    float: left;
+    background: #d4eff4;
+    font: 400 24px/33px Georgia,Palatino,'Palatino Linotype',Times,'Times New Roman',serif;
+    border-radius: 2px;
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    height: 33px;
+    margin: 3px 2px 5px;
+    padding: 0 3px;
+    color: #052636;
+
+}
+.words {
+    float: left;
+    width: 90%;
+}
+
+.input-type{
+    float: left;
+    margin: 3px 3px 5px;
+    border: 0;
+    font: 400 24px/33px Georgia,Palatino,'Palatino Linotype',Times,'Times New Roman',serif;
+    height: 33px;
+    padding: 0;
+    position: relative;
+    z-index: 4;
+    background: 0 0;
+}
+
+.input-type:focus {
+    outline: none !important;
+}
+
+.passed-count {
+    color: #106e9e;
+    text-align: center;
+}
+.number {
+    float:left;
+    padding-left: 14px;
+    padding-right: 4px;
+    color: #beb682;
+    float: left;
+    width: 54px;
+    padding-top: 23px;
+    font-weight: 400;
+    font-size: 2.4em;
+}
+
+li div{
+    padding: 20px 0 5px;
+    float: left;
+    margin-left: 20px;
+    margin-right: 21px;
+}
+
+.phrases li {
+    overflow: visible;
+    display: block;
+    position: relative;
+}
+
+.phrase-eng{
+    color: #062636;
+    font-size: 1.1em;
+    margin: 0 0 4px;
+}
+.phrase-translated{
+    color: #93a0a2;
+    font-size: 1.0em;
+    margin: 0 0 15px;
+}
+
+md-card md-card-title {
+   padding-bottom: 0px !important;
+   padding-top: 5px !important;
+}
+md-card {
+    background-color: beige;
+}
+
+.md-headline {
+    font-size: 21px !important;    
+}
+
+md-card .md-actions.layout-column .md-button:not(.md-icon-button), md-card md-card-actions.layout-column .md-button:not(.md-icon-button) {
+    border: .1rem solid #28aadc;
+}
+
+.md-button img {
+    float: right;
+    padding-right: 0px;
+    border-right-width: 15px;
+    margin-right: 0px;
+    margin-top: 5px;
+}
+
+.md-button span {
+    float: left !important;
+    margin-left: 120px !important;
 }

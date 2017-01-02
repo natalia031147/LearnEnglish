@@ -8,6 +8,7 @@ using System.Web.Mvc;
 using System.Web.Script.Serialization;
 using Microsoft.AspNet.Identity;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace LearnEnglish.Controllers
 {
@@ -15,6 +16,7 @@ namespace LearnEnglish.Controllers
     {
         private List<Video> _videos;
         private List<VideoPhrase> _videosPhrases;
+        private List<UserProgress> _userProgress;
         public VideoController()
         {
             #region InitList
@@ -28,6 +30,13 @@ namespace LearnEnglish.Controllers
             _videos.Add(new Models.Video() { Id = 7, Language = "en", Level = (int)Common.Enums.Level.Elementary, Thumbnail = "https://i.ytimg.com/vi/DQYNM6SjD_o/mqdefault.jpg", Title = "Miranda Lambert - The House That Built Me", Url = "https://www.youtube.com/watch?v=DQYNM6SjD_o" });
             _videos.Add(new Models.Video() { Id = 8, Language = "en", Level = (int)Common.Enums.Level.Intermediate, Thumbnail = "https://i.ytimg.com/vi/HSzx-zryEgM/mqdefault.jpg", Title = "Doctor Strange Official Trailer 2", Url = "https://www.youtube.com/watch?v=HSzx-zryEgM" });
             _videos.Add(new Models.Video() { Id = 9, Language = "en", Level = (int)Common.Enums.Level.Advanced, Thumbnail = "https://i.ytimg.com/vi/-bN_xU5kbSs/mqdefault.jpg", Title = "Guardians of the Galaxy Movie CLIP - Prison Break (2014) - Bradley Cooper Movie", Url = "https://www.youtube.com/watch?v=-bN_xU5kbSs" });
+
+
+            _userProgress = new List<UserProgress>();
+            _userProgress.Add(new UserProgress() { Id = 1, Video = _videos[0], ListeningModulePassed = true, WritingModulePassed = false });
+            _userProgress.Add(new UserProgress() { Id = 1, Video = _videos[2], ListeningModulePassed = true, WritingModulePassed = true });
+            _userProgress.Add(new UserProgress() { Id = 1, Video = _videos[3], ListeningModulePassed = false, WritingModulePassed = true });
+            _userProgress.Add(new UserProgress() { Id = 1, Video = _videos[7], ListeningModulePassed = true, WritingModulePassed = true });
 
             _videosPhrases = new List<VideoPhrase>();
             _videosPhrases.Add(new VideoPhrase() { Id = 1, OrderNumber = 1, StartTime = 0.0f, EndTime = 7.1f, Video = _videos[0], Phrase = "", TranslateLanguage = "ro", PhraseTranslated = "" });
@@ -135,8 +144,8 @@ namespace LearnEnglish.Controllers
             _videosPhrases.Add(new VideoPhrase() { Id = 103, OrderNumber = 13, StartTime = 66.9f, EndTime = 71.2f, Video = _videos[4], Phrase = "We wanna invite you to have lunch with us every day for the rest of the week.", TranslateLanguage = "ro", PhraseTranslated = "" });
             _videosPhrases.Add(new VideoPhrase() { Id = 104, OrderNumber = 14, StartTime = 71.2f, EndTime = 80.6f, Video = _videos[4], Phrase = "Oh, it's OK... Coolness. So we'll see you tomorrow. On Wednesdays, we wear pink.", TranslateLanguage = "ro", PhraseTranslated = "" });
             _videosPhrases.Add(new VideoPhrase() { Id = 105, OrderNumber = 15, StartTime = 80.6f, EndTime = 106f, Video = _videos[4], Phrase = "", TranslateLanguage = "ro", PhraseTranslated = "" });
-            _videosPhrases.Add(new VideoPhrase() { Id = 106, OrderNumber = 1, StartTime = 0.0f, EndTime = 7.4f, Video = _videos[5], Phrase = "You wish to confess your crimes?", TranslateLanguage = "ro", PhraseTranslated = "" });
-            _videosPhrases.Add(new VideoPhrase() { Id = 107, OrderNumber = 2, StartTime = 7.4f, EndTime = 10.2f, Video = _videos[5], Phrase = "Yes, My Lady. I do, My Lady.", TranslateLanguage = "ro", PhraseTranslated = "" });
+            _videosPhrases.Add(new VideoPhrase() { Id = 106, OrderNumber = 1, StartTime = 0.0f, EndTime = 7.4f, Video = _videos[5], Phrase = "You wish to confess your crimes?", TranslateLanguage = "ro", PhraseTranslated = "Vrei sa marturisesti crimele tale?" });
+            _videosPhrases.Add(new VideoPhrase() { Id = 107, OrderNumber = 2, StartTime = 7.4f, EndTime = 10.2f, Video = _videos[5], Phrase = "Yes, My Lady. I do, My Lady.", TranslateLanguage = "ro", PhraseTranslated = "Da, Doamna mea. Dorest." });
             _videosPhrases.Add(new VideoPhrase() { Id = 108, OrderNumber = 3, StartTime = 10.2f, EndTime = 19.5f, Video = _videos[5], Phrase = "The sky cells always break them! Speak, Imp. Meet your gods as an honest man.", TranslateLanguage = "ro", PhraseTranslated = "" });
             _videosPhrases.Add(new VideoPhrase() { Id = 109, OrderNumber = 4, StartTime = 19.5f, EndTime = 31.8f, Video = _videos[5], Phrase = "Where do I begin, my lords and ladies? I am a vile man, I confess it", TranslateLanguage = "ro", PhraseTranslated = "" });
             _videosPhrases.Add(new VideoPhrase() { Id = 110, OrderNumber = 5, StartTime = 31.8f, EndTime = 41.7f, Video = _videos[5], Phrase = "My crimes and sins are beyond counting. I have lied and cheated, gambled and whored", TranslateLanguage = "ro", PhraseTranslated = "" });
@@ -267,7 +276,7 @@ namespace LearnEnglish.Controllers
             return Json(_videosPhrases.FindAll(p => p.Video == _videos.Find(v => v.Id == id)), JsonRequestBehavior.AllowGet);
         }
         
-        public ActionResult Videos()
+        public ActionResult BrowseVideos()
         {
 
             return View();
@@ -276,7 +285,21 @@ namespace LearnEnglish.Controllers
 
         public ActionResult GetVideos()
         {
-            return Json(_videos);
+            var ret = (from a in _videos
+                      join b in _userProgress on a equals b.Video into joined
+                      from j in joined.DefaultIfEmpty()
+                      select new
+                      {
+                          a.Id,
+                          a.Language,
+                          a.Level,
+                          a.Thumbnail,
+                          a.Url,
+                          a.Title,
+                          ListeningModulePassed = j == null ? false : j.ListeningModulePassed,
+                          WritingModulePassed = j == null ? false : j.WritingModulePassed
+                      }).ToList();
+            return Json(ret, JsonRequestBehavior.AllowGet);
         }
 
         [HttpPost]

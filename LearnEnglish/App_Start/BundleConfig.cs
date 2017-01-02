@@ -15,7 +15,18 @@ namespace LearnEnglish
                         "~/Scripts/jquery.validate*"));
 
             bundles.Add(new ScriptBundle("~/bundles/angular").Include(
-                        "~/Scrpts/angular.js"));
+                        "~/Scripts/angular.js",
+                        "~/Scripts/angular-animate/angular-animate.min.js",
+                        "~/Scripts/angular-aria/angular-aria.min.js",
+                        "~/Scripts/angular-material/angular-material.min.js"
+                        ));
+            //"http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.min.js"
+
+            bundles.Add(new ScriptBundle("~/bundles/app").Include(
+                "~/Angular/app.js",
+                "~/Angular/Controllers/*.js",
+                "~/Angular/Service/*.js"
+            ));
 
             // Use the development version of Modernizr to develop with and learn from. Then, when you're
             // ready for production, use the build tool at http://modernizr.com to pick only the tests you need.

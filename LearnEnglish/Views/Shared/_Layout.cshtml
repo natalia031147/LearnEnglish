@@ -10,13 +10,20 @@
     @Scripts.Render("~/bundles/angular")
     @Styles.Render("~/Content/css")
     @RenderSection("scripts", required: false)
-    <script src="~/Scripts/angular.js"></script>
-    <script src="~/Angular/Controllers/AddVideoController.js"></script>
-    <script src="~/Angular/Service/YoutubeEmbedUtils.js"></script>
+    @*<script src="~/Scripts/angular.js"></script>*@
+    @*<script src="~/Angular/Controllers/AddVideoController.js"></script>*@
+    @*<script src="~/Angular/Service/YoutubeEmbedUtils.js"></script>*@
     <script src="https://www.youtube.com/iframe_api"></script>
-    <script src="~/Angular/Controllers/VideoController.js"></script>
+    @*<script src="~/Angular/Controllers/VideoController.js"></script>*@
+    @*<script src="~/Angular/Controllers/BrowseVideosController.js"></script>*@
     <link href="~/Content/bootstrap-select.min.css" rel="stylesheet">
+    <!-- Angular Material style sheet -->
+
+    <link rel="stylesheet" href="~/Content/angular-material.css">
     <script src="~/Scripts/bootstrap-select.min.js"></script>
+    
+
+  
 </head>
 <body ng-app="learnEnglishApp">
     <div>
@@ -34,9 +41,10 @@
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav" style="margin-left: 20px;">
+                        <li>@Html.ActionLink("Videos", "BrowseVideos", "Video")</li>
                         <li>@Html.ActionLink("Video", "Video", "Video")</li>
                         <li>@Html.ActionLink("Add", "Add", "Video")</li>
-                        <li>@Html.ActionLink("Videos", "Videos", "Video")</li>
+                        
                     </ul>
                     @Html.Partial("_LoginPartial")
                 </div>
@@ -81,5 +89,8 @@
                 margin: 0;
             }
     </style>
+    <!-- Angular Material Library -->
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.min.js"></script>
+    @Scripts.Render("~/bundles/app")
 </body>
 </html>
