@@ -3,30 +3,23 @@
     ViewBag.Title = "Videos";
 }
 
-<div div="cards-list" style="margin-top: 54px;" ng-controller="BrowseVideosController" ng-init="getVideos();">
+<div div="cards-list"  ng-controller="BrowseVideosController" ng-init="getVideos();">
     
     <div class='md-padding' layout="row" layout-wrap>        
         <md-card flex-xs="" flex-gt-xs="30" ng-repeat="video in videos">
-            <img ng-src="{{video.Thumbnail}}" class="md-card-image" ng-click="loadVideo()">
+            <a href="@Url.Action("Video","Video")"><img ng-src="{{video.Thumbnail}}" class="md-card-image"></a>
             <level level="video.Level" style="margin-top: 5px; margin-left: 15px;"></level>
             <md-card-title>
                 <md-card-title-text>
-                    <span class="md-headline" ng-click="loadVideo()">{{video.Title}}</span>
+                    <a href="@Url.Action("Video","Video")"><span class="md-headline" ng-click="loadVideo()">{{video.Title}}</span></a>
                 </md-card-title-text>
             </md-card-title>
             <hr style="width: 100%;margin-left: 0px; margin-bottom: 0px; background-color:black">
             <md-card-actions layout="column" layout-align="start">
-                <md-button>Listening<img src="~/Images/Done.png" ng-if="video.ListeningModulePassed == true" width="25" height="25" /> </md-button>
-                <md-button>Writing<img src="~/Images/Done.png" ng-if="video.WritingModulePassed == true" width="25" height="25" /></md-button>
+                <md-button href="@Url.Action("Video","Video")">Listening<img src="~/Images/Done.png" ng-if="video.ListeningModulePassed == true" width="25" height="25" /> </md-button>
+                <md-button href="@Url.Action("Video","Video")">Writing<img src="~/Images/Done.png" ng-if="video.WritingModulePassed == true" width="25" height="25" /></md-button>
             </md-card-actions>
         </md-card>
     </div>
 </div>
 
-@*<!-- Angular Material requires Angular.js Libraries -->
-<script src="~/Scripts/angular-animate/angular-animate.min.js"></script>
-<script src="~/Scripts/angular-aria/angular-aria.min.js"></script>
-<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.min.js"></script>
-
-<!-- Angular Material Library -->
-<script src="~/Scripts/angular-material/angular-material.min.js"></script>*@

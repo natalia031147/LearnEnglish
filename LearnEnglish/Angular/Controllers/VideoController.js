@@ -1,6 +1,6 @@
 ﻿//var myApp = angular.module('learnEnglishApp', ['ngMaterial', 'ngMessages', 'youtube-embed']);
-
-myApp.controller('VideoController', ['$scope', '$http', function ($scope, $http) {
+var app = angular.module('learnEnglishApp.controllers');
+app.controller('VideoController', ['$scope', '$http', function ($scope, $http) {
     $scope.video = {};
     $scope.show_general = 1;
     $scope.show_listening = 0;

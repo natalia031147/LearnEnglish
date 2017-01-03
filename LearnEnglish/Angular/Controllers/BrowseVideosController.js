@@ -1,7 +1,31 @@
 ﻿//var myApp = angular.module('learnEnglishApp', ['ngMaterial', 'ngMessages']);
 
+var app = angular.module('learnEnglishApp.controllers');
 
-myApp.directive('level', function () {
+app.controller('BrowseVideosController', ['$scope', '$http', function ($scope, $http) {
+
+    $scope.getVideos = function () {
+        $http({
+            url: "/Video/GetVideos",
+            method: "GET"
+        })
+           .success(function (data, status, headers, config) {
+               $scope.videos = data; 
+            })
+           .error(function (error, status, headers, config) {
+               console.log(status);
+               console.log("Error occured");
+           });
+    };
+
+    $scope.loadVideo = function () {
+
+    };
+    
+
+}]);
+
+app.directive('level', function () {
     //define the directive object
     var directive = {};
 
@@ -59,26 +83,3 @@ myApp.directive('level', function () {
     }
     return directive;
 });
-
-myApp.controller('BrowseVideosController', ['$scope', '$http', function ($scope, $http) {
-
-    $scope.getVideos = function () {
-        $http({
-            url: "/Video/GetVideos",
-            method: "GET"
-        })
-           .success(function (data, status, headers, config) {
-               $scope.videos = data; 
-            })
-           .error(function (error, status, headers, config) {
-               console.log(status);
-               console.log("Error occured");
-           });
-    };
-
-    $scope.loadVideo = function () {
-
-    };
-    
-
-}]);

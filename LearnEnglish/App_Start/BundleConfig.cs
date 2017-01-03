@@ -18,6 +18,7 @@ namespace LearnEnglish
                         "~/Scripts/angular.js",
                         "~/Scripts/angular-animate/angular-animate.min.js",
                         "~/Scripts/angular-aria/angular-aria.min.js",
+                        "~/Scripts/angular-messages.min.js",
                         "~/Scripts/angular-material/angular-material.min.js"
                         ));
             //"http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.min.js"
@@ -26,6 +27,7 @@ namespace LearnEnglish
                 "~/Angular/app.js",
                 "~/Angular/Controllers/*.js",
                 "~/Angular/Service/*.js"
+                
             ));
 
             // Use the development version of Modernizr to develop with and learn from. Then, when you're
@@ -39,7 +41,8 @@ namespace LearnEnglish
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
+                      "~/Content/site.css",
+                      "~/Content/angular-material.min.css"));
         }
     }
 }
