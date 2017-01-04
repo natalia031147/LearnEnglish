@@ -3,7 +3,7 @@
     ViewBag.Title = "Videos";
 }
 
-<div div="cards-list"  style="padding-bottom:90px; " ng-controller="BrowseVideosController" ng-init="getVideos();">
+<div div="cards-list"  ng-controller="BrowseVideosController" ng-init="getVideos();">
     
     <div class='md-padding' layout="row" layout-wrap>        
         <md-card flex-xs="" flex-gt-xs="30" ng-repeat="video in videos">

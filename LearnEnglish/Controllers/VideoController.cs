@@ -33,45 +33,45 @@ namespace LearnEnglish.Controllers
 
 
             _userProgress = new List<UserProgress>();
-            _userProgress.Add(new UserProgress() { Id = 1, Video = _videos[0], ListeningModulePassed = true, WritingModulePassed = false });
-            _userProgress.Add(new UserProgress() { Id = 1, Video = _videos[2], ListeningModulePassed = true, WritingModulePassed = true });
-            _userProgress.Add(new UserProgress() { Id = 1, Video = _videos[3], ListeningModulePassed = false, WritingModulePassed = true });
-            _userProgress.Add(new UserProgress() { Id = 1, Video = _videos[7], ListeningModulePassed = true, WritingModulePassed = true });
+            _userProgress.Add(new UserProgress() { Id = 1, Video = _videos[0], ListeningModulePassed = false, WritingModulePassed = true });
+            _userProgress.Add(new UserProgress() { Id = 2, Video = _videos[2], ListeningModulePassed = true, WritingModulePassed = true });
+            _userProgress.Add(new UserProgress() { Id = 3, Video = _videos[3], ListeningModulePassed = false, WritingModulePassed = true });
+            _userProgress.Add(new UserProgress() { Id = 4, Video = _videos[7], ListeningModulePassed = true, WritingModulePassed = true });
 
             _videosPhrases = new List<VideoPhrase>();
             _videosPhrases.Add(new VideoPhrase() { Id = 1, OrderNumber = 1, StartTime = 0.0f, EndTime = 7.1f, Video = _videos[0], Phrase = "", TranslateLanguage = "ro", PhraseTranslated = "" });
             _videosPhrases.Add(new VideoPhrase() { Id = 2, OrderNumber = 2, StartTime = 7.1f, EndTime = 10.3f, Video = _videos[0], Phrase = "Daddy is the sweetest daddy in the world.", TranslateLanguage = "ro", PhraseTranslated = "" });
             _videosPhrases.Add(new VideoPhrase() { Id = 3, OrderNumber = 3, StartTime = 10.3f, EndTime = 14.0f, Video = _videos[0], Phrase = "", TranslateLanguage = "ro", PhraseTranslated = "" });
             _videosPhrases.Add(new VideoPhrase() { Id = 4, OrderNumber = 4, StartTime = 14.0f, EndTime = 16.8f, Video = _videos[0], Phrase = "Daddy is the most handsome.", TranslateLanguage = "ro", PhraseTranslated = "" });
-            _videosPhrases.Add(new VideoPhrase() { Id = 5, OrderNumber = 5, StartTime = 16.0f, EndTime = 21.0f, Video = _videos[0], Phrase = "", TranslateLanguage = "ro", PhraseTranslated = "" });
-            _videosPhrases.Add(new VideoPhrase() { Id = 6, OrderNumber = 6, StartTime = 21.0f, EndTime = 22.5f, Video = _videos[0], Phrase = "The smartest.", TranslateLanguage = "ro", PhraseTranslated = "" });
-            _videosPhrases.Add(new VideoPhrase() { Id = 7, OrderNumber = 7, StartTime = 22.5f, EndTime = 28.3f, Video = _videos[0], Phrase = "", TranslateLanguage = "ro", PhraseTranslated = "" });
-            _videosPhrases.Add(new VideoPhrase() { Id = 8, OrderNumber = 8, StartTime = 28.3f, EndTime = 29.8f, Video = _videos[0], Phrase = "The most clever.", TranslateLanguage = "ro", PhraseTranslated = "" });
-            _videosPhrases.Add(new VideoPhrase() { Id = 9, OrderNumber = 9, StartTime = 29.8f, EndTime = 32.4f, Video = _videos[0], Phrase = "", TranslateLanguage = "ro", PhraseTranslated = "" });
-            _videosPhrases.Add(new VideoPhrase() { Id = 10, OrderNumber = 10, StartTime = 32.4f, EndTime = 33.7f, Video = _videos[0], Phrase = "The kindest.", TranslateLanguage = "ro", PhraseTranslated = "" });
-            _videosPhrases.Add(new VideoPhrase() { Id = 11, OrderNumber = 11, StartTime = 33.7f, EndTime = 39.0f, Video = _videos[0], Phrase = "", TranslateLanguage = "ro", PhraseTranslated = "" });
-            _videosPhrases.Add(new VideoPhrase() { Id = 12, OrderNumber = 12, StartTime = 39.0f, EndTime = 41.0f, Video = _videos[0], Phrase = "He is my superman.", TranslateLanguage = "ro", PhraseTranslated = "" });
-            _videosPhrases.Add(new VideoPhrase() { Id = 13, OrderNumber = 13, StartTime = 41.0f, EndTime = 44.1f, Video = _videos[0], Phrase = "", TranslateLanguage = "ro", PhraseTranslated = "" });
-            _videosPhrases.Add(new VideoPhrase() { Id = 14, OrderNumber = 14, StartTime = 44.1f, EndTime = 47.5f, Video = _videos[0], Phrase = "Daddy wants me to do well at school.", TranslateLanguage = "ro", PhraseTranslated = "" });
-            _videosPhrases.Add(new VideoPhrase() { Id = 15, OrderNumber = 15, StartTime = 47.5f, EndTime = 50.2f, Video = _videos[0], Phrase = "", TranslateLanguage = "ro", PhraseTranslated = "" });
-            _videosPhrases.Add(new VideoPhrase() { Id = 16, OrderNumber = 16, StartTime = 50.2f, EndTime = 52.8f, Video = _videos[0], Phrase = "Daddy is just great. But.", TranslateLanguage = "ro", PhraseTranslated = "" });
-            _videosPhrases.Add(new VideoPhrase() { Id = 17, OrderNumber = 17, StartTime = 52.8f, EndTime = 58.5f, Video = _videos[0], Phrase = "", TranslateLanguage = "ro", PhraseTranslated = "" });
-            _videosPhrases.Add(new VideoPhrase() { Id = 18, OrderNumber = 18, StartTime = 58.5f, EndTime = 59.4f, Video = _videos[0], Phrase = "He lies.", TranslateLanguage = "ro", PhraseTranslated = "" });
-            _videosPhrases.Add(new VideoPhrase() { Id = 19, OrderNumber = 19, StartTime = 59.4f, EndTime = 75.9f, Video = _videos[0], Phrase = "", TranslateLanguage = "ro", PhraseTranslated = "" });
-            _videosPhrases.Add(new VideoPhrase() { Id = 20, OrderNumber = 20, StartTime = 75.9f, EndTime = 79.6f, Video = _videos[0], Phrase = "He lies about having a job.", TranslateLanguage = "ro", PhraseTranslated = "" });
-            _videosPhrases.Add(new VideoPhrase() { Id = 21, OrderNumber = 21, StartTime = 79.6f, EndTime = 85.7f, Video = _videos[0], Phrase = "", TranslateLanguage = "ro", PhraseTranslated = "" });
-            _videosPhrases.Add(new VideoPhrase() { Id = 22, OrderNumber = 22, StartTime = 85.7f, EndTime = 89.1f, Video = _videos[0], Phrase = "He lies about having money.", TranslateLanguage = "ro", PhraseTranslated = "" });
-            _videosPhrases.Add(new VideoPhrase() { Id = 23, OrderNumber = 23, StartTime = 89.1f, EndTime = 97.1f, Video = _videos[0], Phrase = "", TranslateLanguage = "ro", PhraseTranslated = "" });
-            _videosPhrases.Add(new VideoPhrase() { Id = 24, OrderNumber = 24, StartTime = 97.1f, EndTime = 100.1f, Video = _videos[0], Phrase = "He lies that he is not tired.", TranslateLanguage = "ro", PhraseTranslated = "" });
-            _videosPhrases.Add(new VideoPhrase() { Id = 25, OrderNumber = 25, StartTime = 100.1f, EndTime = 106.1f, Video = _videos[0], Phrase = "", TranslateLanguage = "ro", PhraseTranslated = "" });
-            _videosPhrases.Add(new VideoPhrase() { Id = 26, OrderNumber = 26, StartTime = 106.1f, EndTime = 109.2f, Video = _videos[0], Phrase = "He lies that he is not hungry.", TranslateLanguage = "ro", PhraseTranslated = "" });
-            _videosPhrases.Add(new VideoPhrase() { Id = 27, OrderNumber = 27, StartTime = 109.2f, EndTime = 113.6f, Video = _videos[0], Phrase = "", TranslateLanguage = "ro", PhraseTranslated = "" });
-            _videosPhrases.Add(new VideoPhrase() { Id = 28, OrderNumber = 28, StartTime = 113.6f, EndTime = 117.3f, Video = _videos[0], Phrase = "He lies that we have everything.", TranslateLanguage = "ro", PhraseTranslated = "" });
-            _videosPhrases.Add(new VideoPhrase() { Id = 29, OrderNumber = 29, StartTime = 117.3f, EndTime = 126.8f, Video = _videos[0], Phrase = "", TranslateLanguage = "ro", PhraseTranslated = "" });
-            _videosPhrases.Add(new VideoPhrase() { Id = 30, OrderNumber = 30, StartTime = 126.8f, EndTime = 130.4f, Video = _videos[0], Phrase = "He lies about his happiness.", TranslateLanguage = "ro", PhraseTranslated = "" });
-            _videosPhrases.Add(new VideoPhrase() { Id = 31, OrderNumber = 31, StartTime = 130.4f, EndTime = 135.8f, Video = _videos[0], Phrase = "", TranslateLanguage = "ro", PhraseTranslated = "" });
-            _videosPhrases.Add(new VideoPhrase() { Id = 32, OrderNumber = 32, StartTime = 135.8f, EndTime = 140.0f, Video = _videos[0], Phrase = "He lies because of me.", TranslateLanguage = "ro", PhraseTranslated = "" });
-            _videosPhrases.Add(new VideoPhrase() { Id = 33, OrderNumber = 33, StartTime = 140.0f, EndTime = 207.0f, Video = _videos[0], Phrase = "", TranslateLanguage = "ro", PhraseTranslated = "" });
+            _videosPhrases.Add(new VideoPhrase() { Id = 5, OrderNumber = 5, StartTime = 16.8f, EndTime = 21.0f, Video = _videos[0], Phrase = "", TranslateLanguage = "ro", PhraseTranslated = "" });
+            //_videosPhrases.Add(new VideoPhrase() { Id = 6, OrderNumber = 6, StartTime = 21.0f, EndTime = 22.5f, Video = _videos[0], Phrase = "The smartest.", TranslateLanguage = "ro", PhraseTranslated = "" });
+            //_videosPhrases.Add(new VideoPhrase() { Id = 7, OrderNumber = 7, StartTime = 22.5f, EndTime = 28.3f, Video = _videos[0], Phrase = "", TranslateLanguage = "ro", PhraseTranslated = "" });
+            //_videosPhrases.Add(new VideoPhrase() { Id = 8, OrderNumber = 8, StartTime = 28.3f, EndTime = 29.8f, Video = _videos[0], Phrase = "The most clever.", TranslateLanguage = "ro", PhraseTranslated = "" });
+            //_videosPhrases.Add(new VideoPhrase() { Id = 9, OrderNumber = 9, StartTime = 29.8f, EndTime = 32.4f, Video = _videos[0], Phrase = "", TranslateLanguage = "ro", PhraseTranslated = "" });
+            //_videosPhrases.Add(new VideoPhrase() { Id = 10, OrderNumber = 10, StartTime = 32.4f, EndTime = 33.7f, Video = _videos[0], Phrase = "The kindest.", TranslateLanguage = "ro", PhraseTranslated = "" });
+            //_videosPhrases.Add(new VideoPhrase() { Id = 11, OrderNumber = 11, StartTime = 33.7f, EndTime = 39.0f, Video = _videos[0], Phrase = "", TranslateLanguage = "ro", PhraseTranslated = "" });
+            //_videosPhrases.Add(new VideoPhrase() { Id = 12, OrderNumber = 12, StartTime = 39.0f, EndTime = 41.0f, Video = _videos[0], Phrase = "He is my superman.", TranslateLanguage = "ro", PhraseTranslated = "" });
+            //_videosPhrases.Add(new VideoPhrase() { Id = 13, OrderNumber = 13, StartTime = 41.0f, EndTime = 44.1f, Video = _videos[0], Phrase = "", TranslateLanguage = "ro", PhraseTranslated = "" });
+            //_videosPhrases.Add(new VideoPhrase() { Id = 14, OrderNumber = 14, StartTime = 44.1f, EndTime = 47.5f, Video = _videos[0], Phrase = "Daddy wants me to do well at school.", TranslateLanguage = "ro", PhraseTranslated = "" });
+            //_videosPhrases.Add(new VideoPhrase() { Id = 15, OrderNumber = 15, StartTime = 47.5f, EndTime = 50.2f, Video = _videos[0], Phrase = "", TranslateLanguage = "ro", PhraseTranslated = "" });
+            //_videosPhrases.Add(new VideoPhrase() { Id = 16, OrderNumber = 16, StartTime = 50.2f, EndTime = 52.8f, Video = _videos[0], Phrase = "Daddy is just great. But.", TranslateLanguage = "ro", PhraseTranslated = "" });
+            //_videosPhrases.Add(new VideoPhrase() { Id = 17, OrderNumber = 17, StartTime = 52.8f, EndTime = 58.5f, Video = _videos[0], Phrase = "", TranslateLanguage = "ro", PhraseTranslated = "" });
+            //_videosPhrases.Add(new VideoPhrase() { Id = 18, OrderNumber = 18, StartTime = 58.5f, EndTime = 59.4f, Video = _videos[0], Phrase = "He lies.", TranslateLanguage = "ro", PhraseTranslated = "" });
+            //_videosPhrases.Add(new VideoPhrase() { Id = 19, OrderNumber = 19, StartTime = 59.4f, EndTime = 75.9f, Video = _videos[0], Phrase = "", TranslateLanguage = "ro", PhraseTranslated = "" });
+            //_videosPhrases.Add(new VideoPhrase() { Id = 20, OrderNumber = 20, StartTime = 75.9f, EndTime = 79.6f, Video = _videos[0], Phrase = "He lies about having a job.", TranslateLanguage = "ro", PhraseTranslated = "" });
+            //_videosPhrases.Add(new VideoPhrase() { Id = 21, OrderNumber = 21, StartTime = 79.6f, EndTime = 85.7f, Video = _videos[0], Phrase = "", TranslateLanguage = "ro", PhraseTranslated = "" });
+            //_videosPhrases.Add(new VideoPhrase() { Id = 22, OrderNumber = 22, StartTime = 85.7f, EndTime = 89.1f, Video = _videos[0], Phrase = "He lies about having money.", TranslateLanguage = "ro", PhraseTranslated = "" });
+            //_videosPhrases.Add(new VideoPhrase() { Id = 23, OrderNumber = 23, StartTime = 89.1f, EndTime = 97.1f, Video = _videos[0], Phrase = "", TranslateLanguage = "ro", PhraseTranslated = "" });
+            //_videosPhrases.Add(new VideoPhrase() { Id = 24, OrderNumber = 24, StartTime = 97.1f, EndTime = 100.1f, Video = _videos[0], Phrase = "He lies that he is not tired.", TranslateLanguage = "ro", PhraseTranslated = "" });
+            //_videosPhrases.Add(new VideoPhrase() { Id = 25, OrderNumber = 25, StartTime = 100.1f, EndTime = 106.1f, Video = _videos[0], Phrase = "", TranslateLanguage = "ro", PhraseTranslated = "" });
+            //_videosPhrases.Add(new VideoPhrase() { Id = 26, OrderNumber = 26, StartTime = 106.1f, EndTime = 109.2f, Video = _videos[0], Phrase = "He lies that he is not hungry.", TranslateLanguage = "ro", PhraseTranslated = "" });
+            //_videosPhrases.Add(new VideoPhrase() { Id = 27, OrderNumber = 27, StartTime = 109.2f, EndTime = 113.6f, Video = _videos[0], Phrase = "", TranslateLanguage = "ro", PhraseTranslated = "" });
+            //_videosPhrases.Add(new VideoPhrase() { Id = 28, OrderNumber = 28, StartTime = 113.6f, EndTime = 117.3f, Video = _videos[0], Phrase = "He lies that we have everything.", TranslateLanguage = "ro", PhraseTranslated = "" });
+            //_videosPhrases.Add(new VideoPhrase() { Id = 29, OrderNumber = 29, StartTime = 117.3f, EndTime = 126.8f, Video = _videos[0], Phrase = "", TranslateLanguage = "ro", PhraseTranslated = "" });
+            //_videosPhrases.Add(new VideoPhrase() { Id = 30, OrderNumber = 30, StartTime = 126.8f, EndTime = 130.4f, Video = _videos[0], Phrase = "He lies about his happiness.", TranslateLanguage = "ro", PhraseTranslated = "" });
+            //_videosPhrases.Add(new VideoPhrase() { Id = 31, OrderNumber = 31, StartTime = 130.4f, EndTime = 135.8f, Video = _videos[0], Phrase = "", TranslateLanguage = "ro", PhraseTranslated = "" });
+            //_videosPhrases.Add(new VideoPhrase() { Id = 32, OrderNumber = 32, StartTime = 135.8f, EndTime = 140.0f, Video = _videos[0], Phrase = "He lies because of me.", TranslateLanguage = "ro", PhraseTranslated = "" });
+            //_videosPhrases.Add(new VideoPhrase() { Id = 33, OrderNumber = 33, StartTime = 140.0f, EndTime = 207.0f, Video = _videos[0], Phrase = "", TranslateLanguage = "ro", PhraseTranslated = "" });
             _videosPhrases.Add(new VideoPhrase() { Id = 34, OrderNumber = 1, StartTime = 0.0f, EndTime = 9.7f, Video = _videos[1], Phrase = "Did I miss the story? What story? About how you proposed. I actually would love to hear the story, Andrew. Would you tell us?", TranslateLanguage = "ro", PhraseTranslated = "" });
             _videosPhrases.Add(new VideoPhrase() { Id = 35, OrderNumber = 2, StartTime = 9.7f, EndTime = 15.4f, Video = _videos[1], Phrase = "Margaret loves telling this story... so I'm just gonna let her go ahead and do that.", TranslateLanguage = "ro", PhraseTranslated = "" });
             _videosPhrases.Add(new VideoPhrase() { Id = 36, OrderNumber = 3, StartTime = 15.4f, EndTime = 22.9f, Video = _videos[1], Phrase = "Ok, well, um, Andrew and I were about to celebrate our first anniversary together.", TranslateLanguage = "ro", PhraseTranslated = "" });
@@ -299,11 +299,48 @@ namespace LearnEnglish.Controllers
         }
 
         [HttpPost]
+        public ActionResult SaveAction(int id, string action)
+        {
+            try
+            {
+                var index = _userProgress.FindIndex(a => a.Video == _videos.Find(v => v.Id == id));
+                if (index < 0)
+                {
+                    _userProgress.Add(new UserProgress()
+                    {
+                        Id = 5,
+                        ListeningModulePassed = action == "Listening" ? true : false,
+                        WritingModulePassed = action == "Writening" ? true : false,
+                        Video = _videos.Find(v => v.Id == id)
+                    });
+                }
+                else
+                {
+                    if (action == "listening")
+                    {
+                        _userProgress[index].ListeningModulePassed = true;
+                    }
+                    else if (action == "writening")
+                    {
+                        _userProgress[index].WritingModulePassed = true;
+                    }
+                }
+                
+            }
+            catch (Exception ex)
+            {
+                return Json("Error", JsonRequestBehavior.AllowGet);
+            }
+            return Json("Success", JsonRequestBehavior.AllowGet);
+        }
+
+
+        [HttpPost]
         public ActionResult UpdateVideo(VideoMv videomv) 
         {
             try
             {
-              
+                
 
             }
             catch (Exception ex)

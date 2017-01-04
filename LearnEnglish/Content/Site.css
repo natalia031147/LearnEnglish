@@ -11,6 +11,7 @@ html {
     padding-left: 15px;
     padding-right: 15px;
     margin-top: 54px;
+    padding-bottom: 90px;
 }
 
 /* Override the default bootstrap behavior where horizontal description lists 
@@ -348,7 +349,8 @@ hr {
     border-radius: 8px 8px 8px 8px;
     font: normal normal normal normal 10px / 10px Arial, "Helvetica Neue", Helvetica, sans-serif;
     padding: 3px 4px 0px 6px;
-    overflow: hidden
+    overflow: hidden;
+    margin-bottom: 5px;
 }
 
 .hint-button {
@@ -423,6 +425,7 @@ li div{
     color: #062636;
     font-size: 1.1em;
     margin: 0 0 4px;
+    width: 745px;
 }
 .phrase-translated{
     color: #93a0a2;

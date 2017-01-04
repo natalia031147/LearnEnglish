@@ -25,13 +25,15 @@ app.controller('VideoController', ['$scope', '$http', function ($scope, $http) {
         
     };
     $scope.$on('youtube.player.playing', function ($event, player) {
-        var time = ($scope.currentPhrase.EndTime - $scope.currentPhrase.StartTime) * 1000;
-        setTimeout(stopVideo, time);
-        function stopVideo() {
-            $scope.youtubePlayer2.pauseVideo();
-            if ($scope.currentPhrase.Phrase == "") {
-                getNextPhrase();
-            } 
+        if (!endTyping) {
+            var time = ($scope.currentPhrase.EndTime - $scope.currentPhrase.StartTime) * 1000;
+            setTimeout(stopVideo, time);
+            function stopVideo() {
+                $scope.youtubePlayer2.pauseVideo();
+                if ($scope.currentPhrase.Phrase == "") {
+                    getNextPhrase();
+                } 
+            }
         }
     });
 
@@ -49,7 +51,7 @@ app.controller('VideoController', ['$scope', '$http', function ($scope, $http) {
             params: { id: $scope.video.Id }
         })
             .success(function (data, status, headers, config) {
-                $scope.video.phrases = data;
+                $scope.video.phrases = data.sort((a, b) => a.OrderNumber > b.OrderNumber);
                 $scope.currentPhrase = { Phrase: "", OrderNumber: 0 };
                 $scope.phrasesNumber = $scope.video.phrases.filter(a => a.Phrase != "").length;
                 getNextPhrase();
@@ -81,8 +83,12 @@ app.controller('VideoController', ['$scope', '$http', function ($scope, $http) {
     $scope.typedWords = [];
     $scope.phrasesNumber = 1;
     $scope.passed = 0;
+    var endTyping = false;
+
     var getNextPhrase = function () {
-        if ($scope.currentPhrase.OrderNumber - 1 < $scope.video.phrases.length) {
+        var copy = Object.assign([], $scope.video.phrases).sort();
+        var last = copy.sort((a, b) => a.OrderNumber < b.OrderNumber).find(a => a.Phrase != "").OrderNumber;
+        if ($scope.currentPhrase.OrderNumber < last) {
             $scope.currentPhrase = $scope.video.phrases[$scope.currentPhrase.OrderNumber];
             $scope.youtubePlayer2.seekTo($scope.currentPhrase.StartTime, true);
             $scope.youtubePlayer2.playVideo();
@@ -91,8 +97,22 @@ app.controller('VideoController', ['$scope', '$http', function ($scope, $http) {
             $scope.typingWord = "";
             $scope.passed = $scope.video.phrases.filter(a => a.Phrase != "" && a.OrderNumber < $scope.currentPhrase.OrderNumber - 1).length;
             $scope.progress = (($scope.passed / $scope.phrasesNumber) * 100).toFixed(0);
-        } else {
-            alert('The lessons is done');
+        } else {                        
+            endTyping = true;
+            $scope.youtubePlayer2.playVideo();
+            $http({
+                method: 'POST',
+                url: '/Video/SaveAction',
+                data: $.param({ id: $scope.video.Id, action: "listening" }),
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+                    }).then(
+            function (res) {
+                console.log('succes !', res.data);                
+            },
+            function (err) {
+                console.log('error...', err);
+            }
+        );
         };
     };
 
@@ -114,7 +134,7 @@ app.controller('VideoController', ['$scope', '$http', function ($scope, $http) {
     };
     $scope.typing = function (key) {
         var codes = [13, 32, 190, 33, 63];
-        if (codes.includes(key)) {
+        if (codes.includes(key) && !endTyping) {
             var typingWord =  $scope.typingWord.toLowerCase().replace(/[^\w\s]/g, "").trim();
             var expectedWord = $scope.inputWord.word.toLowerCase().replace(/[^\w\s]/g, "").trim();
             if (typingWord == expectedWord) {

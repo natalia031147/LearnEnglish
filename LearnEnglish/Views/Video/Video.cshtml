@@ -71,7 +71,7 @@
                        class="input-type"
                        ng-keyup="typing($event.keyCode)" />
             </div>
-            <button class="btn btn-primary hint-button" ng-click="hint()">Hint</button>
+            <button class="btn btn-primary hint-button" ng-disabled ="currentPhrase.Phrase == ''"  ng-click="hint()">Hint</button>
         </div>        
     </div>
 
@@ -83,7 +83,7 @@
                 <em class="number">{{item.OrderNumber}}</em>
                 <div>
                     <p class="phrase-eng">{{item.Phrase}}</p>
-                    <p class="phrase-translated">{{item.PhraseTranslated}}</p>
+                    <p class="phrase-translated">{{item.PhraseTranslated == "" ? "Not Translated" : item.PhraseTranslated}}</p>
                 </div>
                 <hr style="width: 793px;margin-left: 0px; margin-bottom: 0px;">
             </li>
