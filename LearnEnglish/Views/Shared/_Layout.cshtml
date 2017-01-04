@@ -29,19 +29,13 @@
   
 </head>
 <body ng-app="learnEnglishApp">
-    <div>
+    <div style="position: relative;min-height:100%;">
         <div class="navbar navbar-inverse navbar-fixed-top" ng-app="LearnEnglishApp">
             <div class="container">
                 <img alt="logo" src="https://d181h2ffads1u.cloudfront.net/images/personal/languages/English-UK/logo-02.png"
                      class="pull-left" style="height: 50px;" />
 
-                <div class="navbar-header">
-                    <button type="button" iconclass="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="icon-bar"></span>
-                        <span class="-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                </div>
+                
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav" style="margin-left: 20px;">
                         <li>@Html.ActionLink("Videos", "BrowseVideos", "Video")</li>
@@ -53,7 +47,7 @@
                 </div>
             </div>
         </div>
-        <div class="container body-content">
+        <div class="container body-content" >
             @RenderBody()
         </div>
         <footer class="footer-basic-centered">
@@ -73,24 +67,7 @@
     </div>
 
     <style>
-        .footer-basic-centered {
-            background-color: #292c2f;
-            box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
-            box-sizing: border-box;
-            width: 100%;
-            text-align: center;
-            font: normal 18px sans-serif;
-            padding: 45px;
-            margin-top: 80px;
-            position: relative;
-            bottom: 0;
-        }
-
-            .footer-basic-centered .footer-company-name {
-                color: #8f9296;
-                font-size: 14px;
-                margin: 0;
-            }
+        
     </style>
 
     @Scripts.Render("~/bundles/angular")

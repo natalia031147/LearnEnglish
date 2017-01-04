@@ -260,16 +260,12 @@ namespace LearnEnglish.Controllers
             return View();
         }
 
-        public ActionResult Video()
+        public ActionResult GetVideo(int id)
         {
-
-            return View();
+            return View("Video",_videos.Find(v => v.Id == id));
         }
 
-        public JsonResult GetVideo(int id)
-        {
-            return Json(_videos.Find(v => v.Id == id), JsonRequestBehavior.AllowGet);
-        }
+        
 
         public JsonResult GetVideoPhases(int id)
         {

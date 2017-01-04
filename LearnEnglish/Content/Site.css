@@ -1,8 +1,11 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
+   height:100%;
 }
-
+html {
+    height:100%;
+}
 /* Set padding to keep content from hitting the edges */
 .body-content {
     padding-left: 15px;
@@ -34,6 +37,26 @@ textarea {
     position: relative;
     overflow: visible;
     margin-top: 20px;
+}
+
+
+.footer-basic-centered {
+    background-color: #292c2f;
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
+    box-sizing: border-box;
+    width: 100%;
+    text-align: center;
+    font: normal 18px sans-serif;
+    padding: 20px;
+                   
+    bottom: 0;
+    position: absolute;
+}
+
+.footer-basic-centered .footer-company-name {
+    color: #8f9296;
+    font-size: 14px;
+    margin: 0;
 }
 
 .title {

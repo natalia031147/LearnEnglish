@@ -9,8 +9,10 @@ app.controller('VideoController', ['$scope', '$http', function ($scope, $http) {
     $scope.typingWord = "";
     $scope.currentPhrase = { Phrase: "" };
     $scope.progress = 0;
-    $scope.countHint = [];
+    $scope.countHint = 0;
     $scope.history = [];
+    $scope.placeholder = "...";
+    
     $scope.playerVars = {
         'controls' : 0,
         'autoplay': 0
@@ -44,11 +46,12 @@ app.controller('VideoController', ['$scope', '$http', function ($scope, $http) {
         $http({
             url: "/Video/GetVideoPhases",
             method: "GET",
-            params: { id: 6 }
+            params: { id: $scope.video.Id }
         })
             .success(function (data, status, headers, config) {
                 $scope.video.phrases = data;
-                $scope.currentPhrase = { Phrase: "", OrderNumber : 0};
+                $scope.currentPhrase = { Phrase: "", OrderNumber: 0 };
+                $scope.phrasesNumber = $scope.video.phrases.filter(a => a.Phrase != "").length;
                 getNextPhrase();
             })
             .error(function (error, status, headers, config) {
@@ -58,31 +61,26 @@ app.controller('VideoController', ['$scope', '$http', function ($scope, $http) {
         
     };
     
-    
-    $scope.getVideo = function () {
-        
-        $http({
-            url: "/Video/GetVideo",
-            method: "GET",
-            params: { id: 6 }
-        })
-            .success(function (data, status, headers, config) {
-                $scope.video = data;                
-            })
-            .error(function (error, status, headers, config) {
-                console.log(status);
-                console.log("Error occured");
-            });
+    $scope.init = function (data) {
+        $scope.video = data;
     };
 
+    
+
     $scope.hint = function () {
-        if (!$scope.countHint.includes($scope.currentPhrase.OrderNumber))
-            $scope.countHint.push($scope.currentPhrase.OrderNumber)
-        getNextInputWord();
+        $scope.countHint++;
+        $scope.typingWord = "";
+        $scope.placeholder = $scope.inputWord.word;
+
+        setTimeout(clearPlaceholder, 1000);
+        function clearPlaceholder() {
+            $scope.placeholder = "...";
+        }
     };
 
     $scope.typedWords = [];
-
+    $scope.phrasesNumber = 1;
+    $scope.passed = 0;
     var getNextPhrase = function () {
         if ($scope.currentPhrase.OrderNumber - 1 < $scope.video.phrases.length) {
             $scope.currentPhrase = $scope.video.phrases[$scope.currentPhrase.OrderNumber];
@@ -91,7 +89,8 @@ app.controller('VideoController', ['$scope', '$http', function ($scope, $http) {
             $scope.inputWord = { word: $scope.currentPhrase.Phrase.split(' ')[0], index: 0 };
             $scope.typedWords = [];
             $scope.typingWord = "";
-            $scope.progress = ((($scope.currentPhrase.OrderNumber - 1) / $scope.video.phrases.length) * 100).toFixed(0);
+            $scope.passed = $scope.video.phrases.filter(a => a.Phrase != "" && a.OrderNumber < $scope.currentPhrase.OrderNumber - 1).length;
+            $scope.progress = (($scope.passed / $scope.phrasesNumber) * 100).toFixed(0);
         } else {
             alert('The lessons is done');
         };
@@ -105,7 +104,10 @@ app.controller('VideoController', ['$scope', '$http', function ($scope, $http) {
             $scope.inputWord.word = phraseWords[$scope.inputWord.index];
             $scope.typingWord = "";
         } else {
-            $scope.history.push($scope.currentPhrase);
+            if ($scope.currentPhrase.Phrase != "") {
+                var item = { Phrase: $scope.currentPhrase.Phrase, PhraseTranslated: $scope.currentPhrase.PhraseTranslated, OrderNumber: $scope.history.length + 1};
+                $scope.history.push(item);
+            }
             getNextPhrase();
             
         }
@@ -117,9 +119,13 @@ app.controller('VideoController', ['$scope', '$http', function ($scope, $http) {
             var expectedWord = $scope.inputWord.word.toLowerCase().replace(/[^\w\s]/g, "").trim();
             if (typingWord == expectedWord) {
                 getNextInputWord();
-            }
-               
-        };
+            } else if (key == 13) {
+                $scope.youtubePlayer2.seekTo($scope.currentPhrase.StartTime, true);
+                $scope.youtubePlayer2.playVideo();
+            } 
+        } else if (key == 16) {
+            $scope.hint();
+        }
     };
 
     $scope.generateColor = function () {
