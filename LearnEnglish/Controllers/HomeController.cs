@@ -10,7 +10,7 @@ namespace LearnEnglish.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            return View("~/Views/Video/BrowseVideos.cshtml");
         }
 
         public ActionResult About()

@@ -28,9 +28,11 @@ textarea {
     /*max-width: 280px;*/
 }
 
-
-
-
+.translate-phrase {
+    display: inline;
+    padding-bottom: 0;     
+    color: rgb(0, 0, 0);
+}
 
 .page-content {
     width: 984px;
@@ -431,6 +433,13 @@ li div{
     color: #93a0a2;
     font-size: 1.0em;
     margin: 0 0 15px;
+    /*width: 745px;*/
+    display: inline;
+}
+.google-translate{
+    display: inline;
+    padding-bottom: 0;
+    color: rgba(0,0,0,0.54);
 }
 
 md-card md-card-title {
@@ -449,7 +458,7 @@ md-card .md-actions.layout-column .md-button:not(.md-icon-button), md-card md-ca
     border: .1rem solid #28aadc;
 }
 
-.md-button img {
+.done-action {
     float: right;
     padding-right: 0px;
     border-right-width: 15px;
@@ -461,3 +470,8 @@ md-card .md-actions.layout-column .md-button:not(.md-icon-button), md-card md-ca
     float: left !important;
     margin-left: 120px !important;
 }
+
+body {
+    display: none;
+}
+

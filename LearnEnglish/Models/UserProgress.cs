@@ -12,11 +12,9 @@ namespace LearnEnglish.Models
 
         [Required]
         public ApplicationUser User { get; set; }
-
-        [Required]
+       
         public bool? ListeningModulePassed { get; set; }
 
-        [Required]
         public bool? WritingModulePassed { get; set; }
     }
 }

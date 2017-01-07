@@ -237,7 +237,9 @@
     <Content Include="Angular\app.js" />
     <Content Include="Angular\Controllers\AddVideoController.js" />
     <Content Include="Angular\Controllers\BrowseVideosController.js" />
+    <Content Include="Angular\Controllers\ListeningController.js" />
     <Content Include="Angular\Controllers\VideoController.js" />
+    <Content Include="Angular\Controllers\WritingController.js" />
     <Content Include="Angular\Service\YoutubeEmbedUtils.js" />
     <Content Include="App_Data\aspnet-LearnEnglish-v1.mdf" />
     <Content Include="Content\angular-material.css" />
@@ -255,6 +257,8 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\Done.png" />
+    <Content Include="Images\logo-02.png" />
     <Content Include="Scripts\angular-animate.js" />
     <Content Include="Scripts\angular-animate.min.js" />
     <Content Include="Scripts\angular-animate\angular-animate.js" />
@@ -1172,6 +1176,8 @@
     <Content Include="Scripts\version.json" />
     <Content Include="Views\Video\BrowseVideos.cshtml" />
     <Content Include="Views\Video\Video.cshtml" />
+    <Content Include="Views\Video\Listening.cshtml" />
+    <Content Include="Views\Video\Writing.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

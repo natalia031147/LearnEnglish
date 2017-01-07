@@ -8,7 +8,7 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/bundles/modernizr")
-
+    @Scripts.Render("~/bundles/angular")
     
    
     @RenderSection("scripts", required: false)
@@ -32,14 +32,12 @@
     <div style="position: relative;min-height:100%;">
         <div class="navbar navbar-inverse navbar-fixed-top" ng-app="LearnEnglishApp">
             <div class="container">
-                <img alt="logo" src="https://d181h2ffads1u.cloudfront.net/images/personal/languages/English-UK/logo-02.png"
-                     class="pull-left" style="height: 50px;" />
+                <img alt="logo" src="~/Images/logo-02.png" class="pull-left" style="height: 50px;" />
 
                 
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav" style="margin-left: 20px;">
                         <li>@Html.ActionLink("Videos", "BrowseVideos", "Video")</li>
-                        <li>@Html.ActionLink("Video", "Video", "Video")</li>
                         <li>@Html.ActionLink("Add", "Add", "Video")</li>
                         
                     </ul>
@@ -52,7 +50,7 @@
         </div>
         <footer class="footer-basic-centered">
             <div class="container">
-                <img alt="logo" src="https://d181h2ffads1u.cloudfront.net/images/personal/languages/English-UK/logo-02.png" class="pull-left" style="height: 50px;">
+                <img alt="logo" src="~/Images/logo-02.png" class="pull-left" style="height: 50px;">
 
                 <p class="footer-links">
                     @Html.ActionLink("Home", "Index", "Home")
@@ -73,7 +71,11 @@
     @Scripts.Render("~/bundles/angular")
     <!-- Angular Material Library -->
     @Scripts.Render("~/bundles/app")
-    
+    <script>
+        $(function () {
+            $('body').show();
+        });
+    </script>
     
 </body>
 </html>

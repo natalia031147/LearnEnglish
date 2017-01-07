@@ -16,8 +16,8 @@
             </md-card-title>
             <hr style="width: 100%;margin-left: 0px; margin-bottom: 0px; background-color:black">
             <md-card-actions layout="column" layout-align="start">
-                <md-button href="@Url.Action("GetVideo","Video")/{{video.Id}}">Listening<img src="~/Images/Done.png" ng-if="video.ListeningModulePassed == true" width="25" height="25" /> </md-button>
-                <md-button href="@Url.Action("GetVideo","Video")/{{video.Id}}">Writing<img src="~/Images/Done.png" ng-if="video.WritingModulePassed == true" width="25" height="25" /></md-button>
+                <md-button href="@Url.Action("Listening", "Video")/{{video.Id}}">Listening<img class="done-action" src="~/Images/Done.png" ng-if="video.ListeningModulePassed == true" width="25" height="25" /></md-button>
+                <md-button href="@Url.Action("Writing","Video")/{{video.Id}}">Writing<img class="done-action" src="~/Images/Done.png" ng-if="video.WritingModulePassed == true" width="25" height="25" /></md-button>
             </md-card-actions>
         </md-card>
     </div>
