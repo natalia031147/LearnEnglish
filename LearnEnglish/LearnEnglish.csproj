@@ -209,6 +209,34 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Migrations\201701081212313_addData.cs" />
+    <Compile Include="Migrations\201701081212313_addData.Designer.cs">
+      <DependentUpon>201701081212313_addData.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201701081226467_addVideoPhrases.cs" />
+    <Compile Include="Migrations\201701081226467_addVideoPhrases.Designer.cs">
+      <DependentUpon>201701081226467_addVideoPhrases.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201701081620390_changeVideoPhrases.cs" />
+    <Compile Include="Migrations\201701081620390_changeVideoPhrases.Designer.cs">
+      <DependentUpon>201701081620390_changeVideoPhrases.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201701081623057_addVideoPhrasesV2.cs" />
+    <Compile Include="Migrations\201701081623057_addVideoPhrasesV2.Designer.cs">
+      <DependentUpon>201701081623057_addVideoPhrasesV2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201701081630276_addUserProgress.cs" />
+    <Compile Include="Migrations\201701081630276_addUserProgress.Designer.cs">
+      <DependentUpon>201701081630276_addUserProgress.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201701081730249_addUserProgressv2.cs" />
+    <Compile Include="Migrations\201701081730249_addUserProgressv2.Designer.cs">
+      <DependentUpon>201701081730249_addUserProgressv2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201701081801267_addUserProgressv3.cs" />
+    <Compile Include="Migrations\201701081801267_addUserProgressv3.Designer.cs">
+      <DependentUpon>201701081801267_addUserProgressv3.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\UserProgress.cs" />
     <Compile Include="Controllers\VideoController.cs" />
     <Compile Include="Global.asax.cs">
@@ -1197,6 +1225,27 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201612111427343_deletePhraseTranslate.resx">
       <DependentUpon>201612111427343_deletePhraseTranslate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701081212313_addData.resx">
+      <DependentUpon>201701081212313_addData.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701081226467_addVideoPhrases.resx">
+      <DependentUpon>201701081226467_addVideoPhrases.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701081620390_changeVideoPhrases.resx">
+      <DependentUpon>201701081620390_changeVideoPhrases.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701081623057_addVideoPhrasesV2.resx">
+      <DependentUpon>201701081623057_addVideoPhrasesV2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701081630276_addUserProgress.resx">
+      <DependentUpon>201701081630276_addUserProgress.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701081730249_addUserProgressv2.resx">
+      <DependentUpon>201701081730249_addUserProgressv2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701081801267_addUserProgressv3.resx">
+      <DependentUpon>201701081801267_addUserProgressv3.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

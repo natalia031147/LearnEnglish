@@ -22,10 +22,10 @@ namespace LearnEnglish.Models
         [MaxLength(255)]
         public string Phrase { get; set; }
 
-        [MaxLength(255), Required]
+        [MaxLength(255)]
         public string TranslateLanguage { get; set; }
 
-        [MaxLength(255), Required]
+        [MaxLength(255)]
         public string PhraseTranslated { get; set; }
     }
 
