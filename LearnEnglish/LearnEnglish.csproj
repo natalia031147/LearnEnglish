@@ -242,6 +242,9 @@
     <Content Include="Angular\Controllers\WritingController.js" />
     <Content Include="Angular\Service\YoutubeEmbedUtils.js" />
     <Content Include="App_Data\aspnet-LearnEnglish-v1.mdf" />
+    <Content Include="App_Data\aspnet-LearnEnglish-v1_log.ldf">
+      <DependentUpon>aspnet-LearnEnglish-v1.mdf</DependentUpon>
+    </Content>
     <Content Include="Content\angular-material.css" />
     <Content Include="Content\angular-material.layout-attributes.css" />
     <Content Include="Content\angular-material.layout-attributes.min.css" />
