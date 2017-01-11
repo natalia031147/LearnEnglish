@@ -1,16 +1,17 @@
 ﻿using System;
-using System.Data.Entity.Migrations;
 using System.Globalization;
 using LearnEnglish.Models;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using System.Web.Script.Serialization;
 using Microsoft.AspNet.Identity;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Text.RegularExpressions;
+using Microsoft.AspNet.Identity.Owin;
+using static LearnEnglish.Common.Enums;
+using Newtonsoft.Json.Linq;
+using Newtonsoft.Json;
 
 namespace LearnEnglish.Controllers
 {
@@ -19,8 +20,10 @@ namespace LearnEnglish.Controllers
         //private List<Video> _videos;
         //private List<VideoPhrase> _videosPhrases;
         //private List<UserProgress> _userProgress;
+        ApplicationDbContext _context;
         public VideoController()
         {
+            _context = new ApplicationDbContext();
             #region InitList
             //_videos = new List<Video>();
             //_videos.Add(new Models.Video() { Id = 1, Language = "en", Level = (int)Common.Enums.Level.PreIntermediate, Thumbnail = "https://i.ytimg.com/vi/4Y8WR5VrN9E/mqdefault.jpg", Title = "dady is the sweetest daddy in the world", Url = "https://www.youtube.com/watch?v=4Y8WR5VrN9E" });
@@ -260,47 +263,158 @@ namespace LearnEnglish.Controllers
             return View();
         }
 
+        private Level getLevel(int points)
+        {
+            Level level;
+            if (points <= 500)
+            {
+                level = Level.Elementary;
+            }
+            else if (points <= 1000)
+            {
+                level = Level.PreIntermediate;
+            }
+            else if (points <= 1700)
+            {
+                level = Level.Intermediate;
+            }
+            else if (points <= 2400)
+            {
+                level = Level.PreIntermediate;
+            }
+            else
+            {
+                level = Level.Advanced;
+            }
+            return level;
+        }
+        [Authorize]
+        public ActionResult Recommendations()
+        {
+            
+            return View();
+        }
+
+        public JsonResult GetRecommendations()
+        {
+            //Elementary - 0- 500 points 
+            //PreIntermediate - 501 - 1000
+            //Intermediate - 1001 - 1700
+            //UpperIntermediate 1701 - 2400
+            //Advanced >= 2401
+
+            string UserId = System.Web.HttpContext.Current.User.Identity.GetUserId();
+
+            var points = _context.UsersPoints.Where(v => v.UserId == UserId)
+                .Select(s => new { s.ListeningPoints, s.WritingPoints }).FirstOrDefault();
+
+
+            Level listeningLevel = getLevel((int)points.ListeningPoints);
+            Level writingLevel = getLevel((int)points.WritingPoints);
+
+
+            var videoForListening = (from a in _context.Videos.Where(l => l.Level >= (int)listeningLevel)
+                                     join b in _context.UserProgress
+                                        .Where(w => w.UserId == UserId)
+                                        on a equals b.Video into joined
+                                     from j in joined.DefaultIfEmpty().Where(v => v.ListeningModulePassed != true || v.ListeningModulePassed == null)
+                                     select new
+                                     {
+                                         a.Id,
+                                         a.Language,
+                                         a.Level,
+                                         a.Thumbnail,
+                                         a.Title,
+                                         a.Url,
+                                         j.ListeningModulePassed,
+                                         j.WritingModulePassed
+                                     }).OrderBy(o => o.Level).ThenByDescending(o => o.WritingModulePassed).ThenBy(o => o.Id).FirstOrDefault();
+
+            var videoForWriting = (from a in _context.Videos.Where(l => l.Level >= (int)writingLevel)
+                                   join b in _context.UserProgress
+                                      .Where(w => w.UserId == UserId)
+                                      on a equals b.Video into joined
+                                   from j in joined.DefaultIfEmpty().Where(v => v.WritingModulePassed != true || v.WritingModulePassed == null)
+                                   select new
+                                   {
+                                       a.Id,
+                                       a.Language,
+                                       a.Level,
+                                       a.Thumbnail,
+                                       a.Title,
+                                       a.Url,
+                                       j.ListeningModulePassed,
+                                       j.WritingModulePassed
+                                   }).OrderBy(o => o.Level).ThenByDescending(o => o.ListeningModulePassed).ThenBy(o => o.Id).FirstOrDefault();
+
+            int arithmeticMean = ((int)points.ListeningPoints + (int)points.WritingPoints) / 2;
+            Level level = getLevel(arithmeticMean);
+
+            Recommendations recommendations = new Recommendations();
+            recommendations.UserLevel = level;
+
+            recommendations.ListeningRecommendation = new Video()
+            {
+                Id = videoForListening.Id,
+                Language = videoForListening.Language,
+                Level = videoForListening.Level,
+                Thumbnail = videoForListening.Thumbnail,
+                Title = videoForListening.Title,
+                Url = videoForListening.Url                
+            };
+
+            recommendations.WritingRecommendation = new Video()
+            {
+                Id = videoForWriting.Id,
+                Language = videoForWriting.Language,
+                Level = videoForWriting.Level,
+                Thumbnail = videoForWriting.Thumbnail,
+                Title = videoForWriting.Title,
+                Url = videoForWriting.Url
+            };
+            return Json(recommendations, JsonRequestBehavior.AllowGet);
+        }
         public ActionResult GetVideo(int id)
         {
-            //var ret = (from a in _videos.Where(v => v.Id == id)
-            //           join b in _userProgress on a equals b.Video into joined
-            //           from j in joined.DefaultIfEmpty()
-            //           select new VideoWithActions()
-            //           {
-            //               Id = a.Id,
-            //               Language = a.Language,
-            //               Level = a.Level,
-            //               Thumbnail = a.Thumbnail,
-            //               Url = a.Url,
-            //               Title = a.Title,
-            //               ListeningModulePassed = j == null ? false : j.ListeningModulePassed,
-            //               WritingModulePassed = j == null ? false : j.WritingModulePassed
-            //           }).ToList().FirstOrDefault();
-            //return View("Video", ret);
-            return View();
+            var ret = (from a in _context.Videos.Where(v => v.Id == id)
+                       join b in _context.UserProgress on a equals b.Video into joined
+                       from j in joined.DefaultIfEmpty()
+                       select new VideoWithActions()
+                       {
+                           Id = a.Id,
+                           Language = a.Language,
+                           Level = a.Level,
+                           Thumbnail = a.Thumbnail,
+                           Url = a.Url,
+                           Title = a.Title,
+                           ListeningModulePassed = j == null ? false : j.ListeningModulePassed,
+                           WritingModulePassed = j == null ? false : j.WritingModulePassed
+                       }).ToList().FirstOrDefault();
+            return View("Video", ret);
+
         }
 
         
 
         public JsonResult GetVideoPhases(int id)
         {
-            //var phrases = _videosPhrases.FindAll(p => p.Video == _videos.Find(v => v.Id == id));
-            //List<VideoPhraseModel> result = new List<VideoPhraseModel>();
-            // foreach (var item in phrases)
-            //{
-            //    result.Add(new VideoPhraseModel()
-            //    {
-            //        Video = item.Video,
-            //        EndTime = item.EndTime,
-            //        OrderNumber = item.OrderNumber,
-            //        Phrase = item.Phrase,
-            //        PhraseTranslated = item.PhraseTranslated == "" && item.Phrase != "" ? TranslateGoogle(item.Phrase, "en", "ro"): item.PhraseTranslated,
-            //        StartTime = item.StartTime,
-            //        TranslatedByGoogle = item.PhraseTranslated == "" && item.Phrase != "" ,
-            //        TranslateLanguage = "ro"
-            //    });
-            //}
-            return Json("result", JsonRequestBehavior.AllowGet);
+            var phrases = _context.VideoPhrases.Where(p => p.Video == _context.Videos.Where(v => v.Id == id).FirstOrDefault()).ToList();
+            List<VideoPhraseModel> result = new List<VideoPhraseModel>();
+            foreach (var item in phrases)
+            {
+                result.Add(new VideoPhraseModel()
+                {
+                    Video = item.Video,
+                    EndTime = item.EndTime,
+                    OrderNumber = item.OrderNumber,
+                    Phrase = item.Phrase,
+                    PhraseTranslated = item.PhraseTranslated == "" && item.Phrase != "" ? TranslateGoogle(item.Phrase, "en", "ro") : item.PhraseTranslated,
+                    StartTime = item.StartTime,
+                    TranslatedByGoogle = item.PhraseTranslated == "" && item.Phrase != "",
+                    TranslateLanguage = "ro"
+                });
+            }
+            return Json(result, JsonRequestBehavior.AllowGet);
         }
         
         public ActionResult BrowseVideos()
@@ -311,33 +425,33 @@ namespace LearnEnglish.Controllers
 
         public ActionResult Listening(int id)
         {
-            //return View("Listening", _videos.Find(v => v.Id == id));]
-            return View();
+            return View("Listening", _context.Videos.Where(v => v.Id == id).FirstOrDefault());
         }
 
         public ActionResult Writing(int id)
         {
-            //return View("Writing", _videos.Find(v => v.Id == id));
-            return View();
+            return View("Writing", _context.Videos.Where(v => v.Id == id).FirstOrDefault());
         }
 
         public ActionResult GetVideos()
         {
-            //var ret = (from a in _videos
-            //          join b in _userProgress on a equals b.Video into joined
-            //          from j in joined.DefaultIfEmpty()
-            //          select new
-            //          {
-            //              a.Id,
-            //              a.Language,
-            //              a.Level,
-            //              a.Thumbnail,
-            //              a.Url,
-            //              a.Title,
-            //              ListeningModulePassed = j == null ? false : j.ListeningModulePassed,
-            //              WritingModulePassed = j == null ? false : j.WritingModulePassed
-            //          }).ToList();
-            return Json("ret", JsonRequestBehavior.AllowGet);
+            string UserId = System.Web.HttpContext.Current.User.Identity.GetUserId();
+            var ret = (from a in _context.Videos
+                       join b in _context.UserProgress.Where(u => u.UserId == UserId) on a equals b.Video into joined
+                       from j in joined.DefaultIfEmpty()
+                       select new
+                       {
+                           a.Id,
+                           a.Language,
+                           a.Level,
+                           a.Thumbnail,
+                           a.Url,
+                           a.Title,
+                           ListeningModulePassed = j == null ? false : j.ListeningModulePassed,
+                           WritingModulePassed = j == null ? false : j.WritingModulePassed,
+
+                       }).ToList();
+            return Json(ret, JsonRequestBehavior.AllowGet);
         }
 
         [HttpPost]
@@ -345,15 +459,15 @@ namespace LearnEnglish.Controllers
         {
             //try
             //{
-            //    var index = _userProgress.FindIndex(a => a.Video == _videos.Find(v => v.Id == id));
-            //    if (index < 0)
+            //    var userProgress = _context.UserProgress.Where(a => a.Video == _context.Videos.Where(v => v.Id == id)).FirstOrDefault();
+            //    if (userProgress != null)
             //    {
-            //        _userProgress.Add(new UserProgress()
+            //        _context.UserProgress.Add(new UserProgress()
             //        {
-            //            Id = 5,
+            //            User = User,   
             //            ListeningModulePassed = action == "Listening" ? true : false,
             //            WritingModulePassed = action == "Writening" ? true : false,
-            //            Video = _videos.Find(v => v.Id == id)
+            //            Video = _context.Videos.Where(v => v.Id == id).FirstOrDefault()
             //        });
             //    }
             //    else
@@ -367,7 +481,7 @@ namespace LearnEnglish.Controllers
             //            _userProgress[index].WritingModulePassed = true;
             //        }
             //    }
-                
+
             //}
             //catch (Exception ex)
             //{

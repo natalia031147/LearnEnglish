@@ -11,7 +11,7 @@ namespace LearnEnglish.Models
         public Video Video { get; set; }
 
         [Required]
-        public ApplicationUser User { get; set; }
+        public string UserId { get; set; }
        
         public bool? ListeningModulePassed { get; set; }
 

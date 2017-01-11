@@ -237,6 +237,28 @@
     <Compile Include="Migrations\201701081801267_addUserProgressv3.Designer.cs">
       <DependentUpon>201701081801267_addUserProgressv3.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201701082006482_addUserPoints.cs" />
+    <Compile Include="Migrations\201701082006482_addUserPoints.Designer.cs">
+      <DependentUpon>201701082006482_addUserPoints.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201701091010344_addUserPointv2.cs" />
+    <Compile Include="Migrations\201701091010344_addUserPointv2.Designer.cs">
+      <DependentUpon>201701091010344_addUserPointv2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201701091016541_userPointsv3.cs" />
+    <Compile Include="Migrations\201701091016541_userPointsv3.Designer.cs">
+      <DependentUpon>201701091016541_userPointsv3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201701091017281_userPointsv4.cs" />
+    <Compile Include="Migrations\201701091017281_userPointsv4.Designer.cs">
+      <DependentUpon>201701091017281_userPointsv4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201701091029440_userProgressv5.cs" />
+    <Compile Include="Migrations\201701091029440_userProgressv5.Designer.cs">
+      <DependentUpon>201701091029440_userProgressv5.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Recommendations.cs" />
+    <Compile Include="Models\UserPoints.cs" />
     <Compile Include="Models\UserProgress.cs" />
     <Compile Include="Controllers\VideoController.cs" />
     <Compile Include="Global.asax.cs">
@@ -266,6 +288,7 @@
     <Content Include="Angular\Controllers\AddVideoController.js" />
     <Content Include="Angular\Controllers\BrowseVideosController.js" />
     <Content Include="Angular\Controllers\ListeningController.js" />
+    <Content Include="Angular\Controllers\RecommendationsController.js" />
     <Content Include="Angular\Controllers\VideoController.js" />
     <Content Include="Angular\Controllers\WritingController.js" />
     <Content Include="Angular\Service\YoutubeEmbedUtils.js" />
@@ -1209,6 +1232,7 @@
     <Content Include="Views\Video\Video.cshtml" />
     <Content Include="Views\Video\Listening.cshtml" />
     <Content Include="Views\Video\Writing.cshtml" />
+    <Content Include="Views\Video\Recommendations.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
@@ -1246,6 +1270,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201701081801267_addUserProgressv3.resx">
       <DependentUpon>201701081801267_addUserProgressv3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701082006482_addUserPoints.resx">
+      <DependentUpon>201701082006482_addUserPoints.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701091010344_addUserPointv2.resx">
+      <DependentUpon>201701091010344_addUserPointv2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701091016541_userPointsv3.resx">
+      <DependentUpon>201701091016541_userPointsv3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701091017281_userPointsv4.resx">
+      <DependentUpon>201701091017281_userPointsv4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701091029440_userProgressv5.resx">
+      <DependentUpon>201701091029440_userProgressv5.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

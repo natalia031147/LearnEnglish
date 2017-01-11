@@ -8,7 +8,7 @@ namespace LearnEnglish.Models
         public DbSet<Video> Videos { get; set; }
         public DbSet<VideoPhrase> VideoPhrases { get; set; }
         public DbSet<UserProgress> UserProgress { get; set; }
-        //public DbSet<ApplicationUser> Users { get; set; }
+        public DbSet<UserPoints> UsersPoints { get; set; }
 
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
