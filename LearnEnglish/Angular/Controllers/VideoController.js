@@ -10,6 +10,5 @@ app.controller('VideoController', ['$scope', '$http', function ($scope, $http) {
     
     $scope.init = function (data) {
         $scope.video = data;
-    };
-    
+    }; 
 }]);

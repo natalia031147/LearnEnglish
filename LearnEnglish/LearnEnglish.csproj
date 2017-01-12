@@ -44,6 +44,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Autofac, Version=4.2.1.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.4.2.1\lib\net45\Autofac.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Autofac.Integration.WebApi, Version=4.0.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.WebApi2.4.0.1\lib\net45\Autofac.Integration.WebApi.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.AI.Agent.Intercept, Version=1.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.1.2.1\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
       <Private>True</Private>
@@ -199,87 +207,23 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Api\VideoController.cs" />
+    <Compile Include="Api\VideoPhraseController.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Common\Enums.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Migrations\201701081212313_addData.cs" />
-    <Compile Include="Migrations\201701081212313_addData.Designer.cs">
-      <DependentUpon>201701081212313_addData.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201701081226467_addVideoPhrases.cs" />
-    <Compile Include="Migrations\201701081226467_addVideoPhrases.Designer.cs">
-      <DependentUpon>201701081226467_addVideoPhrases.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201701081620390_changeVideoPhrases.cs" />
-    <Compile Include="Migrations\201701081620390_changeVideoPhrases.Designer.cs">
-      <DependentUpon>201701081620390_changeVideoPhrases.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201701081623057_addVideoPhrasesV2.cs" />
-    <Compile Include="Migrations\201701081623057_addVideoPhrasesV2.Designer.cs">
-      <DependentUpon>201701081623057_addVideoPhrasesV2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201701081630276_addUserProgress.cs" />
-    <Compile Include="Migrations\201701081630276_addUserProgress.Designer.cs">
-      <DependentUpon>201701081630276_addUserProgress.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201701081730249_addUserProgressv2.cs" />
-    <Compile Include="Migrations\201701081730249_addUserProgressv2.Designer.cs">
-      <DependentUpon>201701081730249_addUserProgressv2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201701081801267_addUserProgressv3.cs" />
-    <Compile Include="Migrations\201701081801267_addUserProgressv3.Designer.cs">
-      <DependentUpon>201701081801267_addUserProgressv3.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201701082006482_addUserPoints.cs" />
-    <Compile Include="Migrations\201701082006482_addUserPoints.Designer.cs">
-      <DependentUpon>201701082006482_addUserPoints.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201701091010344_addUserPointv2.cs" />
-    <Compile Include="Migrations\201701091010344_addUserPointv2.Designer.cs">
-      <DependentUpon>201701091010344_addUserPointv2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201701091016541_userPointsv3.cs" />
-    <Compile Include="Migrations\201701091016541_userPointsv3.Designer.cs">
-      <DependentUpon>201701091016541_userPointsv3.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201701091017281_userPointsv4.cs" />
-    <Compile Include="Migrations\201701091017281_userPointsv4.Designer.cs">
-      <DependentUpon>201701091017281_userPointsv4.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201701091029440_userProgressv5.cs" />
-    <Compile Include="Migrations\201701091029440_userProgressv5.Designer.cs">
-      <DependentUpon>201701091029440_userProgressv5.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Recommendations.cs" />
-    <Compile Include="Models\UserPoints.cs" />
-    <Compile Include="Models\UserProgress.cs" />
-    <Compile Include="Controllers\VideoController.cs" />
+    <Compile Include="Controllers\VideoViewController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201612111212101_Initial.cs" />
-    <Compile Include="Migrations\201612111212101_Initial.Designer.cs">
-      <DependentUpon>201612111212101_Initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201612111427343_deletePhraseTranslate.cs" />
-    <Compile Include="Migrations\201612111427343_deletePhraseTranslate.Designer.cs">
-      <DependentUpon>201612111427343_deletePhraseTranslate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\ApplicationDbContext.cs" />
-    <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
-    <Compile Include="Models\YoutubeVideo.cs" />
-    <Compile Include="Models\Video.cs" />
-    <Compile Include="Models\VideoPhrase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -292,9 +236,9 @@
     <Content Include="Angular\Controllers\VideoController.js" />
     <Content Include="Angular\Controllers\WritingController.js" />
     <Content Include="Angular\Service\YoutubeEmbedUtils.js" />
-    <Content Include="App_Data\aspnet-LearnEnglish-v1.mdf" />
-    <Content Include="App_Data\aspnet-LearnEnglish-v1_log.ldf">
-      <DependentUpon>aspnet-LearnEnglish-v1.mdf</DependentUpon>
+    <Content Include="App_Data\aspnet-LearnEnglish-v2.mdf" />
+    <Content Include="App_Data\aspnet-LearnEnglish-v2_log.ldf">
+      <DependentUpon>aspnet-LearnEnglish-v2.mdf</DependentUpon>
     </Content>
     <Content Include="Content\angular-material.css" />
     <Content Include="Content\angular-material.layout-attributes.css" />
@@ -1226,15 +1170,24 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Video\Add.cshtml" />
+    <Content Include="Views\VideoView\Add.cshtml" />
     <Content Include="Scripts\version.json" />
-    <Content Include="Views\Video\BrowseVideos.cshtml" />
-    <Content Include="Views\Video\Video.cshtml" />
-    <Content Include="Views\Video\Listening.cshtml" />
-    <Content Include="Views\Video\Writing.cshtml" />
-    <Content Include="Views\Video\Recommendations.cshtml" />
+    <Content Include="Views\VideoView\BrowseVideos.cshtml" />
+    <Content Include="Views\VideoView\Video.cshtml" />
+    <Content Include="Views\VideoView\Listening.cshtml" />
+    <Content Include="Views\VideoView\Writing.cshtml" />
+    <Content Include="Views\VideoView\Recommendations.cshtml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\LearnEnglish.Business\LearnEnglish.Business.csproj">
+      <Project>{9379F77D-06F8-4FAD-B45B-DDDC87AD4222}</Project>
+      <Name>LearnEnglish.Business</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LearnEnglish.Data\LearnEnglish.Data.csproj">
+      <Project>{D521E202-596B-479A-8E5A-8CB5A594F516}</Project>
+      <Name>LearnEnglish.Data</Name>
+    </ProjectReference>
+  </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
@@ -1244,48 +1197,8 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201612111212101_Initial.resx">
-      <DependentUpon>201612111212101_Initial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201612111427343_deletePhraseTranslate.resx">
-      <DependentUpon>201612111427343_deletePhraseTranslate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201701081212313_addData.resx">
-      <DependentUpon>201701081212313_addData.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201701081226467_addVideoPhrases.resx">
-      <DependentUpon>201701081226467_addVideoPhrases.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201701081620390_changeVideoPhrases.resx">
-      <DependentUpon>201701081620390_changeVideoPhrases.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201701081623057_addVideoPhrasesV2.resx">
-      <DependentUpon>201701081623057_addVideoPhrasesV2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201701081630276_addUserProgress.resx">
-      <DependentUpon>201701081630276_addUserProgress.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201701081730249_addUserProgressv2.resx">
-      <DependentUpon>201701081730249_addUserProgressv2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201701081801267_addUserProgressv3.resx">
-      <DependentUpon>201701081801267_addUserProgressv3.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201701082006482_addUserPoints.resx">
-      <DependentUpon>201701082006482_addUserPoints.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201701091010344_addUserPointv2.resx">
-      <DependentUpon>201701091010344_addUserPointv2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201701091016541_userPointsv3.resx">
-      <DependentUpon>201701091016541_userPointsv3.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201701091017281_userPointsv4.resx">
-      <DependentUpon>201701091017281_userPointsv4.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201701091029440_userProgressv5.resx">
-      <DependentUpon>201701091029440_userProgressv5.cs</DependentUpon>
-    </EmbeddedResource>
+    <Folder Include="Common\" />
+    <Folder Include="Views\VideoPhrase\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

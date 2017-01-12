@@ -1,0 +1,44 @@
+﻿
+@model LearnEnglish.Business.Models.VideoModel
+@{
+    ViewBag.Title = "Video";    
+}
+
+
+<div div="page-content" style="width: 880px;" ng-controller="VideoController" ng-init="init(@Newtonsoft.Json.JsonConvert.SerializeObject(Model));">
+    <div class="video_title" >
+        <h3 style="color : #fff;">
+            {{video.Title}}
+        </h3>
+    </div>
+
+    <div class="video_general" >
+        <div class="row" style="padding-bottom: 28px;">
+            <div class="col-lg-5">
+                <ul class="video_general_links">
+                    <li class="video_general_links_item">
+                        <a class="video_general_links_item_a" ng-href="@Url.Action("Listening","Video")/@Model.Id">                            
+                            <span class="video_general_links_name">Listening</span>                           
+                            <img class="done-action" style="margin-top: 15px;" src="~/Images/Done.png" ng-if="video.ListeningModulePassed == true" width="30" height="30" />
+                        </a>
+                    </li>
+                    <li class="video_general_links_item">
+                        <a class="video_general_links_item_a" ng-href="@Url.Action("Writing","Video")/@Model.Id">
+                            <span class="video_general_links_name">Writing</span>
+                            <img class="done-action" style="margin-top: 15px;" src="~/Images/Done.png" ng-if="video.WritingModulePassed == true" width="30" height="30" />
+                        </a>
+                    </li>
+                    <li class="video_general_links_item" style="pointer-events: none;">
+                        <a class="video_general_links_item_a" href="">
+                            <span style="color: gray;" class="video_general_links_name" disabled>Speaking</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="youtubePlayer col-lg-6">                
+                <youtube-video player-width="'460'" player-height="'300px'"  video-url="video.Url" player="youtubePlayer1"></youtube-video>
+            </div>
+        </div>
+    </div>
+</div>
+   
