@@ -45,7 +45,8 @@
                 </div>
             </div>
         </div>
-        <div class="container body-content" >
+        <div ng-view class="container body-content">
+            <script>console.log('duplicated if jQuery');</script>
             @RenderBody()
         </div>
         <footer class="footer-basic-centered">
@@ -68,7 +69,7 @@
         
     </style>
 
-    @Scripts.Render("~/bundles/angular")
+    @*@Scripts.Render("~/bundles/angular")*@
     <!-- Angular Material Library -->
     @Scripts.Render("~/bundles/app")
     <script>

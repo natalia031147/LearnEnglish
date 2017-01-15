@@ -1,11 +1,9 @@
 ﻿using System;
 using System.Globalization;
-using LearnEnglish.Models;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
-using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using LearnEnglish.Business.Builders;
@@ -13,10 +11,7 @@ using LearnEnglish.Business.Logic;
 using LearnEnglish.Business.Models;
 using LearnEnglish.Data.Entities;
 using LearnEnglish.Data.Framework;
-using Microsoft.AspNet.Identity.Owin;
 using static LearnEnglish.Data.Entities.Enums;
-using Newtonsoft.Json.Linq;
-using Newtonsoft.Json;
 using LearnEnglish.Business.Logic.Interfaces;
 
 namespace LearnEnglish.Controllers
@@ -152,41 +147,27 @@ namespace LearnEnglish.Controllers
             };
             return Json(recommendations, JsonRequestBehavior.AllowGet);
         }
-        public ActionResult GetVideo(int id)
-        {
-            var model = _videoLogic.Get(id);
-            return View("Video", model); 
-        }
+
+       
          
-        public JsonResult GetVideoPhases(int id)
+       
+
+      
+        public ActionResult List()
         {
-            var phrases = _context.VideoPhrases.Where(p => p.Video == _context.Videos.Where(v => v.Id == id).FirstOrDefault()).ToList();
-            List<VideoPhraseModel> result = new List<VideoPhraseModel>();
-            foreach (var item in phrases)
-            {
-                result.Add(new VideoPhraseModel()
-                {
-                    Video = item.Video,
-                    EndTime = item.EndTime,
-                    OrderNumber = item.OrderNumber,
-                    Phrase = item.Phrase,
-                    PhraseTranslated = item.PhraseTranslated == "" && item.Phrase != "" ? TranslateGoogle(item.Phrase, "en", "ro") : item.PhraseTranslated,
-                    StartTime = item.StartTime,
-                    TranslatedByGoogle = item.PhraseTranslated == "" && item.Phrase != "",
-                    TranslateLanguage = "ro"
-                });
-            }
-            return Json(result, JsonRequestBehavior.AllowGet);
-        }
-        
-        public ActionResult BrowseVideos()
-        { 
-            return View();
+            return PartialView();
         }
 
-        public ActionResult Listening(int id)
+       
+        public ActionResult Details()
         {
-            return View("Listening", _context.Videos.Where(v => v.Id == id).FirstOrDefault());
+            return PartialView();
+        }
+
+       
+        public ActionResult Listening()
+        {
+            return PartialView();
         }
 
         public ActionResult Writing(int id)

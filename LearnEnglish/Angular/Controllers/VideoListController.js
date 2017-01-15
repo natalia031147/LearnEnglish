@@ -2,12 +2,12 @@
 
 var app = angular.module("learnEnglishApp.controllers");
 
-app.controller("BrowseVideosController", [
+app.controller("VideoListController", [
     "$scope", "$http", function($scope, $http) {
 
         $scope.getVideos = function() {
             $http({
-                    url: "/api/video",
+                    url: "/Api/Video",
                     method: "GET"
                 })
                 .success(function(data) {

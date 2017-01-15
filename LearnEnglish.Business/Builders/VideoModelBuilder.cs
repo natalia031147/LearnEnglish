@@ -15,7 +15,7 @@ namespace LearnEnglish.Business.Builders
                 Level = video.Level,
                 Thumbnail = video.Thumbnail,
                 Url = video.Url,
-                Title = video.Title,
+                Title = video.Title
                 //ListeningModulePassed = j == null ? false : j.WritingModulePassed,
                 //WritingModulePassed = j == null ? false : j.WritingModulePassed
             };

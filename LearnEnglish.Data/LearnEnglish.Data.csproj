@@ -68,13 +68,21 @@
     <Compile Include="Migrations\201701121831086_InitialMigration.Designer.cs">
       <DependentUpon>201701121831086_InitialMigration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201701151754106_PopulateVideoPhraseV2.cs" />
+    <Compile Include="Migrations\201701151754106_PopulateVideoPhraseV2.Designer.cs">
+      <DependentUpon>201701151754106_PopulateVideoPhraseV2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Migrations\Seed\VideoDataProvider.cs" />
+    <Compile Include="Migrations\Seed\VideoPhraseProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201701121831086_InitialMigration.resx">
       <DependentUpon>201701121831086_InitialMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701151754106_PopulateVideoPhraseV2.resx">
+      <DependentUpon>201701151754106_PopulateVideoPhraseV2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

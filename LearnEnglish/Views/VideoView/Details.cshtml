@@ -1,14 +1,14 @@
 ﻿
-@model LearnEnglish.Business.Models.VideoModel
+@*@model LearnEnglish.Business.Models.VideoModel*@
 @{
     ViewBag.Title = "Video";    
 }
 
 
-<div div="page-content" style="width: 880px;" ng-controller="VideoController" ng-init="init(@Newtonsoft.Json.JsonConvert.SerializeObject(Model));">
+<div div="page-content" style="width: 880px;"  ng-init="getVideoDetails()">
     <div class="video_title" >
         <h3 style="color : #fff;">
-            {{video.Title}}
+            {{video.title}}
         </h3>
     </div>
 
@@ -17,15 +17,15 @@
             <div class="col-lg-5">
                 <ul class="video_general_links">
                     <li class="video_general_links_item">
-                        <a class="video_general_links_item_a" ng-href="@Url.Action("Listening","Video")/@Model.Id">                            
+                        <a class="video_general_links_item_a" >                            
                             <span class="video_general_links_name">Listening</span>                           
-                            <img class="done-action" style="margin-top: 15px;" src="~/Images/Done.png" ng-if="video.ListeningModulePassed == true" width="30" height="30" />
+                            <img class="done-action" style="margin-top: 15px;" src="~/Images/Done.png" ng-if="video.listeningModulePassed == true" width="30" height="30" />
                         </a>
                     </li>
                     <li class="video_general_links_item">
-                        <a class="video_general_links_item_a" ng-href="@Url.Action("Writing","Video")/@Model.Id">
+                        <a class="video_general_links_item_a" >
                             <span class="video_general_links_name">Writing</span>
-                            <img class="done-action" style="margin-top: 15px;" src="~/Images/Done.png" ng-if="video.WritingModulePassed == true" width="30" height="30" />
+                            <img class="done-action" style="margin-top: 15px;" src="~/Images/Done.png" ng-if="video.writingModulePassed == true" width="30" height="30" />
                         </a>
                     </li>
                     <li class="video_general_links_item" style="pointer-events: none;">
@@ -36,7 +36,7 @@
                 </ul>
             </div>
             <div class="youtubePlayer col-lg-6">                
-                <youtube-video player-width="'460'" player-height="'300px'"  video-url="video.Url" player="youtubePlayer1"></youtube-video>
+                <youtube-video player-width="'460'" player-height="'300px'"  video-url="video.url" player="youtubePlayer1"></youtube-video>
             </div>
         </div>
     </div>

@@ -63,6 +63,8 @@
   <ItemGroup>
     <Compile Include="Builders\Interfaces\IBaseBuilder.cs" />
     <Compile Include="Builders\Interfaces\IVideoModelBuilder.cs" />
+    <Compile Include="Builders\Interfaces\IVideoPhraseModelBuilder.cs" />
+    <Compile Include="Builders\VideoPhraseModelBuilder.cs" />
     <Compile Include="Builders\VideoModelBuilder.cs" />
     <Compile Include="Framework\AutofacConfig.cs" />
     <Compile Include="Logic\BaseLogic.cs" />
@@ -72,8 +74,7 @@
     <Compile Include="Logic\VideoPhraseLogic.cs" />
     <Compile Include="Models\Recommendations.cs" />
     <Compile Include="Models\Video.cs" />
-    <Compile Include="Models\VideoPhrase.cs" />
-    <Compile Include="Models\YoutubeVideo.cs" />
+    <Compile Include="Models\VideoPhraseModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

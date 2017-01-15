@@ -1,6 +1,6 @@
 ﻿//var myApp = angular.module('learnEnglishApp', ['ngMaterial', 'ngMessages', 'youtube-embed']);
 var app = angular.module('learnEnglishApp.controllers');
-app.controller('ListeningController', ['$scope', '$http', function ($scope, $http) {
+app.controller('ListeningController', ['$scope', '$http', '$routeParams', function ($scope, $http, $routeParams) {
     $scope.video = {};
     $scope.currentIndex = 0;
     $scope.expectedWord = { word: "", index: -1 };
@@ -41,9 +41,9 @@ app.controller('ListeningController', ['$scope', '$http', function ($scope, $htt
 
     $scope.getVideoPhases = function () {
         $http({
-            url: "/Video/GetVideoPhases",
+            url: "/Api/VideoPhrase",
             method: "GET",
-            params: { id: $scope.video.Id }
+            params: { id: $routeParams.id }
         })
             .success(function (data, status, headers, config) {
                 $scope.video.phrases = data;
@@ -59,8 +59,23 @@ app.controller('ListeningController', ['$scope', '$http', function ($scope, $htt
 
     };
 
-    $scope.init = function (data) {
-        $scope.video = data;
+    $scope.getVideoDetails = function () {
+        $http({
+            url: "/Api/Video",
+            method: "GET",
+            params: { id: $routeParams.id }
+        })
+            .success(function (data) {
+                $scope.video = data;
+            })
+            .error(function (error, status) {
+                console.log(status);
+                console.log("Error occured");
+            });
+    };
+
+    $scope.init = function () {
+        $scope.getVideoDetails();
         $scope.getVideoPhases();
     };
 

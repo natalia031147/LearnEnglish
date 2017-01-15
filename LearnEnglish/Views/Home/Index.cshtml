@@ -48,19 +48,3 @@
         </ul>
     </div>
 </div>
-
-<script>
-    $(document).ready(function () {
-        $("#btnAddVideoTest").click(function (e) {
-            debugger;
-            e.preventDefault();
-            $.ajax({
-                type: "POST",
-                url: '@Url.Action("AddNewVideo", "Video")',
-                success: function (result) {
-                    debugger;
-                }
-            });
-        });
-    });
-</script>

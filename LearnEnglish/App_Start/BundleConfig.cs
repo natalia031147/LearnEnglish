@@ -16,6 +16,7 @@ namespace LearnEnglish
 
             bundles.Add(new ScriptBundle("~/bundles/angular").Include(
                         "~/Scripts/angular.js",
+                        "~/Scripts/angular-route.js",
                         "~/Scripts/angular-animate/angular-animate.min.js",
                         "~/Scripts/angular-aria/angular-aria.min.js",
                         "~/Scripts/angular-messages.min.js",

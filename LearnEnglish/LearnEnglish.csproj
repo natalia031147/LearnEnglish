@@ -230,10 +230,10 @@
   <ItemGroup>
     <Content Include="Angular\app.js" />
     <Content Include="Angular\Controllers\AddVideoController.js" />
-    <Content Include="Angular\Controllers\BrowseVideosController.js" />
+    <Content Include="Angular\Controllers\VideoListController.js" />
     <Content Include="Angular\Controllers\ListeningController.js" />
     <Content Include="Angular\Controllers\RecommendationsController.js" />
-    <Content Include="Angular\Controllers\VideoController.js" />
+    <Content Include="Angular\Controllers\VideoDetailsController.js" />
     <Content Include="Angular\Controllers\WritingController.js" />
     <Content Include="Angular\Service\YoutubeEmbedUtils.js" />
     <Content Include="App_Data\aspnet-LearnEnglish-v2.mdf" />
@@ -1172,8 +1172,8 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\VideoView\Add.cshtml" />
     <Content Include="Scripts\version.json" />
-    <Content Include="Views\VideoView\BrowseVideos.cshtml" />
-    <Content Include="Views\VideoView\Video.cshtml" />
+    <Content Include="Views\VideoView\List.cshtml" />
+    <Content Include="Views\VideoView\Details.cshtml" />
     <Content Include="Views\VideoView\Listening.cshtml" />
     <Content Include="Views\VideoView\Writing.cshtml" />
     <Content Include="Views\VideoView\Recommendations.cshtml" />

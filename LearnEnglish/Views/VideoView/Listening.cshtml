@@ -1,20 +1,19 @@
-﻿@model LearnEnglish.Data.Entities.Video
-
+﻿
 @{
     ViewBag.Title = "Listening";
 }
 
-<div div="page-content" style="width: 880px;" ng-controller="ListeningController" ng-init="init(@Newtonsoft.Json.JsonConvert.SerializeObject(Model));">
+<div div="page-content" style="width: 880px;" ng-init ="init()">
     <div class="video_title">
         <h3 style="color : #fff;">
-            {{video.Title}}
+            {{video.title}}
         </h3>
     </div>
 
     <div class="video_general">
         <div class="row" style="padding-bottom: 28px;">
             <div class="youtubePlayer col-lg-7" ng-click="playVideo()">
-                <youtube-video player-width="'460'" player-height="'300px'" video-url="video.Url" ng-click="playVideo();" player-vars="playerVars" player="youtubePlayer2"></youtube-video>
+                <youtube-video player-width="'460'" player-height="'300px'" video-url="video.url" ng-click="playVideo();" player-vars="playerVars" player="youtubePlayer2"></youtube-video>
             </div>
             <div class="book col-lg-5">
                 <div class="progress">
@@ -65,7 +64,7 @@
 
 <script>
     $('.type').click(function () {
-        $(".input-type").focus()
+        $(".input-type").focus();
     });
 
 </script>
