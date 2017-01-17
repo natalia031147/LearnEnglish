@@ -53,6 +53,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -68,8 +69,10 @@
     <Compile Include="Builders\VideoModelBuilder.cs" />
     <Compile Include="Framework\AutofacConfig.cs" />
     <Compile Include="Logic\BaseLogic.cs" />
+    <Compile Include="Logic\Interfaces\ITranslateLogic.cs" />
     <Compile Include="Logic\Interfaces\IVideoLogic.cs" />
     <Compile Include="Logic\Interfaces\IVideoPhraseLogic.cs" />
+    <Compile Include="Logic\GoogleTranslateLogic.cs" />
     <Compile Include="Logic\VideoLogic.cs" />
     <Compile Include="Logic\VideoPhraseLogic.cs" />
     <Compile Include="Models\Recommendations.cs" />

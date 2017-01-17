@@ -13,7 +13,7 @@ namespace LearnEnglish.Business.Builders
                 Video = videoPhrase.Video,
                 StartTime = videoPhrase.StartTime,
                 EndTime = videoPhrase.EndTime,
-                OrderNumber = videoPhrase.Id,
+                OrderNumber = videoPhrase.OrderNumber,
                 Phrase = videoPhrase.Phrase,
                 PhraseTranslated = videoPhrase.PhraseTranslated,
                 TranslateLanguage = videoPhrase.TranslateLanguage

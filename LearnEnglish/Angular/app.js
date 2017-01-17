@@ -30,6 +30,11 @@ function config($routeProvider, $locationProvider) {
             templateUrl: "VideoView/Listening/",
             controller: "ListeningController"
 
+        })
+        .when("/writing/:id", {
+            templateUrl: "VideoView/Writing/",
+            controller: "WritingController"
+
         });
     $locationProvider.html5Mode(false);
 }

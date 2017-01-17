@@ -3,21 +3,20 @@
     ViewBag.Title = "Writing";
 }
 
-@model LearnEnglish.Data.Entities.Video
 
 
-<div div="page-content" style="width: 880px;" ng-controller="WritingController" ng-init="init(@Newtonsoft.Json.JsonConvert.SerializeObject(Model));">
+<div div="page-content" style="width: 880px;" ng-init="init();">
     <div class="video_title">
         <h3 style="color : #fff;">
-            {{video.Title}}
+            {{video.title}}
         </h3>
     </div>
 
     <div class="video_general">
         <div class="row" style="padding-bottom: 28px;">
             <div style="padding-bottom: 66px;padding-left: 18px;">
-                <h3 class="translate-phrase" >TRADUCETI: {{currentPhrase.PhraseTranslated}}</h3>
-                <span style="display: inline;padding-bottom: 0;color: rgba(0,0,0,0.54);" ng-if="currentPhrase.TranslatedByGoogle">(Translated by Google Translate)</span>
+                <h3 class="translate-phrase" >TRADUCETI: {{currentPhrase.phraseTranslated}}</h3>
+                <span style="display: inline;padding-bottom: 0;color: rgba(0,0,0,0.54);" ng-if="currentPhrase.translatedByGoogle">(Translated by Google Translate)</span>
             </div>
             <div class="book col-lg-5">
                 <div class="progress" style="margin: 0 auto;">
@@ -36,7 +35,7 @@
                 <div ng-repeat="item in typedWords track by $index" bind-once>{{item}}</div>
                 <input ng-model="typingWord"
                        ng-style='{color: generateColor()}'
-                       ng-disabled="currentPhrase.Phrase == ''"
+                       ng-disabled="currentPhrase.phrase == ''"
                        ng-trim="false"
                        type="text"
                        placeholder="{{placeholder}}"
@@ -45,7 +44,7 @@
                        class="input-type"
                        ng-keyup="typing($event.keyCode)" />
             </div>
-            <button class="btn btn-primary hint-button" ng-disabled="currentPhrase.Phrase == ''" ng-click="hint()">Hint</button>
+            <button class="btn btn-primary hint-button" ng-disabled="currentPhrase.phrase == ''" ng-click="hint()">Hint</button>
         </div>
     </div>
 
@@ -54,12 +53,12 @@
     <div class="history">
         <ul class="phrases">
             <li ng-repeat="item in history|orderBy : OrderNumber : true track by $index ">
-                <em class="number">{{item.OrderNumber}}</em>
+                <em class="number">{{item.orderNumber}}</em>
                 <div>
-                    <p class="phrase-eng">{{item.Phrase}}</p>
+                    <p class="phrase-eng">{{item.phrase}}</p>
                     <div style="width: 650px;padding-top: 0px;margin-left: 0px;margin-right: 0px;">
-                        <p class="phrase-translated">{{item.PhraseTranslated == "" ? "Not Translated" : item.PhraseTranslated}}</p>
-                        <span class="google-translate" style="font-size: .8em;" ng-if="item.TranslatedByGoogle">(Translated by Google Translate)</span>
+                        <p class="phrase-translated">{{item.phraseTranslated == "" ? "Not Translated" : item.phraseTranslated}}</p>
+                        <span class="google-translate" style="font-size: .8em;" ng-if="item.translatedByGoogle">(Translated by Google Translate)</span>
                     </div>
                 </div>
                 <hr style="width: 793px;margin-left: 0px; margin-bottom: 0px;">

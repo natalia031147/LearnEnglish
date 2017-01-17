@@ -170,9 +170,9 @@ namespace LearnEnglish.Controllers
             return PartialView();
         }
 
-        public ActionResult Writing(int id)
+        public ActionResult Writing()
         {
-            return View("Writing", _context.Videos.Where(v => v.Id == id).FirstOrDefault());
+            return PartialView();
         }
          
         [HttpPost]
@@ -273,67 +273,68 @@ namespace LearnEnglish.Controllers
             return Json("Success", JsonRequestBehavior.AllowGet);
         }
 
-        public string TranslateGoogle(string text, string fromCulture, string toCulture)
-        {
-            fromCulture = fromCulture.ToLower();
-            toCulture = toCulture.ToLower();
+        //public string TranslateGoogle(string text, string from, string to)
+        //{
+        //    from = from.ToLower();
+        //    to = to.ToLower();
 
-            // normalize the culture in case something like en-us was passed 
-            // retrieve only en since Google doesn't support sub-locales
-            string[] tokens = fromCulture.Split('-');
-            if (tokens.Length > 1)
-                fromCulture = tokens[0];
+        //    // normalize the culture in case something like en-us was passed 
+        //    // retrieve only en since Google doesn't support sub-locales
+        //    string[] tokens = from.Split('-');
+        //    if (tokens.Length > 1)
+        //        from = tokens[0];
 
-            // normalize ToCulture
-            tokens = toCulture.Split('-');
-            if (tokens.Length > 1)
-                toCulture = tokens[0];
+        //    // normalize ToCulture
+        //    tokens = to.Split('-');
+        //    if (tokens.Length > 1)
+        //        to = tokens[0];
 
-            string url = string.Format(@"https://translate.googleapis.com/translate_a/single?client=gtx&sl={0}&tl={1}&dt=t&q={2}",
-                                       fromCulture, toCulture, HttpUtility.UrlEncode(text));
+        //    string url =
+        //        $@"https://translate.googleapis.com/translate_a/single?client=gtx&sl={@from}&tl={to}&dt=t&q={
+        //            HttpUtility.UrlEncode(text)}";
             
 
-            // Retrieve Translation with HTTP GET call
-            string html = null;
-            try
-            {
-                WebClient web = new WebClient();
+        //    // Retrieve Translation with HTTP GET call
+        //    string html = null;
+        //    try
+        //    {
+        //        var web = new WebClient();
 
-                // MUST add a known browser user agent or else response encoding doen't return UTF-8 (WTF Google?)
-                web.Headers.Add(HttpRequestHeader.UserAgent, "Mozilla/5.0");
-                web.Headers.Add(HttpRequestHeader.AcceptCharset, "UTF-8");
+        //        // MUST add a known browser user agent or else response encoding doen't return UTF-8 (WTF Google?)
+        //        web.Headers.Add(HttpRequestHeader.UserAgent, "Mozilla/5.0");
+        //        web.Headers.Add(HttpRequestHeader.AcceptCharset, "UTF-8");
 
-                // Make sure we have response encoding to UTF-8
-                web.Encoding = Encoding.UTF8;
-                html = web.DownloadString(url);
-            }
-            catch (Exception ex)
-            {               
-                return "";
-            }
-            html = html.Replace("],[", ",");
-            html = html.Replace("]", string.Empty);
-            html = html.Replace("[", string.Empty);
-            html = html.Replace("\",\"", "\"");
-            string[] phrases = html.Split(new[] { '\"' }, StringSplitOptions.RemoveEmptyEntries);
-            string translation = "";
-            for (int i = 0; (i < phrases.Count() - 1); i += 2)
-            {
-                string translatedPhrase = phrases[i];
-                if (translatedPhrase.StartsWith(",,"))
-                {
-                    i--;
-                    continue;
-                }
-                translation += translatedPhrase + "  ";
-            }
+        //        // Make sure we have response encoding to UTF-8
+        //        web.Encoding = Encoding.UTF8;
+        //        html = web.DownloadString(url);
+        //    }
+        //    catch (Exception ex)
+        //    {               
+        //        return "";
+        //    }
+        //    html = html.Replace("],[", ",");
+        //    html = html.Replace("]", string.Empty);
+        //    html = html.Replace("[", string.Empty);
+        //    html = html.Replace("\",\"", "\"");
+        //    string[] phrases = html.Split(new[] { '\"' }, StringSplitOptions.RemoveEmptyEntries);
+        //    string translation = "";
+        //    for (int i = 0; (i < phrases.Count() - 1); i += 2)
+        //    {
+        //        string translatedPhrase = phrases[i];
+        //        if (translatedPhrase.StartsWith(",,"))
+        //        {
+        //            i--;
+        //            continue;
+        //        }
+        //        translation += translatedPhrase + "  ";
+        //    }
            
 
-            if (string.IsNullOrEmpty(translation))
-            {
-                return "";
-            }
-            return translation;
-        }
+        //    if (string.IsNullOrEmpty(translation))
+        //    {
+        //        return "";
+        //    }
+        //    return translation;
+        //}
     }
 }

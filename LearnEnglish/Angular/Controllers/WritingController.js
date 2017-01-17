@@ -1,11 +1,11 @@
 ﻿//var myApp = angular.module('learnEnglishApp', ['ngMaterial', 'ngMessages', 'youtube-embed']);
 var app = angular.module('learnEnglishApp.controllers');
-app.controller('WritingController', ['$scope', '$http', function ($scope, $http) {
+app.controller('WritingController', ['$scope', '$http', '$routeParams', function ($scope, $http, $routeParams) {
     $scope.video = {};
     $scope.currentIndex = 0;
     $scope.expectedWord = { word: "", index: -1 };
     $scope.typingWord = "";
-    $scope.currentPhrase = { Phrase: "" };
+    $scope.currentPhrase = { phrase: "" };
     $scope.progress = 0;
     $scope.countHint = 0;
     $scope.history = [];
@@ -18,13 +18,13 @@ app.controller('WritingController', ['$scope', '$http', function ($scope, $http)
 
     $scope.getVideoPhases = function () {
         $http({
-            url: "/Video/GetVideoPhases",
+            url: "/Api/VideoPhrase",
             method: "GET",
-            params: { id: $scope.video.Id }
+            params: { id: $routeParams.id }
         })
             .success(function (data, status, headers, config) {
-                $scope.video.phrases = data.filter(a => a.Phrase != "");
-                $scope.currentPhrase = { Phrase: "", OrderNumber: 0 };
+                $scope.video.phrases = data.filter(a => a.phrase !== "" && a.phrase !== null && a.phraseTranslated !== "" && a.phraseTranslated !== null);
+                $scope.currentPhrase = { phrase: "", orderNumber: 0 };
                 $scope.phrasesNumber = $scope.video.phrases.length;
                 getNextPhrase();
             })
@@ -35,8 +35,23 @@ app.controller('WritingController', ['$scope', '$http', function ($scope, $http)
 
     };
 
+    $scope.getVideoDetails = function () {
+        $http({
+            url: "/Api/Video",
+            method: "GET",
+            params: { id: $routeParams.id }
+        })
+            .success(function (data) {
+                $scope.video = data;
+            })
+            .error(function (error, status) {
+                console.log(status);
+                console.log("Error occured");
+            });
+    };
+
     $scope.init = function (data) {
-        $scope.video = data;
+        $scope.getVideoDetails();
         $scope.getVideoPhases();
     };
 
@@ -59,20 +74,20 @@ app.controller('WritingController', ['$scope', '$http', function ($scope, $http)
     var endTyping = false;
     var index = 0;
     var getNextPhrase = function () {
-        var phrases = $scope.video.phrases.filter(a => a.Phrase != "");
-        var lastOrderNumber = phrases[phrases.length - 1].OrderNumber;
-        if ($scope.currentPhrase.OrderNumber < lastOrderNumber) {
+        var phrases = $scope.video.phrases.filter(a => a.phrase != "");
+        var lastOrderNumber = phrases[phrases.length - 1].orderNumber;
+        if ($scope.currentPhrase.orderNumber < lastOrderNumber) {
             $scope.currentPhrase = $scope.video.phrases[index++];
             
-            $scope.expectedWord = { word: $scope.currentPhrase.Phrase.split(' ')[0], index: 0 };
+            $scope.expectedWord = { word: $scope.currentPhrase.phrase.split(' ')[0], index: 0 };
             $scope.typedWords = [];
             $scope.typingWord = "";
-            $scope.passed = $scope.video.phrases.filter(a => a.Phrase != "" && a.OrderNumber < $scope.currentPhrase.OrderNumber).length;
+            $scope.passed = $scope.video.phrases.filter(a => a.phrase !== "" && a.orderNumber < $scope.currentPhrase.orderNumber).length;
             $scope.progress = (($scope.passed / phrases.length) * 100).toFixed(0);
         } else {
             endTyping = true;        
-            $scope.passed = $scope.video.phrases.filter(a => a.Phrase != "" && a.OrderNumber <= $scope.currentPhrase.OrderNumber).length;
-            $scope.currentPhrase = $scope.currentPhrase = { Phrase: "" };
+            $scope.passed = $scope.video.phrases.filter(a => a.phrase !== "" && a.orderNumber <= $scope.currentPhrase.orderNumber).length;
+            $scope.currentPhrase = $scope.currentPhrase = { phrase: "" };
             $scope.expectedWord = { word: "", index: -1 };;
             $scope.typedWords = [];
             $scope.typingWord = "";
@@ -83,15 +98,15 @@ app.controller('WritingController', ['$scope', '$http', function ($scope, $http)
 
 
     var getNextExpectedWord = function () {
-        var phraseWords = $scope.currentPhrase.Phrase.split(' ');
+        var phraseWords = $scope.currentPhrase.phrase.split(' ');
         $scope.typedWords.push($scope.expectedWord.word);
         if ($scope.expectedWord.index + 1 < phraseWords.length) {
             $scope.expectedWord.index += 1;
             $scope.expectedWord.word = phraseWords[$scope.expectedWord.index];
             $scope.typingWord = "";
         } else {
-            if ($scope.currentPhrase.Phrase != "") {
-                var item = { Phrase: $scope.currentPhrase.Phrase, PhraseTranslated: $scope.currentPhrase.PhraseTranslated, OrderNumber: $scope.history.length + 1, TranslatedByGoogle: $scope.currentPhrase.TranslatedByGoogle  };
+            if ($scope.currentPhrase.phrase != "") {
+                var item = { phrase: $scope.currentPhrase.phrase, phraseTranslated: $scope.currentPhrase.phraseTranslated, orderNumber: $scope.history.length + 1, translatedByGoogle: $scope.currentPhrase.translatedByGoogle };
                 $scope.history.push(item);
             }
             if (!endTyping) {
@@ -109,8 +124,7 @@ app.controller('WritingController', ['$scope', '$http', function ($scope, $http)
             if (typingWord == expectedWord) {
                 getNextExpectedWord();
             } else if (key == 13) {
-                $scope.youtubePlayer2.seekTo($scope.currentPhrase.StartTime, true);
-                $scope.youtubePlayer2.playVideo();
+                
             }
         } else if (key == 27) { //Escape
             $scope.hint();

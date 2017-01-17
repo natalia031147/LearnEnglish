@@ -30,7 +30,7 @@
                 <div ng-repeat="item in typedWords track by $index" bind-once>{{item}}</div>
                 <input ng-model="typingWord"
                        ng-style='{color: generateColor()}'
-                       ng-disabled="currentPhrase.Phrase == ''"
+                       ng-disabled="currentPhrase.phrase == ''"
                        ng-trim="false"
                        type="text"
                        placeholder="{{placeholder}}"
@@ -39,7 +39,7 @@
                        class="input-type"
                        ng-keyup="typing($event.keyCode)" />
             </div>
-            <button class="btn btn-primary hint-button" ng-disabled="currentPhrase.Phrase == ''" ng-click="hint()">Hint</button>
+            <button class="btn btn-primary hint-button" ng-disabled="currentPhrase.phrase == ''" ng-click="hint()">Hint</button>
         </div>
     </div>
 
@@ -48,12 +48,12 @@
     <div class="history">
         <ul class="phrases">
             <li ng-repeat="item in history|orderBy : OrderNumber : true track by $index ">
-                <em class="number">{{item.OrderNumber}}</em>
+                <em class="number">{{item.orderNumber}}</em>
                 <div>
-                    <p class="phrase-eng">{{item.Phrase}}</p>
+                    <p class="phrase-eng">{{item.phrase}}</p>
                     <div style="width: 650px;padding-top: 0px;margin-left: 0px;margin-right: 0px;">
-                        <p class="phrase-translated">{{item.PhraseTranslated == "" ? "Not Translated" : item.PhraseTranslated}}</p>
-                        <span class="google-translate" style="font-size: .8em;" ng-if="item.TranslatedByGoogle">(Translated by Google Translate)</span>
+                        <p class="phrase-translated">{{item.phraseTranslated == "" ? "Not Translated" : item.phraseTranslated}}</p>
+                        <span class="google-translate" style="font-size: .8em;" ng-if="item.translatedByGoogle">(Translated by Google Translate)</span>
                     </div>
                 </div>
                 <hr style="width: 793px;margin-left: 0px; margin-bottom: 0px;">
