@@ -11,13 +11,13 @@
             <level level="video.level" style="margin-top: 5px; margin-left: 15px;"></level>
             <md-card-title>
                 <md-card-title-text>
-                    <a mg-href="/#/videos/{{video.id}}"><span class="md-headline" ng-click="loadVideo()">{{video.title}}</span></a>
+                    <a ng-href="/#/videos/{{video.id}}"><span class="md-headline" ng-click="loadVideo()">{{video.title}}</span></a>
                 </md-card-title-text>
             </md-card-title>
             <hr style="width: 100%;margin-left: 0px; margin-bottom: 0px; background-color:black">
             <md-card-actions layout="column" layout-align="start">
-                <md-button href="/#/listening/{{video.id}}">Listening<img class="done-action" src="~/Images/Done.png" ng-if="video.listeningModulePassed == true" width="25" height="25" /></md-button>
-                <md-button href="/#/writing/{{video.id}}">Writing<img class="done-action" src="~/Images/Done.png" ng-if="video.writingModulePassed == true" width="25" height="25" /></md-button>
+                <md-button ng-href="/#/listening/{{video.id}}">Listening<img class="done-action" src="~/Images/Done.png" ng-if="video.listeningModulePassed == true" width="25" height="25" /></md-button>
+                <md-button ng-href="/#/writing/{{video.id}}">Writing<img class="done-action" src="~/Images/Done.png" ng-if="video.writingModulePassed == true" width="25" height="25" /></md-button>
             </md-card-actions>
         </md-card>
     </div>

@@ -17,12 +17,12 @@
             <div class="col-lg-5">
                 <ul class="video_general_links">
                     <li class="video_general_links_item">
-                        <a class="video_general_links_item_a" >                            
+                        <a class="video_general_links_item_a" ng-href="/#/listening/{{video.id}}">                            
                             <span class="video_general_links_name">Listening</span>                           
                             <img class="done-action" style="margin-top: 15px;" src="~/Images/Done.png" ng-if="video.listeningModulePassed == true" width="30" height="30" />
                         </a>
                     </li>
-                    <li class="video_general_links_item">
+                    <li class="video_general_links_item" ng-href="/#/writing/{{video.id}}">
                         <a class="video_general_links_item_a" >
                             <span class="video_general_links_name">Writing</span>
                             <img class="done-action" style="margin-top: 15px;" src="~/Images/Done.png" ng-if="video.writingModulePassed == true" width="30" height="30" />
