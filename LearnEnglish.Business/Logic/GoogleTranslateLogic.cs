@@ -3,14 +3,13 @@ using System.Linq;
 using System.Net;
 using System.Text;
 using System.Web;
-using LearnEnglish.Business.Logic.Interfaces;
 
 namespace LearnEnglish.Business.Logic
 {
-    public class GoogleTranslateLogic: ITranslateLogic
+    public class GoogleTranslateLogic
 
     {
-        public string TranslateText(string text, string fromLanguage, string toLanguage)
+        public static string TranslateText(string text, string fromLanguage, string toLanguage)
         {
             fromLanguage = fromLanguage.ToLower();
             toLanguage = toLanguage.ToLower();

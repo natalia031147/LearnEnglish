@@ -69,7 +69,6 @@
     <Compile Include="Builders\VideoModelBuilder.cs" />
     <Compile Include="Framework\AutofacConfig.cs" />
     <Compile Include="Logic\BaseLogic.cs" />
-    <Compile Include="Logic\Interfaces\ITranslateLogic.cs" />
     <Compile Include="Logic\Interfaces\IVideoLogic.cs" />
     <Compile Include="Logic\Interfaces\IVideoPhraseLogic.cs" />
     <Compile Include="Logic\GoogleTranslateLogic.cs" />

@@ -1,9 +1,9 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using LearnEnglish.Business.Builders.Interfaces;
+﻿using LearnEnglish.Business.Builders.Interfaces;
 using LearnEnglish.Business.Logic.Interfaces;
 using LearnEnglish.Business.Models;
 using LearnEnglish.Data.Framework;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace LearnEnglish.Business.Logic
 {
@@ -24,6 +24,17 @@ namespace LearnEnglish.Business.Logic
                     .ToList();
 
             var models = phrases.Select(_videoPhraseModelBuilder.Build).ToList();
+            
+
+            foreach (var model in models)
+            {
+                if (string.IsNullOrEmpty(model.PhraseTranslated) && !string.IsNullOrEmpty(model.Phrase))
+                {
+                    model.TranslatedByGoogle = true;
+                    model.PhraseTranslated = GoogleTranslateLogic.TranslateText(model.Phrase, "en", "ro");
+                }
+            }
+
 
             return models;
         }
