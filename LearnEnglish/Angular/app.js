@@ -16,9 +16,13 @@ angular.module("learnEnglishApp", [
 function config($routeProvider, $locationProvider) {
 
     $routeProvider
-        .when("/", { redirectTo: "/videos" })
+        .when("/", { redirectTo: "/recommendations" })
+        .when("/recommendations", {
+            templateUrl: "VideoView/Recommendations/",
+            controller: "RecommendationsController"
+        })
         .when("/videos", {
-            templateUrl: "VideoView/List",
+            templateUrl: "VideoView/List/",
             controller: "VideoListController"
         })
         .when("/videos/:id", {
@@ -34,6 +38,11 @@ function config($routeProvider, $locationProvider) {
         .when("/writing/:id", {
             templateUrl: "VideoView/Writing/",
             controller: "WritingController"
+
+        })
+        .when("/add/", {
+            templateUrl: "VideoView/Add/",
+            controller: "AddVideoController"
 
         });
     $locationProvider.html5Mode(false);

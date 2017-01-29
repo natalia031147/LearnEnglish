@@ -4,6 +4,7 @@ using LearnEnglish.Business.Models;
 using LearnEnglish.Data.Framework;
 using System.Collections.Generic;
 using System.Linq;
+using LearnEnglish.Business.Utils;
 
 namespace LearnEnglish.Business.Logic
 {
@@ -31,7 +32,7 @@ namespace LearnEnglish.Business.Logic
                 if (string.IsNullOrEmpty(model.PhraseTranslated) && !string.IsNullOrEmpty(model.Phrase))
                 {
                     model.TranslatedByGoogle = true;
-                    model.PhraseTranslated = GoogleTranslateLogic.TranslateText(model.Phrase, "en", "ro");
+                    model.PhraseTranslated = GoogleTranslate.TranslateText(model.Phrase, "en", "ro");
                 }
             }
 

@@ -10,7 +10,7 @@ app.controller('RecommendationsController', ['$scope', '$http', function ($scope
 
     $scope.getRecommendations = function () {
         $http({
-            url: "/Video/GetRecommendations",
+            url: "/Api/Recommendations",
             method: "GET"
         })
             .success(function (data, status, headers, config) {

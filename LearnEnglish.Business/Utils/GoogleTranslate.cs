@@ -4,9 +4,9 @@ using System.Net;
 using System.Text;
 using System.Web;
 
-namespace LearnEnglish.Business.Logic
+namespace LearnEnglish.Business.Utils
 {
-    public class GoogleTranslateLogic
+    public class GoogleTranslate
 
     {
         public static string TranslateText(string text, string fromLanguage, string toLanguage)

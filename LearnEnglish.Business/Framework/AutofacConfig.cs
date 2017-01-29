@@ -14,6 +14,7 @@ namespace LearnEnglish.Business.Framework
             builder.RegisterType<VideoPhraseLogic>().AsImplementedInterfaces().InstancePerRequest();
             builder.RegisterType<VideoModelBuilder>().AsImplementedInterfaces().InstancePerRequest();
             builder.RegisterType<VideoPhraseModelBuilder>().AsImplementedInterfaces().InstancePerRequest();
+            builder.RegisterType<RecommendationsLogic>().AsImplementedInterfaces().InstancePerRequest();
         }
     }
 }

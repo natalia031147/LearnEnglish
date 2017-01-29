@@ -69,9 +69,12 @@
     <Compile Include="Builders\VideoModelBuilder.cs" />
     <Compile Include="Framework\AutofacConfig.cs" />
     <Compile Include="Logic\BaseLogic.cs" />
+    <Compile Include="Logic\RecommendationsLogic.cs" />
+    <Compile Include="Utils\PointsLevel.cs" />
+    <Compile Include="Logic\Interfaces\IRecommendationsLogic.cs" />
     <Compile Include="Logic\Interfaces\IVideoLogic.cs" />
     <Compile Include="Logic\Interfaces\IVideoPhraseLogic.cs" />
-    <Compile Include="Logic\GoogleTranslateLogic.cs" />
+    <Compile Include="Utils\GoogleTranslate.cs" />
     <Compile Include="Logic\VideoLogic.cs" />
     <Compile Include="Logic\VideoPhraseLogic.cs" />
     <Compile Include="Models\Recommendations.cs" />
