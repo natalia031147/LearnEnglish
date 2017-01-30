@@ -1,23 +1,36 @@
-﻿using System.Linq;
+﻿using LearnEnglish.Business.Builders.Interfaces;
 using LearnEnglish.Business.Logic.Interfaces;
 using LearnEnglish.Business.Models;
 using LearnEnglish.Business.Utils;
 using LearnEnglish.Data.Entities;
 using LearnEnglish.Data.Framework;
+using System.Linq;
 
 namespace LearnEnglish.Business.Logic
 {
     class RecommendationsLogic : BaseLogic, IRecommendationsLogic
     {
+        private IVideoModelBuilder _videoModelBuilder;
 
-        public RecommendationsLogic(ApplicationDbContext context) : base(context)
+        public RecommendationsLogic(ApplicationDbContext context, IVideoModelBuilder videoModelBuilder) : base(context)
         {
+            _videoModelBuilder = videoModelBuilder;
         }
 
         public Recommendations Get()
         {
             string userId = GetUser();
 
+            if (userId == null)
+            {
+                var video = _videoModelBuilder.Build(Context.Videos.OrderBy(o => o.Id).FirstOrDefault()) ;
+                return new Recommendations
+                {
+                    UserLevel = null,
+                    ListeningRecommendation = video,
+                    WritingRecommendation = video
+                };
+            }
             var points = Context.UsersPoints.Where(v => v.User.Id == userId)
                 .Select(s => new { s.ListeningPoints, s.WritingPoints }).FirstOrDefault();
 

@@ -44,6 +44,9 @@ function config($routeProvider, $locationProvider) {
             templateUrl: "VideoView/Add/",
             controller: "AddVideoController"
 
+        })
+        .when("/login", {
+            templateUrl: "Account/Login/"
         });
     $locationProvider.html5Mode(false);
 }

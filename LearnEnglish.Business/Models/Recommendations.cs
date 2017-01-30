@@ -7,6 +7,6 @@ namespace LearnEnglish.Business.Models
         public VideoModel ListeningRecommendation { get; set; }
         public VideoModel WritingRecommendation { get; set; }
         public VideoModel SpeakingRecommendation { get; set; }
-        public Enums.Level UserLevel { get; set; }
+        public Enums.Level? UserLevel { get; set; }
     }
 }
