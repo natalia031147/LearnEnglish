@@ -30,7 +30,8 @@ namespace LearnEnglish.Business.Logic
             {
                 var progress = userProgresses.FirstOrDefault(up => up.Video.Id == model.Id);
                 model.ListeningModulePassed = progress?.ListeningModulePassed ?? false;
-                model.ListeningModulePassed = progress?.ListeningModulePassed ?? false;
+                model.WritingModulePassed = progress?.WritingModulePassed ?? false;
+                model.SpeakingModulePassed = progress?.SpeakingModulePassed ?? false;
             }
 
             return models;
@@ -38,8 +39,9 @@ namespace LearnEnglish.Business.Logic
 
         public VideoModel Get(int id)
         {
+            var userId = GetUser();
             return (from a in Context.Videos.Where(v => v.Id == id)
-                join b in Context.UserProgress on a equals b.Video into joined
+                join b in Context.UserProgress.Where(v => v.User.Id == userId) on a equals b.Video into joined
                 from j in joined.DefaultIfEmpty()
                 select new VideoModel
                 {
@@ -50,7 +52,8 @@ namespace LearnEnglish.Business.Logic
                     Url = a.Url,
                     Title = a.Title,
                     ListeningModulePassed = j == null ? false : j.ListeningModulePassed,
-                    WritingModulePassed = j == null ? false : j.WritingModulePassed
+                    WritingModulePassed = j == null ? false : j.WritingModulePassed,
+                    SpeakingModulePassed = j == null ? false : j.SpeakingModulePassed
                 }).ToList().FirstOrDefault();
         }
     }

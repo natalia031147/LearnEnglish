@@ -22,6 +22,59 @@ app.controller('RecommendationsController', ['$scope', '$http', function ($scope
             });
     };
 
+    $scope.getUserPoints = function () {
+        $http({
+            url: "/Api/UserPoints",
+            method: "GET"
+        })
+            .success(function (data, status, headers, config) {
+                $scope.userPoints = data;
+                $scope.currentLevel = levelToString($scope.userPoints.userLevel);
+                if ($scope.currentLevel == "Advanced") {
+                    $scope.nextLevel = "";
+                } else {
+                    $scope.nextLevel = levelToString($scope.userPoints.userLevel + 1);
+                }               
+
+            })
+            .error(function (error, status, headers, config) {
+                console.log(status);
+                console.log("Error occured");
+            });
+    };
+
+    $scope.init = function () {        
+        $scope.getRecommendations();
+        $scope.getUserPoints();
+    }
+
+    var levelToString = function (level) {
+        var levelName;
+        switch (level)
+        {
+            case (1):
+                levelName = "Elementary";
+                break;
+            case (2):
+                levelName = "Pre-Intermediate";
+                break;
+            case (3):
+                levelName = "Intermediate";
+                break;
+            case (4):
+                levelName = "Upper-Intermediate";
+                break;
+            case (5):
+                levelName = "Advanced";
+                break;
+            default:
+                levelName = "Unkown";
+
+        }
+        return levelName;
+    }
+
+
 }])
 .config(function ($mdThemingProvider) {
     $mdThemingProvider.theme('dark-grey').backgroundPalette('grey').dark();

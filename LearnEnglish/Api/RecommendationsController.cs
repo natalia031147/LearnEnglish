@@ -19,7 +19,7 @@ namespace LearnEnglish.Api
         }
 
        
-        public Recommendations Get()
+        public RecommendationsModel Get()
         {
             return _recommendationsLogic.Get();
         }

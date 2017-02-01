@@ -12,6 +12,8 @@ namespace LearnEnglish.Data.Entities
 
         public int? ListeningPoints { get; set; }
 
-        public int? WritingPoints { get; set; } 
+        public int? WritingPoints { get; set; }
+
+        public int? SpeakingPoints { get; set; }
     }
 }

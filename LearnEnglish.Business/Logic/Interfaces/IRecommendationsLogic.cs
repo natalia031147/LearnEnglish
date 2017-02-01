@@ -5,6 +5,6 @@ namespace LearnEnglish.Business.Logic.Interfaces
 {
     public interface IRecommendationsLogic
     {
-        Recommendations Get();
+        RecommendationsModel Get();
     }
 }

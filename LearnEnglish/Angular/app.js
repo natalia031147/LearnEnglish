@@ -47,6 +47,9 @@ function config($routeProvider, $locationProvider) {
         })
         .when("/login", {
             templateUrl: "Account/Login/"
+        })
+        .when("/register", {
+            templateUrl: "Account/Register/"
         });
     $locationProvider.html5Mode(false);
 }

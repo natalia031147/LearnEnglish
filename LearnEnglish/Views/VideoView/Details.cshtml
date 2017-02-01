@@ -28,9 +28,10 @@
                             <img class="done-action" style="margin-top: 15px;" src="~/Images/Done.png" ng-if="video.writingModulePassed == true" width="30" height="30" />
                         </a>
                     </li>
-                    <li class="video_general_links_item" style="pointer-events: none;">
-                        <a class="video_general_links_item_a" href="">
-                            <span style="color: gray;" class="video_general_links_name" disabled>Speaking</span>
+                    <li class="video_general_links_item">
+                        <a class="video_general_links_item_a" ng-href="/#/speaking/{{video.id}}">
+                            <span class="video_general_links_name">Speaking</span>
+                                <img class="done-action" style="margin-top: 15px;" src="~/Images/Done.png" ng-if="video.speakingModulePassed == true" width="30" height="30" />
                         </a>
                     </li>
                 </ul>

@@ -501,3 +501,38 @@ md-card.md-dark-orange-theme {
     background-color: #e97f3d;
     border-radius: 2px;
 }
+
+.progress-img {
+    float: left;
+    margin-top: -2px;
+    padding-right: 10px;
+    
+}
+.progress-actions .progress {
+    width: 69%; 
+    float:left;
+}
+
+.progress-actions span {
+    float: right;
+    padding-left: 16px;
+}
+.progress-actions-comm {
+    float: left !important;
+    padding-top: 20px;
+    padding-left: 0px !important;
+    padding-bottom: 13px;
+}
+
+.md-padding {
+    
+    float: left;
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+
+}
+
+md-card .md-actions:not(.layout-column) .md-button:not(.md-icon-button):first-of-type, md-card md-card-actions:not(.layout-column) .md-button:not(.md-icon-button):first-of-type {
+    margin-left: 0;
+    border: .1rem solid #28aadc;
+}

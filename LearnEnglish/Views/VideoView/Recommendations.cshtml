@@ -4,18 +4,18 @@
 }
 
 
-<div div="page-content" style="width: 880px;" ng-init="getRecommendations()">
-    <div class="video_title">
+<div div="page-content" style="width: 100%;" ng-init="init()">
+    <div class="video_title" style="width: 73%;">
         <h3 style="color : #fff;">
             ASSIGNMENTS PLAN TODAY
         </h3>
     </div>
-    <div class='md-padding' layout="row" layout-wrap>
+    <div class='md-padding' layout="row" layout-wrap style="width: 77% !important
+    ;">
         <md-card flex-xs="" flex-gt-xs="30"  md-theme-watch="" >
             <md-card-header>
                 <md-card-header-text>
                     <span class="md-title">Listening Lesson</span>
-                    @*<span class="md-subhead">subhead</span>*@
                 </md-card-header-text>
             </md-card-header>
             <img ng-src="{{recommendations.listeningRecommendation.thumbnail}}" class="md-card-image" alt="Washed Out">
@@ -33,7 +33,7 @@
                     Listening
                 </md-button>
             </md-card-actions>
-    </md-card>
+        </md-card>
         
         
 
@@ -63,77 +63,88 @@
         <md-card flex-xs="" flex-gt-xs="30">
             <md-card-header>
                 <md-card-header-text>
-                    <span class="md-title">Writing Lesson</span>
+                    <span class="md-title">Speaking Lesson</span>
                     @*<span class="md-subhead">subhead</span>*@
                 </md-card-header-text>
             </md-card-header>
-            <img ng-src="{{recommendations.writingRecommendation.thumbnail}}" class="md-card-image" alt="Washed Out">
+            <img ng-src="{{recommendations.speakingRecommendation.thumbnail}}" class="md-card-image" alt="Washed Out">
             <level level="2" style="margin-top: 5px; margin-left: 15px;"></level>
             <md-card-title>
-                <a ng-href="/#/videos/{{recommendations.writingRecommendation.id}}">
-                    <span class="md-headline">{{recommendations.writingRecommendation.title}}</span>
+                <a ng-href="/#/videos/{{recommendations.speakingRecommendation.id}}">
+                    <span class="md-headline">{{recommendations.speakingRecommendation.title}}</span>
                 </a>
                 </md-card-title-text>
             </md-card-title>
             <md-card-actions layout="row" layout-align="start center">
-                <md-button ng-href="/#/writing/{{recommendations.writingRecommendation.id}}" class="recommendations-button">Writing</md-button>
+                <md-button ng-href="/#/speaking/{{recommendations.speakingRecommendation.id}}" class="recommendations-button">Speaking</md-button>
             </md-card-actions>
         </md-card>
     </div>
     
 
-    <div class="my-stats-bl  ">
+    <div class="my-stats-bl" style="width: 23%; float: right; margin-top: -60px; padding-top: 0px;">
 
-        <h4 class="mb-20 link-tt">
+        @*<h4 class="mb-20 link-tt">
             <a href="#" style="text-decoration: none; cursor: default;" class="toggle-langs expand-header">
-                МОЙ РЕЙТИНГ В АНГЛИЙСКОМ
+                MY PROGRESS IN ENGLISH
             </a>
-        </h4>
-
-
-        <ul class="statistic">
-            <li class="rating">
-                <span class="float-right"></span>
-                <span class="float-left">Advanced</span>
-                <div class="clear"></div>
-                <div class="rating-block-bg">
-                    <div data-animated-bar="0" class="rating-block" style="width: 0%"></div>
-                    <span class="stat" style="z-index: 30;"></span>
+        </h4>*@
+        <div class="video_title">
+            <h4 style="color : #fff;">
+                MY PROGRESS IN ENGLISH
+            </h4>
+        </div>
+        <div style="padding-top: 37px;">
+            <div style="padding-bottom: 25px;">
+                <span class="float-right" style="float: left">{{currentLevel}}</span>
+                <span class="float-left" style="float: right">{{nextLevel}}</span>
+            </div>
+            <div class="clear"></div>
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" aria-valuenow="{{userPoints.progressLevelPercentage}}"
+                     aria-valuemin="0" aria-valuemax="100" style="width:{{userPoints.progressLevelPercentage}}%">
+                    <span class="sr-only">{{userPoints.progressLevelPercentage}}% Complete</span>
                 </div>
-            </li>
-
-
-
-        </ul>
-
-        <!-- each activity bars progress -->
-        <div class="clear"></div>
-        <ul class="statistic rating-ico">
-            <li class="item-1">
-                <div class="rating-block-bg">
-                    <div class="rating-block animated" style="width: 75%;" data-animated-bar="75" data-bar="listening"></div>
+            </div>
+        </div>
+        
+                
+        <div class="progress-actions" >
+            <span class="progress-actions-comm">Progress by actions</span>
+            <div class="clear"></div>
+            <div>
+                <img class="progress-img" src="~/Images/listening.png" />
+                <div class="progress">
+                    <div class="progress-bar" role="progressbar" aria-valuenow="{{userPoints.listeningProgressPercentage}}"
+                         aria-valuemin="0" aria-valuemax="100" style="width:{{userPoints.listeningProgressPercentage}}%">
+                        <span class="sr-only">{{userPoints.listeningProgressPercentage}}% Complete</span>
+                    </div>
                 </div>
-                <strong>2300</strong>
-            </li>
-            <li class="item-2">
-                <div class="rating-block-bg">
-                    <div class="rating-block animated" style="width: 75%;" data-animated-bar="75" data-bar="grammar"></div>
+                <span >{{userPoints.maxListeningPoints}}</span>
+            </div>
+            <div class="clear"></div>
+            <div>
+                <img class="progress-img" src="~/Images/writing.png" />
+                <div class="progress">
+                    <div class="progress-bar" role="progressbar" aria-valuenow="{{userPoints.writingProgressPercentage}}"
+                         aria-valuemin="0" aria-valuemax="100" style="width:{{userPoints.writingProgressPercentage}}%">
+                        <span class="sr-only">{{userPoints.writingProgressPercentage}}% Complete</span>
+                    </div>
                 </div>
-                <strong>2300</strong>
-            </li>
-            <li class="item-3">
-                <div class="rating-block-bg">
-                    <div class="rating-block animated" style="width: 75%;" data-animated-bar="75" data-bar="speaking"></div>
+                <span>{{userPoints.maxWritingPoints}}</span>
+            </div>
+            <div class="clear"></div>
+            <div>
+                <img class="progress-img" src="~/Images/speaking.png" />
+                <div class="progress">
+                    <div class="progress-bar" role="progressbar" aria-valuenow="{{userPoints.speakingProgressPercentage}}"
+                         aria-valuemin="0" aria-valuemax="100" style="width:{{userPoints.speakingProgressPercentage}}%">
+                        <span class="sr-only">{{userPoints.speakingProgressPercentage}}% Complete</span>
+                    </div>
                 </div>
-                <strong>2300</strong>
-            </li>
-            <li class="item-4">
-                <div class="rating-block-bg">
-                    <div class="rating-block animated" style="width: 75%;" data-animated-bar="75" data-bar="writing"></div>
-                </div>
-                <strong>2300</strong>
-            </li>
-        </ul>
+                <span>{{userPoints.maxSpeakingPoints}}</span>
+            </div>
+        </div>     
         <div class="clear"></div>
         <br>
     </div>

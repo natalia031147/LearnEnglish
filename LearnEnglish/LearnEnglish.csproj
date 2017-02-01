@@ -208,6 +208,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Api\RecommendationsController.cs" />
+    <Compile Include="Api\UserPointsController.cs" />
     <Compile Include="Api\VideoController.cs" />
     <Compile Include="Api\VideoPhraseController.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />

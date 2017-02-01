@@ -50,6 +50,18 @@
       <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportViewer.2015.Runtime.12.0.2.2402\lib\Microsoft.ReportViewer.Common.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportViewer.2015.Runtime.12.0.2.2402\lib\Microsoft.ReportViewer.ProcessingObjectModel.DLL</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WebForms, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportViewer.2015.Runtime.12.0.2.2402\lib\Microsoft.ReportViewer.WebForms.DLL</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -65,11 +77,16 @@
     <Compile Include="Builders\Interfaces\IBaseBuilder.cs" />
     <Compile Include="Builders\Interfaces\IVideoModelBuilder.cs" />
     <Compile Include="Builders\Interfaces\IVideoPhraseModelBuilder.cs" />
+    <Compile Include="Builders\Interfaces\IUserPointsModelBuilder.cs" />
+    <Compile Include="Builders\UserPointsModelBuilder.cs" />
     <Compile Include="Builders\VideoPhraseModelBuilder.cs" />
     <Compile Include="Builders\VideoModelBuilder.cs" />
     <Compile Include="Framework\AutofacConfig.cs" />
     <Compile Include="Logic\BaseLogic.cs" />
+    <Compile Include="Logic\Interfaces\IUserPointsLogic.cs" />
     <Compile Include="Logic\RecommendationsLogic.cs" />
+    <Compile Include="Logic\UserPointsLogic.cs" />
+    <Compile Include="Models\UserPointsModel.cs" />
     <Compile Include="Utils\PointsLevel.cs" />
     <Compile Include="Logic\Interfaces\IRecommendationsLogic.cs" />
     <Compile Include="Logic\Interfaces\IVideoLogic.cs" />
@@ -78,7 +95,7 @@
     <Compile Include="Logic\VideoLogic.cs" />
     <Compile Include="Logic\VideoPhraseLogic.cs" />
     <Compile Include="Models\Recommendations.cs" />
-    <Compile Include="Models\Video.cs" />
+    <Compile Include="Models\VideoModel.cs" />
     <Compile Include="Models\VideoPhraseModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

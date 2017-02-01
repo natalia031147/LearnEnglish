@@ -16,5 +16,7 @@ namespace LearnEnglish.Data.Entities
         public bool? ListeningModulePassed { get; set; }
 
         public bool? WritingModulePassed { get; set; }
+
+        public bool? SpeakingModulePassed { get; set; }
     }
 }

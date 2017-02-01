@@ -14,14 +14,19 @@
 
     <div class="video_general">
         <div class="row" style="padding-bottom: 28px;">
-            <div style="padding-bottom: 66px;padding-left: 18px;">
-                <h3 class="translate-phrase" >TRADUCETI: {{currentPhrase.phraseTranslated}}</h3>
+            <div style="padding-bottom: 66px;padding-left: 18px;" ng-show="!endTyping">
+                <h3 class="translate-phrase">TRADUCETI: {{currentPhrase.phraseTranslated}}</h3>
                 <span style="display: inline;padding-bottom: 0;color: rgba(0,0,0,0.54);" ng-if="currentPhrase.translatedByGoogle">(Translated by Google Translate)</span>
+            </div>
+            <div style="padding-bottom: 66px;padding-left: 18px;" ng-show="endTyping">
+                <h3 class="translate-phrase">{{scoredMessage}}</h3>
+                <div class="clear" style="padding-bottom: 20px;"></div>
+                <span>{{efficiency}}</span>                
             </div>
             <div class="book col-lg-5">
                 <div class="progress" style="margin: 0 auto;">
                     <div class="progress-bar" role="progressbar" aria-valuenow="{{progress}}"
-                            aria-valuemin="0" aria-valuemax="100" style="width:{{progress}}%">
+                         aria-valuemin="0" aria-valuemax="100" style="width:{{progress}}%">
                         <span class="sr-only">{{progress}}% Complete</span>
                     </div>
                 </div>
@@ -29,7 +34,8 @@
             </div>
 
         </div>
-        
+
+
         <div class="type">
             <div class="words">
                 <div ng-repeat="item in typedWords track by $index" bind-once>{{item}}</div>
