@@ -232,11 +232,14 @@
   <ItemGroup>
     <Content Include="Angular\app.js" />
     <Content Include="Angular\Controllers\AddVideoController.js" />
+    <Content Include="Angular\Controllers\SpeakingController.js" />
     <Content Include="Angular\Controllers\VideoListController.js" />
     <Content Include="Angular\Controllers\ListeningController.js" />
     <Content Include="Angular\Controllers\RecommendationsController.js" />
     <Content Include="Angular\Controllers\VideoDetailsController.js" />
     <Content Include="Angular\Controllers\WritingController.js" />
+    <Content Include="Angular\Directives\LevelDirective.js" />
+    <Content Include="Angular\Directives\SpeechRecognitionDirective.js" />
     <Content Include="Angular\Service\YoutubeEmbedUtils.js" />
     <Content Include="App_Data\aspnet-LearnEnglish-v2.mdf" />
     <Content Include="App_Data\aspnet-LearnEnglish-v2_log.ldf">
@@ -1179,6 +1182,7 @@
     <Content Include="Views\VideoView\Listening.cshtml" />
     <Content Include="Views\VideoView\Writing.cshtml" />
     <Content Include="Views\VideoView\Recommendations.cshtml" />
+    <Content Include="Views\VideoView\Speaking.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\LearnEnglish.Business\LearnEnglish.Business.csproj">

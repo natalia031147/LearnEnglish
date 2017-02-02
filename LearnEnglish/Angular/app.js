@@ -2,14 +2,18 @@
 
 angular.module("learnEnglishApp.services", []);
 angular.module("learnEnglishApp.controllers", []);
+angular.module("learnEnglishApp.directives", []);
 
 angular.module("learnEnglishApp", [
     "ngRoute",
     "ngMaterial",
     "ngMessages",
     "youtube-embed",
+    
+    "app.directives",
     "learnEnglishApp.services",
-    "learnEnglishApp.controllers"
+    "learnEnglishApp.controllers",
+    "learnEnglishApp.directives"
 ]).config(config);
 
 
@@ -38,6 +42,11 @@ function config($routeProvider, $locationProvider) {
         .when("/writing/:id", {
             templateUrl: "VideoView/Writing/",
             controller: "WritingController"
+
+        })
+        .when("/speaking/:id", {
+            templateUrl: "VideoView/Speaking/",
+            controller: "SpeakingController"
 
         })
         .when("/add/", {

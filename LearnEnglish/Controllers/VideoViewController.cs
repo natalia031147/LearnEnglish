@@ -1,18 +1,4 @@
-﻿using System;
-using System.Globalization;
-using System.Net;
-using System.Web;
-using System.Web.Mvc;
-using Microsoft.AspNet.Identity;
-using System.Linq;
-using System.Text;
-using LearnEnglish.Business.Builders;
-using LearnEnglish.Business.Logic;
-using LearnEnglish.Business.Models;
-using LearnEnglish.Data.Entities;
-using LearnEnglish.Data.Framework;
-using static LearnEnglish.Data.Entities.Enums;
-using LearnEnglish.Business.Logic.Interfaces;
+﻿using System.Web.Mvc;
 
 namespace LearnEnglish.Controllers
 {
@@ -53,7 +39,12 @@ namespace LearnEnglish.Controllers
         {
             return PartialView();
         }
-         
+
+        public ActionResult Speaking()
+        {
+            return PartialView();
+        }
+        
         //[HttpPost]
         //public ActionResult SaveAction(int id, string action)
         //{
@@ -96,7 +87,7 @@ namespace LearnEnglish.Controllers
         //{
         //    try
         //    {
-                
+
 
         //    }
         //    catch (Exception ex)
@@ -152,6 +143,6 @@ namespace LearnEnglish.Controllers
         //    return Json("Success", JsonRequestBehavior.AllowGet);
         //}
 
-        
+
     }
 }
