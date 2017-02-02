@@ -63,7 +63,7 @@ app.controller('AddVideoController', ['$scope', '$http', function ($scope, $http
         $scope.youtubePlayer.playVideo();
         $scope.editErrors = "";
     }
-
+    var orderNumber = 0;
     $scope.addPart = function () {
         $scope.pauseVideo();
 
@@ -71,17 +71,18 @@ app.controller('AddVideoController', ['$scope', '$http', function ($scope, $http
             $scope.editErrors = 'EndTime - StartTime must be greater than zero';
             return false;
         }
-
+        orderNumber++
         $scope.newPartArr = {
             startTime: $scope.startTime,
             endTime: $scope.endTime,
-            native: $scope.native,
-            source: $scope.source
+            phrase: $scope.phrase,
+            phraseTranslated: $scope.phraseTranslated,
+            orderNumber:  orderNumber
         };
         $scope.parts.push($scope.newPartArr);
         //$scope.saveVideo
-        $scope.native = "";
-        $scope.source = "";
+        $scope.phrase = "";
+        $scope.phraseTranslated = "";
         $scope.startTime = $scope.endTime;
     }
 

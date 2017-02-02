@@ -11,14 +11,14 @@ app.controller("ListeningController", [
         $scope.countHint = 0;
         $scope.history = [];
         $scope.placeholder = "...";
-        var endTyping = false;
+        $scope.endTyping = false;
         $scope.playerVars = {
             'controls': 0,
             'autoplay': 0
         };
 
         $scope.$on("youtube.player.playing", function() {
-            if (!endTyping) {
+            if (!$scope.endTyping) {
                 var time = ($scope.currentPhrase.endTime - $scope.currentPhrase.startTime) * 1000;
                 setTimeout(stopVideo, time);
 
@@ -31,8 +31,10 @@ app.controller("ListeningController", [
             }
         });
 
-        $scope.$on("youtube.player.paused", function() {
-            $scope.youtubePlayer2.seekTo($scope.currentPhrase.startTime, true);
+        $scope.$on("youtube.player.paused", function () {
+            if (!$scope.endTyping) {
+                $scope.youtubePlayer2.seekTo($scope.currentPhrase.startTime, true);
+            }
         });
 
         $scope.$on("youtube.player.ready", function() {
@@ -109,7 +111,7 @@ app.controller("ListeningController", [
                 $scope.passed = $scope.video.phrases.filter(a => a.phrase !== "" && a.orderNumber < $scope.currentPhrase.orderNumber).length;
                 $scope.progress = (($scope.passed / phrases.length) * 100).toFixed(0);
             } else {
-                endTyping = true;
+                $scope.endTyping = true;
                 $scope.youtubePlayer2.playVideo();
                 $scope.youtubePlayer2.seekTo($scope.currentPhrase.endTime, true);
                 $scope.passed = $scope.video.phrases.filter(a => a.phrase !== "" && a.orderNumber <= $scope.currentPhrase.orderNumber).length;
@@ -120,6 +122,17 @@ app.controller("ListeningController", [
                 $scope.typingWord = "";
                 $scope.progress = (($scope.passed / phrases.length) * 100).toFixed(0);
                 $scope.passed = $scope.passed - 1;
+                var numberOfWords = $scope.video.phrases.filter(a => a.phrase != "").map(m => m.phrase).join(' ').split(' ').length;
+                var progress = ((numberOfWords - $scope.countHint) / numberOfWords).toFixed(2) * 100;
+                if (progress < 90) {
+                    $scope.scoredMessage = "Your lesson has not been scored.";
+                    $scope.efficiency = "Your Efficiency: " + progress + "%. Efficiency should be greater than or equal to 90%.";
+
+                } else {
+                    $scope.scoredMessage = "Congratulations! Your lesson has been scored!";
+                    $scope.efficiency = "Your Efficiency: " + progress + "%";
+                    //Salvare in baza de date
+                }
             };
         };
         var saveAction = function() {
@@ -150,7 +163,7 @@ app.controller("ListeningController", [
                     var item = { phrase: $scope.currentPhrase.phrase, phraseTranslated: $scope.currentPhrase.phraseTranslated, orderNumber: $scope.history.length + 1, translatedByGoogle: $scope.currentPhrase.translatedByGoogle };
                     $scope.history.push(item);
                 }
-                if (!endTyping) {
+                if (!$scope.endTyping) {
                     getNextPhrase();
                     $scope.typingWord = "";
                     $scope.typedWords = [];
@@ -159,7 +172,7 @@ app.controller("ListeningController", [
         };
         $scope.typing = function(key) {
             var codes = [13, 32, 190, 33, 63];
-            if (codes.includes(key) && !endTyping) {
+            if (codes.includes(key) && !$scope.endTyping) {
                 var typingWord = $scope.typingWord.toLowerCase().replace(/[^\w\s]/g, "").trim();
                 var expectedWord = $scope.expectedWord.word.toLowerCase().replace(/[^\w\s]/g, "").trim();
                 if (typingWord === expectedWord) {

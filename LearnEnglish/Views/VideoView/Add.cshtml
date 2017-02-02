@@ -44,8 +44,8 @@
                 </div>
 
                 <div class="part-translate" ng-hide="editFlag" style="margin-top: 54px;">
-                    <textarea cols="30" rows="10" placeholder="English phrase" ng-model="source" class="ng-pristine ng-valid"></textarea>
-                    <textarea cols="30" rows="10" placeholder="Traducere in romana" ng-model="native" class="ng-pristine ng-valid"></textarea>
+                    <textarea cols="30" rows="10" placeholder="English phrase" ng-model="phrase" class="ng-pristine ng-valid"></textarea>
+                    <textarea cols="30" rows="10" placeholder="Traducere in romana" ng-model="phraseTranslated" class="ng-pristine ng-valid"></textarea>
                     <button type="submit" class="org-stretch-btn part-translate-btn" ng-click="addPart();">+</button>
                 </div>
                 <div style="margin-top: 12px;">
@@ -59,6 +59,21 @@
                     <button class="org-stretch-btn" style="margin-top: 0px; height: 33px;" ng-click="save();">Save</button>
                 </div>
             </div>
+        </div>
+        <div class="history">
+            <ul class="phrases">
+                <li ng-repeat="item in parts|orderBy : orderNumber : true track by $index ">
+                    <em class="number">{{item.orderNumber}}</em>
+                    <div>
+                        <p class="phrase-eng">{{item.phrase}}</p>
+                        <div style="width: 650px;padding-top: 0px;margin-left: 0px;margin-right: 0px;">
+                            <p class="phrase-translated">{{item.phraseTranslated == "" ? "Not Translated" : item.phraseTranslated}}</p>
+                            <span class="google-translate" style="font-size: .8em;" ng-if="item.translatedByGoogle">(Translated by Google Translate)</span>
+                        </div>
+                    </div>
+                    <hr style="width: 793px;margin-left: 0px; margin-bottom: 0px;">
+                </li>
+            </ul>
         </div>
     </div>
  

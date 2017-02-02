@@ -23,6 +23,11 @@
                     </div>
                 </div>
                 <h2 class="passed-count">{{passed + 1}}/{{phrasesNumber}}</h2>
+                <div style="margin-top: 90px;" ng-show="endTyping">
+                    <h4 class="translate-phrase">{{scoredMessage}}</h4>
+                    <div class="clear" style="padding-bottom: 20px;"></div>
+                    <span>{{efficiency}}</span>
+                </div>
             </div>
         </div>
         <div class="type">
@@ -47,7 +52,7 @@
 
     <div class="history">
         <ul class="phrases">
-            <li ng-repeat="item in history|orderBy : OrderNumber : true track by $index ">
+            <li ng-repeat="item in history|orderBy : orderNumber : true track by $index ">
                 <em class="number">{{item.orderNumber}}</em>
                 <div>
                     <p class="phrase-eng">{{item.phrase}}</p>
