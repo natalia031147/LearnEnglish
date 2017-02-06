@@ -1,0 +1,39 @@
+﻿
+@{
+    Layout = null;
+    ViewBag.Title = "Level";
+}
+
+<div div="page-content" style="width: 880px;" ng-init="init()">
+    <div class="video_title">
+        <h3 style="color : #fff;">
+            CHANGE THE LEVEL
+        </h3>
+    </div>
+    <div>
+        <div class="clear" style="padding-bottom: 20px;"></div>
+        <label>If you think that the recommended lessons do not match your level, you can change to a higher level here</label>
+        <div class="clear" style="padding-bottom: 20px;"></div>
+        <div class="control-group">
+            <div class="controls">
+                <label class="radio">
+                    <input type="radio" ng-model="level" ng-change='setLevel(1)' value="elementary" checked>Elementary
+                </label>
+                <label class="radio">
+                    <input type="radio" ng-model="level" ng-change='setLevel(2)' value="preIntermediate">Pre-Intermediate
+                </label>
+                <label class="radio">
+                    <input type="radio" ng-model="level" ng-change='setLevel(3)' value="intermediate">Intermediate
+                </label>
+                <label class="radio">
+                    <input type="radio" ng-model="level" ng-change='setLevel(4)' value="upperIntermediate">Upper-Intermediate
+                </label>
+                <label class="radio">
+                    <input type="radio" ng-model="level" ng-change='setLevel(5)'  value="advanced">Advanced
+                </label>
+            </div>
+        </div>
+        <div class="clear" style="padding-bottom: 20px;"></div>
+        <button class="btn btn-warning load-btn" ng-click="changeLevel()">Save</button>
+    </div>
+</div>

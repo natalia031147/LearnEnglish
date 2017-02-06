@@ -83,7 +83,9 @@
     <Compile Include="Builders\VideoModelBuilder.cs" />
     <Compile Include="Framework\AutofacConfig.cs" />
     <Compile Include="Logic\BaseLogic.cs" />
+    <Compile Include="Logic\Interfaces\ILevelLogic.cs" />
     <Compile Include="Logic\Interfaces\IUserPointsLogic.cs" />
+    <Compile Include="Logic\LevelLogic.cs" />
     <Compile Include="Logic\RecommendationsLogic.cs" />
     <Compile Include="Logic\UserPointsLogic.cs" />
     <Compile Include="Models\UserPointsModel.cs" />
@@ -107,6 +109,8 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="ClassDiagram1.cd" />
+    <None Include="ClassDiagram2.cd" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

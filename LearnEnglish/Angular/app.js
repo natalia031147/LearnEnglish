@@ -9,8 +9,6 @@ angular.module("learnEnglishApp", [
     "ngMaterial",
     "ngMessages",
     "youtube-embed",
-    
-    "app.directives",
     "learnEnglishApp.services",
     "learnEnglishApp.controllers",
     "learnEnglishApp.directives"
@@ -59,6 +57,10 @@ function config($routeProvider, $locationProvider) {
         })
         .when("/register", {
             templateUrl: "Account/Register/"
+        })
+        .when("/level", {
+            templateUrl: "LevelView/ChangeLevel/",
+            controller: "ChangeLevelController"
         });
     $locationProvider.html5Mode(false);
 }

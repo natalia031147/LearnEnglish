@@ -10,6 +10,7 @@ app.controller('AddVideoController', ['$scope', '$http', function ($scope, $http
     $scope.endTime = 0;
     $scope.parts = [];
     $scope.newPartArr = {};
+    $scope.phraseTranslated = "";
     var API_CREDENTIAL = "AIzaSyCZlKOKZ0-U0FCmuMZoVLXPJzB4bcK8zq4";
     $scope.data = {
 
@@ -100,9 +101,31 @@ app.controller('AddVideoController', ['$scope', '$http', function ($scope, $http
                 alert('success');
                 //debugger;
             }
+
         });
     }
 
+    $scope.getGoogleTranslatePhrase = function (phrase) {
+        if ($scope.phraseTranslated !== "" && $scope.phraseTranslated !== undefined) {
+            return;
+        }
+        if (phrase === "")
+        {
+            $scope.phraseTranslated =  "";
+        }
+        $http({
+            url: "/Api/GoogleTranslate",
+            method: "GET",
+            params: { phrase: phrase }
+        })
+                .success(function (data) {
+                    $scope.phraseTranslated = data;
+                })
+                .error(function (error, status) {
+                    console.log(status);
+                    console.log("Error occured");
+                });
+    };
 
     $scope.$on('youtube.player.paused', function ($event, player) {
         // play it again

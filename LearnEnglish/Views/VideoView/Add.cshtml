@@ -31,7 +31,7 @@
         <div class="create-part">
             <div class="part-controller" ng-hide="editFlag">
 
-                <input class="start-part" type="text" placeholder="0.0" value="0" ng-model="startTime">
+                <input class="start-part" type="text" placeholder="0.0" value="0" ng-model="startTime" disabled style="background:gray;">
                 <span class="separator">-</span>
                 <input id="manualPlayerTime" ng-hide="playButtonStatus" class="finish-part" type="text" placeholder="0.0" value="" ng-model="endTime">
                 <span style="margin-left: 24px; color: red;">{{editErrors}}</span>
@@ -44,11 +44,11 @@
                 </div>
 
                 <div class="part-translate" ng-hide="editFlag" style="margin-top: 54px;">
-                    <textarea cols="30" rows="10" placeholder="English phrase" ng-model="phrase" class="ng-pristine ng-valid"></textarea>
+                    <textarea ng-blur="getGoogleTranslatePhrase(phrase)" cols="30" rows="10" placeholder="English phrase" ng-model="phrase" class="ng-pristine ng-valid"></textarea>
                     <textarea cols="30" rows="10" placeholder="Traducere in romana" ng-model="phraseTranslated" class="ng-pristine ng-valid"></textarea>
                     <button type="submit" class="org-stretch-btn part-translate-btn" ng-click="addPart();">+</button>
                 </div>
-                <div style="margin-top: 12px;">
+                <div style="margin-top: 75px;">
                     <select class="selectpicker" ng-model="level">
                         <option>Elementary</option>
                         <option>Pre-Intermediate</option>
@@ -61,17 +61,25 @@
             </div>
         </div>
         <div class="history">
-            <ul class="phrases">
+            <ul class="phrases" style="padding-left: 0px;">
                 <li ng-repeat="item in parts|orderBy : orderNumber : true track by $index ">
-                    <em class="number">{{item.orderNumber}}</em>
-                    <div>
-                        <p class="phrase-eng">{{item.phrase}}</p>
-                        <div style="width: 650px;padding-top: 0px;margin-left: 0px;margin-right: 0px;">
-                            <p class="phrase-translated">{{item.phraseTranslated == "" ? "Not Translated" : item.phraseTranslated}}</p>
-                            <span class="google-translate" style="font-size: .8em;" ng-if="item.translatedByGoogle">(Translated by Google Translate)</span>
+                    <div style="padding-top: 0px;">
+                        <div style="float: left;">
+                            <em class="number" style="padding-top: 0px !important; padding-left: 0px !important;">{{item.orderNumber}}</em>
+                            <div class="part-time">
+                                <p class="finish-part ng-binding">{{item.endTime}}</p>
+                                <p class="start-part ng-binding">{{item.startTime}}</p>
+                            </div>
+                        </div>
+                        <div>
+                            <p class="phrase-eng">{{item.phrase}}</p>
+                            <div style="width: 650px;padding-top: 0px;margin-left: 0px;margin-right: 0px;">
+                                <p class="phrase-translated">{{item.phraseTranslated}}</p>
+                                <span class="google-translate" style="font-size: .8em;" ng-if="item.translatedByGoogle">(Translated by Google Translate)</span>
+                            </div>
                         </div>
                     </div>
-                    <hr style="width: 793px;margin-left: 0px; margin-bottom: 0px;">
+                    <hr style="width: 90%;margin-left: 0px; margin-bottom: 0px;">
                 </li>
             </ul>
         </div>

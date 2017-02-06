@@ -177,7 +177,7 @@ hr {
     width: 906px;
     text-align: right;
     top: 10px;
-    height: 230px;
+    overflow: hidden;
 }
 
 .part-controller {
@@ -246,7 +246,7 @@ hr {
     float: left;
     width: 375px;
     margin: 0 10px 0 0;
-    height: 64px;
+    height: 120px;
     border: 0;
     border-radius: 2px;
     -moz-border-radius: 2px;
@@ -535,4 +535,23 @@ md-card.md-dark-orange-theme {
 md-card .md-actions:not(.layout-column) .md-button:not(.md-icon-button):first-of-type, md-card md-card-actions:not(.layout-column) .md-button:not(.md-icon-button):first-of-type {
     margin-left: 0;
     border: .1rem solid #28aadc;
+}
+
+.part-time p {
+    font-size: 14px;
+    line-height: 24px;
+    color: #c3c9cb;
+    margin: 0;
+}
+
+.part-time {
+    float: left; 
+    padding-top: 0px;  
+    margin-left: 0px;
+}
+
+
+.nav .open > a, .nav .open > a:hover, .nav .open > a:focus {
+    background-color: #222222;
+    border-color: #428bca;
 }

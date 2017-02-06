@@ -209,6 +209,8 @@
   <ItemGroup>
     <Compile Include="Api\RecommendationsController.cs" />
     <Compile Include="Api\UserPointsController.cs" />
+    <Compile Include="Api\GoogleTranslateController.cs" />
+    <Compile Include="Api\LevelController.cs" />
     <Compile Include="Api\VideoController.cs" />
     <Compile Include="Api\VideoPhraseController.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
@@ -219,6 +221,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LevelViewController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\VideoViewController.cs" />
     <Compile Include="Global.asax.cs">
@@ -232,6 +235,7 @@
   <ItemGroup>
     <Content Include="Angular\app.js" />
     <Content Include="Angular\Controllers\AddVideoController.js" />
+    <Content Include="Angular\Controllers\ChangeLevelController.js" />
     <Content Include="Angular\Controllers\SpeakingController.js" />
     <Content Include="Angular\Controllers\VideoListController.js" />
     <Content Include="Angular\Controllers\ListeningController.js" />
@@ -239,7 +243,6 @@
     <Content Include="Angular\Controllers\VideoDetailsController.js" />
     <Content Include="Angular\Controllers\WritingController.js" />
     <Content Include="Angular\Directives\LevelDirective.js" />
-    <Content Include="Angular\Directives\SpeechRecognitionDirective.js" />
     <Content Include="Angular\Service\YoutubeEmbedUtils.js" />
     <Content Include="App_Data\aspnet-LearnEnglish-v2.mdf" />
     <Content Include="App_Data\aspnet-LearnEnglish-v2_log.ldf">
@@ -1183,6 +1186,7 @@
     <Content Include="Views\VideoView\Writing.cshtml" />
     <Content Include="Views\VideoView\Recommendations.cshtml" />
     <Content Include="Views\VideoView\Speaking.cshtml" />
+    <Content Include="Views\LevelView\ChangeLevel.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\LearnEnglish.Business\LearnEnglish.Business.csproj">

@@ -13,6 +13,7 @@ namespace LearnEnglish.Business.Framework
             builder.RegisterType<VideoLogic>().AsImplementedInterfaces().InstancePerRequest();
             builder.RegisterType<VideoPhraseLogic>().AsImplementedInterfaces().InstancePerRequest();
             builder.RegisterType<UserPointsLogic>().AsImplementedInterfaces().InstancePerRequest();
+            builder.RegisterType<LevelLogic>().AsImplementedInterfaces().InstancePerRequest();
             builder.RegisterType<VideoModelBuilder>().AsImplementedInterfaces().InstancePerRequest();
             builder.RegisterType<VideoPhraseModelBuilder>().AsImplementedInterfaces().InstancePerRequest();
             builder.RegisterType<UserPointsModelBuilder>().AsImplementedInterfaces().InstancePerRequest();
