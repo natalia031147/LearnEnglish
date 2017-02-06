@@ -1,9 +1,6 @@
 ﻿using LearnEnglish.Business.Logic.Interfaces;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using LearnEnglish.Data.Framework;
 using LearnEnglish.Data.Entities;
 using LearnEnglish.Business.Utils;

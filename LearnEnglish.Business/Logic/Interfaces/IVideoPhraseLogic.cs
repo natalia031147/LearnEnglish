@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using LearnEnglish.Business.Models;
-using LearnEnglish.Data.Entities;
 
 namespace LearnEnglish.Business.Logic.Interfaces
 {

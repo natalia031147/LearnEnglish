@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using LearnEnglish.Business.Models;
+﻿using LearnEnglish.Business.Models;
 
 namespace LearnEnglish.Business.Logic.Interfaces
 {
