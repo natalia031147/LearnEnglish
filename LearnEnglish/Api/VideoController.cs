@@ -23,5 +23,11 @@ namespace LearnEnglish.Api
         {
             return _videoLogic.Get(id);
         }
+
+        [HttpPost]
+        public string Add(VideoPhraseModel video)
+        {
+            return _videoLogic.Add(video);
+        }
     }
 }

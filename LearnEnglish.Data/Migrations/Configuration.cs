@@ -1,6 +1,5 @@
-using System.Collections.Generic;
 using System.Data.Entity.Migrations;
-using System.Linq; 
+using System.Linq;
 using LearnEnglish.Data.Framework;
 using LearnEnglish.Data.Migrations.Seed;
 

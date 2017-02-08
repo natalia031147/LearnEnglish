@@ -1,6 +1,4 @@
-﻿using LearnEnglish.Data.Entities;
-
-namespace LearnEnglish.Business.Models
+﻿namespace LearnEnglish.Business.Models
 {
     public class RecommendationsModel
     {

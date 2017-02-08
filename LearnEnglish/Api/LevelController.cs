@@ -1,8 +1,5 @@
-﻿using System.Collections.Generic;
-using System.Web.Http;
+﻿using System.Web.Http;
 using LearnEnglish.Business.Logic.Interfaces;
-using LearnEnglish.Business.Models;
-using System.Net.Http;
 
 namespace LearnEnglish.Api
 {

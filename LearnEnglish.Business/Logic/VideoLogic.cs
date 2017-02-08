@@ -56,5 +56,10 @@ namespace LearnEnglish.Business.Logic
                     SpeakingModulePassed = j == null ? false : j.SpeakingModulePassed
                 }).ToList().FirstOrDefault();
         }
+
+        public string Add(VideoPhraseModel video)
+        {
+            return "Save the level Successful."; ;
+        }
     }
 }
