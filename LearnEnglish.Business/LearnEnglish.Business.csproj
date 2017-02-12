@@ -88,6 +88,7 @@
     <Compile Include="Logic\LevelLogic.cs" />
     <Compile Include="Logic\RecommendationsLogic.cs" />
     <Compile Include="Logic\UserPointsLogic.cs" />
+    <Compile Include="Models\PhrasePartModel.cs" />
     <Compile Include="Models\UserPointsModel.cs" />
     <Compile Include="Utils\PointsLevel.cs" />
     <Compile Include="Logic\Interfaces\IRecommendationsLogic.cs" />

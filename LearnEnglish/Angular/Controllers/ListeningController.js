@@ -14,7 +14,7 @@ app.controller("ListeningController", [
         $scope.endTyping = false;
         $scope.playerVars = {
             'controls': 0,
-            'autoplay': 0
+            'autoplay': 1
         };
 
         $scope.$on("youtube.player.playing", function() {
@@ -49,7 +49,7 @@ app.controller("ListeningController", [
                     params: { id: $routeParams.id }
                 })
                 .success(function(data) {
-                    $scope.video.phrases = data;
+                    $scope.video.phrases = data.sort(function (a, b) { return (a.orderNumber > b.orderNumber) ? 1 : ((b.orderNumber > a.orderNumber) ? -1 : 0); });
                     $scope.currentPhrase = { phrase: "", orderNumber: 0 };
                     $scope.phrasesNumber = $scope.video.phrases.filter(a => a.phrase !== "").length;
 

@@ -12,7 +12,7 @@ app.controller('AddVideoController', ['$scope', '$http', function ($scope, $http
     $scope.newPartArr = {};
     $scope.phraseTranslated = "";
     var API_CREDENTIAL = "AIzaSyCZlKOKZ0-U0FCmuMZoVLXPJzB4bcK8zq4";
-    $scope.data = {
+    $scope.videoData = {
 
     };
 
@@ -30,10 +30,10 @@ app.controller('AddVideoController', ['$scope', '$http', function ($scope, $http
 
         $http.get(urlApi)
         .success(function (data, status, headers, config) {
-            $scope.data.Title = data.items[0].snippet.title;
-            $scope.data.Thumbnail = data.items[0].snippet.thumbnails.medium.url;
-            $scope.data.Url = $scope.youtubelink;
-            $scope.data.Language = 'en';
+            $scope.videoData.Title = data.items[0].snippet.title;
+            $scope.videoData.Thumbnail = data.items[0].snippet.thumbnails.medium.url;
+            $scope.videoData.Url = $scope.youtubelink;
+            $scope.videoData.Language = 'en';
         })
         .error(function (error, status, headers, config) {
             console.log(status);
@@ -65,10 +65,10 @@ app.controller('AddVideoController', ['$scope', '$http', function ($scope, $http
         $scope.editErrors = "";
     }
     var orderNumber = 0;
-    $scope.addPart = function () {
+    $scope.addPart = function (saveScope = false) {
         $scope.pauseVideo();
 
-        if ($scope.endTime - $scope.startTime <= 0) {
+        if ($scope.endTime - $scope.startTime <= 0 && !saveScope) {
             $scope.editErrors = 'EndTime - StartTime must be greater than zero';
             return false;
         }
@@ -89,20 +89,25 @@ app.controller('AddVideoController', ['$scope', '$http', function ($scope, $http
 
     $scope.save = function () {
         $scope.editErrors = "";
-        $scope.addPart();
-        $scope.data.Level = $scope.level;
-        $scope.data.parts = $scope.parts;
-        // save video
-        $.ajax({
-            type: "POST",
-            url: "AddNewVideo",
-            data: $scope.data,
-            success: function (result) {
-                alert('success');
-                //debugger;
-            }
-
-        });
+        $scope.addPart(true);
+        $scope.videoData.Level = $scope.level;
+        //$scope.videoData.VideoPhrases = $scope.parts ;
+        var postData = {video:  $scope.videoData, videoPhrases: $scope.parts}
+        $http({
+            url: "/Api/Video",
+            method: "POST",
+            data:  JSON.stringify(postData),
+            //params: { video: $scope.videoData },
+            headers: { 'Content-Type': 'application/json' }
+            //params: { video: $scope.videoData, videoPhrases: $scope.parts }
+        })
+                 .success(function (data) {
+                     console.log(data);
+                 })
+                 .error(function (error, status) {
+                     console.log(status);
+                     console.log("Error occured");
+                 });
     }
 
     $scope.getGoogleTranslatePhrase = function (phrase) {

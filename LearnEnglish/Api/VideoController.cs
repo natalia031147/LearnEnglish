@@ -2,9 +2,11 @@
 using System.Web.Http;
 using LearnEnglish.Business.Logic.Interfaces;
 using LearnEnglish.Business.Models;
+using Newtonsoft.Json.Linq;
 
 namespace LearnEnglish.Api
 {
+    
     public class VideoController : ApiController
     {
         private readonly IVideoLogic _videoLogic;
@@ -25,9 +27,15 @@ namespace LearnEnglish.Api
         }
 
         [HttpPost]
-        public string Add(VideoPhraseModel video)
+       
+        public string Add([FromBody]JObject data) //VideoPhraseModel video, IEnumerable<PhrasePartModel> videoPhrases
         {
-            return _videoLogic.Add(video);
+            IList<PhrasePartModel> videoPhrases = new List<PhrasePartModel>();
+            foreach (var item in data["videoPhrases"])
+            {
+                videoPhrases.Add(item.ToObject<PhrasePartModel>());
+            }
+            return _videoLogic.Add(data["video"].ToObject<VideoModel>(), videoPhrases);
         }
     }
 }

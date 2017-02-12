@@ -4,6 +4,8 @@ using LearnEnglish.Business.Builders.Interfaces;
 using LearnEnglish.Business.Logic.Interfaces;
 using LearnEnglish.Business.Models;
 using LearnEnglish.Data.Framework;
+using LearnEnglish.Data.Entities;
+using System;
 
 namespace LearnEnglish.Business.Logic
 {
@@ -57,9 +59,48 @@ namespace LearnEnglish.Business.Logic
                 }).ToList().FirstOrDefault();
         }
 
-        public string Add(VideoPhraseModel video)
+        public string Add(VideoModel videoModel, IEnumerable<PhrasePartModel> videoPhrasesModel)
         {
-            return "Save the level Successful."; ;
+            try
+            {
+                var video = Context.Videos.Where(v => v.Url == videoModel.Url).FirstOrDefault();
+
+                if (video == null) { 
+                    Context.Videos.Add(new Video()
+                    {
+                        Language = videoModel.Language,
+                        Level = 0,
+                        Thumbnail = videoModel.Thumbnail,
+                        Title = videoModel.Title,
+                        Url = videoModel.Url
+                    });
+                    Context.SaveChanges();
+
+                    var newVideo = Context.Videos.Where(v => v.Url == videoModel.Url).FirstOrDefault();
+                    IList<VideoPhrase> videoPhrases = new List<VideoPhrase>();
+                    foreach (var item in videoPhrasesModel)
+                    {
+                        videoPhrases.Add(new VideoPhrase {
+                            EndTime = item.EndTime,
+                            StartTime = item.StartTime,
+                            OrderNumber = item.OrderNumber,
+                            Phrase = item.Phrase ?? "",
+                            PhraseTranslated = item.PhraseTranslated ?? "",
+                            TranslateLanguage = "ro",
+                            Video = newVideo
+                        });
+                    }
+                    Context.VideoPhrases.AddRange(videoPhrases);
+                    Context.SaveChanges();
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+                return ex.Message;
+            }
+            return "Save the level Successful."; 
         }
     }
 }
