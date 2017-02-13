@@ -131,24 +131,11 @@ app.controller("ListeningController", [
                 } else {
                     $scope.scoredMessage = "Congratulations! Your lesson has been scored!";
                     $scope.efficiency = "Your Efficiency: " + progress + "%";
-                    //Salvare in baza de date
-                }
+                    $scope.save();
+                }                
             };
         };
-        var saveAction = function() {
-            $http({
-                method: "POST",
-                url: "/Video/SaveAction",
-                data: $.param({ id: $scope.video.id, action: "listening" }),
-                headers: { 'Content-Type': "application/x-www-form-urlencoded" }
-            }).then(
-                function(res) {
-                    console.log("succes !", res.data);
-                },
-                function(err) {
-                    console.log("error...", err);
-                });
-        };
+        
 
 
         var getNextExpectedWord = function() {
@@ -193,6 +180,23 @@ app.controller("ListeningController", [
             return $scope.expectedWord.word.toLowerCase().indexOf($scope.typingWord.toLowerCase()) ? "red" : "green";
         };
 
+        $scope.save = function () {
+
+            $scope.video.listeningModulePassed = true;
+            $http({
+                url: "/Api/VideoPhrase",
+                method: "POST",
+                data: JSON.stringify($scope.video),
+                headers: { 'Content-Type': 'application/json' }
+            })
+                     .success(function (data) {
+                         console.log(data);
+                     })
+                     .error(function (error, status) {
+                         console.log(status);
+                         console.log("Error occured");
+                     });
+        }
 
     }
 ]);

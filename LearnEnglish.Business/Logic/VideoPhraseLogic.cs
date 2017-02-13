@@ -5,6 +5,8 @@ using LearnEnglish.Data.Framework;
 using System.Collections.Generic;
 using System.Linq;
 using LearnEnglish.Business.Utils;
+using System;
+using LearnEnglish.Data.Entities;
 
 namespace LearnEnglish.Business.Logic
 {
@@ -38,6 +40,44 @@ namespace LearnEnglish.Business.Logic
 
 
             return models;
+        }
+        public string PassModule(VideoModel video)
+        {
+            try
+            {
+                var userId = GetUser();
+
+                var userProgress = Context.UserProgress.Where(v => v.Video.Id == video.Id && v.User.Id == userId).FirstOrDefault();
+
+
+                if (userProgress == null)
+                {
+                    Context.UserProgress.Add(new UserProgress()
+                    {
+                        User = Context.Users.Where(v => v.Id == userId).FirstOrDefault(),
+                        Video = Context.Videos.Where(v => v.Id == video.Id).FirstOrDefault(),
+                        ListeningModulePassed = video.ListeningModulePassed,
+                        WritingModulePassed = video.WritingModulePassed,
+                        SpeakingModulePassed = video.SpeakingModulePassed
+                    });
+                    Context.SaveChanges();
+
+                }
+                else
+                { 
+                    userProgress.ListeningModulePassed = video.ListeningModulePassed;
+                    userProgress.WritingModulePassed = video.WritingModulePassed;
+                    userProgress.SpeakingModulePassed = video.SpeakingModulePassed;
+                    userProgress.Video = Context.Videos.Where(v => v.Id == video.Id).FirstOrDefault();
+                    userProgress.User = Context.Users.Where(v => v.Id == userId).FirstOrDefault();
+                    Context.SaveChanges();
+                }
+            }
+            catch (Exception ex)
+            {
+                return ex.Message;
+            }
+            return "Save the level Successful.";
         }
     }
 }

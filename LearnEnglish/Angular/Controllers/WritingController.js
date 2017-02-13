@@ -102,7 +102,7 @@ app.controller('WritingController', ['$scope', '$http', '$routeParams', function
             } else {
                 $scope.scoredMessage = "Congratulations! Your lesson has been scored!";
                 $scope.efficiency = "Your Efficiency: " + progress + "%";
-                //Salvare in baza de date
+                $scope.save();
             }
         };
     };
@@ -149,6 +149,22 @@ app.controller('WritingController', ['$scope', '$http', '$routeParams', function
         return $scope.expectedWord.word.toLowerCase().indexOf($scope.typingWord.toLowerCase()) ? "red" : "green";
     };
 
+    $scope.save = function () {
 
+        $scope.video.writingModulePassed = true;
+        $http({
+            url: "/Api/VideoPhrase",
+            method: "POST",
+            data: JSON.stringify($scope.video),
+            headers: { 'Content-Type': 'application/json' }
+        })
+                 .success(function (data) {
+                     console.log(data);
+                 })
+                 .error(function (error, status) {
+                     console.log(status);
+                     console.log("Error occured");
+                 });
+    }
 
 }]);

@@ -97,9 +97,7 @@ app.controller('AddVideoController', ['$scope', '$http', function ($scope, $http
             url: "/Api/Video",
             method: "POST",
             data:  JSON.stringify(postData),
-            //params: { video: $scope.videoData },
             headers: { 'Content-Type': 'application/json' }
-            //params: { video: $scope.videoData, videoPhrases: $scope.parts }
         })
                  .success(function (data) {
                      console.log(data);

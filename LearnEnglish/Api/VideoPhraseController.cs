@@ -2,6 +2,7 @@
 using System.Web.Http;
 using LearnEnglish.Business.Logic.Interfaces;
 using LearnEnglish.Business.Models;
+using Newtonsoft.Json.Linq;
 
 namespace LearnEnglish.Api
 {
@@ -18,7 +19,11 @@ namespace LearnEnglish.Api
         {
             return _videoPhraseLogic.GetAll(id);
         }
+        [HttpPost]
+        public string PassModule([FromBody]JObject data) //VideoPhraseModel video, IEnumerable<PhrasePartModel> videoPhrases
+        {
+            return _videoPhraseLogic.PassModule(data.ToObject<VideoModel>());
+        }
 
-       
     }
 }

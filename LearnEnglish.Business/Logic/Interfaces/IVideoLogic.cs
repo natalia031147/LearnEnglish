@@ -7,6 +7,6 @@ namespace LearnEnglish.Business.Logic.Interfaces
     {
         ICollection<VideoModel> GetAll();
         VideoModel Get(int id);
-        string Add(VideoModel video, IEnumerable<PhrasePartModel> videoPhrases);
+        string Add(VideoModel video, IEnumerable<PhrasePartModel> videoPhrases);        
     }
 }
